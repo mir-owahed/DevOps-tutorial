@@ -24,4 +24,5 @@ git remote -v
 
 git branch newbranch-name
 git checkout newbranch-name
-................
+
+git push https://github.com/mir-owahed/DevOpsDemo.git
