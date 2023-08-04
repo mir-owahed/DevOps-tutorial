@@ -1,5 +1,5 @@
 # Basic git commands for beginners
-
+```bash
 git init
 git status
 git add .
@@ -26,3 +26,4 @@ git branch newbranch-name
 git checkout newbranch-name
 
 git push https://github.com/mir-owahed/DevOpsDemo.git
+```
