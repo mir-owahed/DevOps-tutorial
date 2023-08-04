@@ -1,4 +1,4 @@
-Basic git commands for beginners
+# Basic git commands for beginners
 
 git init
 git status
