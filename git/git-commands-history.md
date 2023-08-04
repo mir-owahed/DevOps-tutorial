@@ -1,7 +1,7 @@
 ﻿
   # Basic git commands  
-  -- -----------                                                                                                                                                          ```                 
-   1 try { . "c:\Users\NDL\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\browser\media\shellIntegration.ps1" } catch {}                            
+  -- -----------                                                                                                                                                          ```bash                
+                           
    2 git status                                                                                                                                                                               
    3 git -v                                                                                                                                                                                   
    4 git init                                                                                                                                                                                 
