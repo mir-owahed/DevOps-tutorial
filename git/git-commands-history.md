@@ -1,8 +1,8 @@
 ﻿
   # Basic git commands  
-  -- -----------                                                                                                                                                          ```bash                
+  ```bash                
                            
-   2 git status                                                                                                                                                                               
+   2 git status                                                                                                                                                                            
    3 git -v                                                                                                                                                                                   
    4 git init                                                                                                                                                                                 
    5 git git add .                                                                                                                                                                            
