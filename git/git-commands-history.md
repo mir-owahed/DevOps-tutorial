@@ -43,7 +43,8 @@
   40 git add .                                                                                                                                                                                
   41 git commit -a -m "git push command added"                                                                                                                                                
   42 git push https://github.com/mir-owahed/DevOpsDemo.git                                                                                                                                    
-  43 history 
+  43 history > command.txt
+  
 ```
 
 
