@@ -3,7 +3,6 @@
 # https://docs.docker.com/build/building/multi-platform/
 docker build -t hello-app:latest .
 docker images
-```
 
 # Push to repository
 docker login
@@ -31,3 +30,5 @@ docker build -t duaraghav8/hello-app:0.1.0 .
 # Stop & destroy
 docker stop <ID>
 docker rm <ID>
+```
+
