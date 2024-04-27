@@ -1,4 +1,4 @@
-# Install using the apt repository
+#  How to Install Docker on Ubuntu
 
 Set up Docker's apt repository:
 ```
@@ -29,5 +29,10 @@ Post-installation
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
+```
+Let's do some 
+```
+docker help
+docker ps -a
 ```
 
