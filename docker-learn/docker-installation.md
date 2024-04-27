@@ -29,5 +29,4 @@ Post-installation
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
-n steps
-Post-installation steps
+
