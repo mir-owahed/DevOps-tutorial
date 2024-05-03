@@ -37,6 +37,7 @@ Post-installation
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
+newgrp docker
 sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
 ```
 Let's play
