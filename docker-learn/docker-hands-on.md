@@ -1,3 +1,4 @@
+```
 sudo apt install nano
 
     2  su -
@@ -177,4 +178,5 @@ sudo apt install nano
    89  docker ps -a
 
    90  history
+```
 
