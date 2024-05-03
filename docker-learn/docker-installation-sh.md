@@ -42,7 +42,18 @@ sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
 ```
 Let's play
 ```
+docker version
 docker --version
 docker help
 docker ps -a
+```
+### configure-docker-to-start-on-boot-with-systemd
+```
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+```
+To stop this behavior, use 'disable' instead.
+```
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
 ```
