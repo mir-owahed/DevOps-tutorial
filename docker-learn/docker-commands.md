@@ -7,10 +7,10 @@ docker images
 # Push to repository
 docker login
 docker tag hello-app:latest owahed1/python-sample-app:latest
-docker push duaraghav8/hello-app:latest
+docker push owahed1/python-sample-app:latest
 
 # Pull from repository
-docker pull duaraghav8/hello-app
+docker pull owahed1/python-sample-app:latest
 docker images
 
 # Run container
