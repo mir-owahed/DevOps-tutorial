@@ -143,3 +143,46 @@
    69  kubectl cluster-info
    70  ssh node01
 ```
+# K8s hands on at minikube
+```
+kubectl --help
+kubectl <commands> --help
+cd ~/.kube
+ls -la
+minikube start --nodes 3
+vim config
+kubectl config current-context               # display the current-context
+kubectl config get-clusters
+kubectl get nodes
+[https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/]
+kubectl get namespace
+minikube dashboard
+docker tag --help
+docker tag old-tag new-tag
+kubectl create deployment goapp --image=owahed1/k8s-hello-go:latest
+kubectl get deployment my-dep
+kubectl get deployments
+kubectl get pods
+kubectl get pods --watch
+kubectl describe --help
+kubectl describe pods podname | vim -
+k apply manifests.yaml
+kubectl describe deployment deploy-name | vim -
+kubectl expose --help
+kubectl expose deployment/goapp --type=Nodeport --port=8000
+k get services
+k logs --help
+kubectl get pods
+k logs pod-name
+k logs --follow pod-name
+k scale --help
+k scale deployment goapp --replicas=3
+kubectl get pods
+k logs --follow pod-name
+k set image deployment/goapp ...........
+k get all
+k delete deployment goapp
+k delete service/
+minikube stop
+minikube delete
+```
