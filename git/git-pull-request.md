@@ -1,4 +1,4 @@
-# How To Pull Request in 3 Minutes
+# How To Pull Request
 
 ## Fork and Start Contributing
 
