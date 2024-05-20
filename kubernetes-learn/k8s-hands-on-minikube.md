@@ -457,6 +457,124 @@ mir@ubuntu22-VBox:~/Documents/k8s-learn$ curl http://192.168.76.2:30007/hello
 
 HELLO WORLD!!mir@ubuntu22-VBox:~/Documents/k8s-learn$ curl http://192.168.76.2:30007/ping
 
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get pods
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+
+go-lang-deployment-76d89fd497-bmczr   1/1     Running   0          59m
+
+go-lang-deployment-76d89fd497-kx2v8   1/1     Running   0          59m
+
+go-lang-deployment-76d89fd497-vtnwf   1/1     Running   0          59m
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl logs go-lang-deployment-76d89fd497-kx2v8
+
+Mir's server is now running
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get all
+
+NAME                                      READY   STATUS    RESTARTS   AGE
+
+pod/go-lang-deployment-76d89fd497-bmczr   1/1     Running   0          65m
+
+pod/go-lang-deployment-76d89fd497-kx2v8   1/1     Running   0          65m
+
+pod/go-lang-deployment-76d89fd497-vtnwf   1/1     Running   0          65m
+
+
+
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+
+service/goapp        NodePort    10.110.148.161   <none>        3000:30007/TCP   30m
+
+service/kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP          2d23h
+
+
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+
+deployment.apps/go-lang-deployment   3/3     3            3           65m
+
+
+
+NAME                                            DESIRED   CURRENT   READY   AGE
+
+replicaset.apps/go-lang-deployment-76d89fd497   3         3         3       65m
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl delete deployment go-lang-deployment
+
+deployment.apps "go-lang-deployment" deleted
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get pods
+
+No resources found in default namespace.
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get deployments
+
+No resources found in default namespace.
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get all 
+
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+
+service/goapp        NodePort    10.110.148.161   <none>        3000:30007/TCP   36m
+
+service/kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP          2d23h
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl delete service goapp
+
+service "goapp" deleted
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ kubectl get all
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d23h
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ minikube status
+
+❗  Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 7.118416129s
+
+💡  Restarting the docker service may improve performance.
+
+minikube
+
+type: Control Plane
+
+host: Running
+
+kubelet: Running
+
+apiserver: Running
+
+kubeconfig: Configured
+
+
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ minikube stop
+
+✋  Stopping node "minikube"  ...
+
+🛑  Powering off "minikube" via SSH ...
+
+🛑  1 node stopped.
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ minikube delete
+
+🔥  Deleting "minikube" in docker ...
+
+🔥  Deleting container "minikube" ...
+
+🔥  Removing /home/mir/.minikube/machines/minikube ...
+
+💀  Removed all traces of the "minikube" cluster.
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ docker ps
+
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+mir@ubuntu22-VBox:~/Documents/k8s-learn$ docker ps -a
+
 
 
 ```
