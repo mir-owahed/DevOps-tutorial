@@ -1,5 +1,7 @@
 # Basic git commands for beginners
 ```bash
+git --version
+git --help
 git init
 git status
 git add .
