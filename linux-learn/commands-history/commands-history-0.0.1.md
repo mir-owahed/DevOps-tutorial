@@ -1,3 +1,4 @@
+```
     1  sudo apt install nano
     2  su -
     3  sudo apt install nano
@@ -316,3 +317,4 @@
   316  histpry
   317  history
   318  history > commands-history-0.0.1.md
+```
