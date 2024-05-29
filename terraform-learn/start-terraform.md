@@ -36,6 +36,16 @@ aws --version
 
 aws configure
 ```
+## terraform commands
+```
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+terraform destroy
+terraform show
+```
 
 Reference [Download binaries](https://developer.hashicorp.com/terraform/install?product_intent=terraform#linux).
 
