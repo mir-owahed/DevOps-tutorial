@@ -38,5 +38,6 @@ aws configure
 ```
 
 Reference [Download binaries](https://developer.hashicorp.com/terraform/install?product_intent=terraform#linux).
-[Reference](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[AWS Reference](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
