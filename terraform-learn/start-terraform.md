@@ -33,11 +33,12 @@ sudo ./aws/install]
 aws
 
 aws --version
-
+[Create IAM user and create access key and secret access key]
 aws configure
 ```
 ## terraform commands
 ```
+terraform --help
 terraform init
 terraform fmt
 terraform validate
