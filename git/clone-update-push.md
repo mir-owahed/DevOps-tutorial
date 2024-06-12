@@ -40,5 +40,6 @@ sudo visudo
 [copy the pub key and paste it on GitHub pat and generate token]
   
    50  git push
+       git pull
    51  history
 ```
