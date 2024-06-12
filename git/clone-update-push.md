@@ -1,6 +1,7 @@
 # clone github repo and update and push 
 ```
 10  su -
+sudo visudo
    11  sudo apt update
    12  ls
    13  git clone https://github.com/mir-owahed/DevOps-tutorial.git
