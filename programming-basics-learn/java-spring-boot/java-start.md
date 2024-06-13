@@ -11,5 +11,6 @@ javac --version
 mvn --version
 java -jar spring-java.jar
 mvn clean package
+curl http://localhost:8080
 ```
 ### Default port for java app - 8080
