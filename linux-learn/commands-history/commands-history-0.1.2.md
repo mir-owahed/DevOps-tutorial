@@ -29,4 +29,22 @@ ubuntu@ip-10-0-0-122:/$ history
    26  sudo apt install openjdk-11-jdk-headless 
    27  javac --version
    28  history
+   29  sudo apt install python3 python3-pip
+   30  python3 -V
+   31  pip3 -V
+   32  history
+   33  clear
+   34  mkdir python-app
+   35  sudo mkdir python-app
+   36  cd python-app/
+   37  nano app.py
+   38  sudo nano app.py
+   39  sudo nano requirements.txt
+   40  pip3 install -r requirements.txt 
+   41  sudo pip3 install -r requirements.txt 
+   42  pip3 install flask
+   43  sudo pip3 install flask
+   44  apt install python3-flask
+   45  sudo apt install python3-flask
+   46  sudo apt install python3 python3-pip build-essential python3-dev
 ```
