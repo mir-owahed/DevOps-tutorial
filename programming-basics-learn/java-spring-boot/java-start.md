@@ -1,11 +1,15 @@
 # Getting started with java spring boot
-[Reference]<https://start.spring.io/>
+[Reference]
+1. <https://start.spring.io/>
 
-<https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html>
+2. <https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html>
 
 ## commands
 ```
+java --version
+javac --version
+mvn --version
 java -jar spring-java.jar
 mvn clean package
 ```
-### open port for java app - 8080
+### Default port for java app - 8080
