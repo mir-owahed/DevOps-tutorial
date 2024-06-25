@@ -17,6 +17,16 @@ curl http://localhost:8080
 ```
 commands history
 ```
+mv javaSpringProj.zip  ~/Documents/
+ls
+cd 
+cd Documents/
+ls
+unzip javaSpringProj.zip 
+ls
+cd javaSpringProj/
+ls
+code .
 java --version
 sudo apt install openjdk-11-jdk-headless
 java --version
