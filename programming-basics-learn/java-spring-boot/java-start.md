@@ -6,6 +6,7 @@
 
 ## commands:
 ```
+sudo apt update
 sudo apt install openjdk-11-jdk-headless
 sudo apt install maven
 java --version
@@ -35,7 +36,6 @@ sudo apt install maven
 mvn --version
 mvn compile
 javac --version
-java 17
 sudo apt install openjdk-17-jdk
 mvn compile
 ls
