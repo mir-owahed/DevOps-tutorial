@@ -63,3 +63,27 @@ java -jar target/javaSpringProj-0.0.1-SNAPSHOT.jar
 history
 ```
 ### Default port for java app - 8080
+
+### Push your 1st code into Github Repo
+```
+git clone https://github.com/mir-owahed/DevOps-tutorial.git
+ls
+mv javaSpringProj/ DevOps-tutorial/programming-basics-learn/java-spring-boot/
+ls
+cd DevOps-tutorial/
+git remote -v
+ls
+cd programming-basics-learn/
+ls
+cd java-spring-boot/
+ls
+cd..
+cd ..
+git init
+git status
+git add programming-basics-learn/java-spring-boot/javaSpringProj/
+git status
+git commit -m "java spring app added"
+git status
+git push
+```
