@@ -45,6 +45,7 @@ Run app
 java -jar name of the jar`
 ```
 
-## Default port for java app 8080
+## Default port for java app 8080 and can change at application.properties file
+server.port=9000
 'curl http://localhost:8080'
 ## or open browser 'http://localhost:8080'
