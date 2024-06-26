@@ -20,6 +20,8 @@
 - It converts code into machine readable/ binaries/ executable/ jar /war
 - java - compiled language
 - maven - build tool for java based app
+  ![image](https://github.com/mir-owahed/DevOps-tutorial/assets/133110800/86713b92-45dd-4d0d-b2bd-ec27581c5ee6)
+
 
 ## Prerequisite:
 - install java jdk not jre on machine
