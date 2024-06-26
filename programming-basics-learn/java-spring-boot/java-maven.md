@@ -29,23 +29,24 @@
 
 ## commands:
 ```
+sudo apt update
 sudo apt install openjdk-17-jdk
-`sudo apt install maven`
-`java --version`
-`javac --version`
-`mvn --version`
+sudo apt install maven
+java --version
+javac --version
+mvn --version
 
-`mvn compile`
-`mvn test`
-`mvn package` [It creates target folder and it contains jar or war file]
-`mvn clean package`
+mvn compile
+mvn test
+mvn package [It creates target folder and it contains jar or war file]
+mvn clean package
 ```
 Run app
 ```
-java -jar name of the jar`
+java -jar name of the jar
 ```
 
 ## Default port for java app 8080 and can change at application.properties file
 server.port=9000
-'curl http://localhost:8080'
+curl http://localhost:8080
 ## or open browser 'http://localhost:8080'
