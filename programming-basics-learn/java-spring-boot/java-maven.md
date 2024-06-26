@@ -17,28 +17,32 @@
 ### Run 
 
 ## what is build in SW
-### It converts code into machine readable/ binaries/ executable/ jar /war
-## java - compiled language
-## maven - build tool for java based app
+- It converts code into machine readable/ binaries/ executable/ jar /war
+- java - compiled language
+- maven - build tool for java based app
 
 ## Prerequisite:
-### install java jdk not jre on machine
-### install maven
+- install java jdk not jre on machine
+- install maven
 
 ## commands:
-#### `sudo apt install openjdk-17-jdk`
-#### `sudo apt install maven`
-#### `java --version`
-#### `javac --version`
-#### `mvn --version`
+```
+`sudo apt install openjdk-17-jdk`
+`sudo apt install maven`
+`java --version`
+`javac --version`
+`mvn --version`
 
-#### `mvn compile`
-#### `mvn test`
-#### `mvn package` [It creates target folder and it contains jar or war file]
-#### `mvn clean package`
-
-### `java -jar name of the jar`
+`mvn compile`
+`mvn test`
+`mvn package` [It creates target folder and it contains jar or war file]
+`mvn clean package`
+```
+Run app
+```
+java -jar name of the jar`
+```
 
 ## Default port for java app 8080
-## curl http://localhost:8080
-## or open browser
+'curl http://localhost:8080'
+## or open browser 'http://localhost:8080'
