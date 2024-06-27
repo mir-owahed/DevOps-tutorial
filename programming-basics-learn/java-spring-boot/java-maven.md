@@ -1,6 +1,6 @@
 ## Write 1st code on java spring-boot or
 
-## hello world program
+## Write hello world program on java
 
 ## Easy way- 
 1. open [﻿start.spring.io/](https://start.spring.io/) 
@@ -8,8 +8,8 @@
 3. open [﻿maven.apache.org/guides/getting-started/maven-in-five-minutes.html](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 
 
 ## Structure of java spring-boot app
-src folder 
-POM file - dependencies are mentioned here
+- src folder
+- POM file - dependencies are mentioned here
 
 ## steps: 
   - Write
