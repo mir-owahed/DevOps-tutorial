@@ -8,13 +8,13 @@
 3. open [﻿maven.apache.org/guides/getting-started/maven-in-five-minutes.html](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 
 
 ## Structure of java spring-boot app
-### src folder 
-### POM file - dependencies are mentioned here
+src folder 
+POM file - dependencies are mentioned here
 
 ## steps: 
-### Write
-### Build
-### Run 
+  - Write
+  - Build
+  - Run 
 
 ## what is build in SW
 - It converts code into machine readable/ binaries/ executable/ jar /war
