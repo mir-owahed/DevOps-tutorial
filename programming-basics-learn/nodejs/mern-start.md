@@ -33,6 +33,19 @@ Reference:
 2. <http://expressjs.com/en/starter/hello-world.html>
 
 
+Create React app
+```
+npm create vite@latest
+cd vite-project
+npm install
+npm run dev
+npm run build (it creates Dist folder)
+ls
+```
+
+
+
+
 ### Install & Update Script
 
 To install or update nvm, you should run the install script. To do that, you may either download and run the script manually, or use the following cURL or Wget command:
