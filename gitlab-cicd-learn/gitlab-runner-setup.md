@@ -1,4 +1,4 @@
-# EC2 as Gitlab runner and use docker executor on it
+# EC2 as Gitlab Runner and use docker executor on CICD pipeline.
 
 ## Breif Overview 
 
