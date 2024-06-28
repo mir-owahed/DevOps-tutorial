@@ -6,7 +6,6 @@
    -  Create an EC2 instance on AWS.
    -  Install GitLab Runner on the EC2 instance.
    -  Register the runner with your GitLab instance.
-   -  Install Java (openjdk-11-jre)
    -  Install Docker
    
 ## AWS EC2 Instance Configuration
