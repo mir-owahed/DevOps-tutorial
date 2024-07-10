@@ -69,12 +69,13 @@ Command to register runner
 sudo gitlab-runner register --url https://gitlab.com/ --registration-token GR1348941MFoBvmK3LJZdzBmqJbmy
 ```
     Provide the following information:
-        URL of your GitLab instance: (e.g., https://gitlab.com or your self-hosted GitLab URL)
-        Registration token: (You can find this in your GitLab project under Settings > CI/CD > Runners > Set up a specific Runner manually)
-        Description: (e.g., my-ec2-runner)
-        Tags: (optional, e.g., ec2,aws)
-        Executor: (e.g., shell, docker, kubernetes, etc. - typically docker is preferred)
-        Docker image (if using docker executor): (e.g., alpine:latest)
+
+    - URL of your GitLab instance: (e.g., https://gitlab.com or your self-hosted GitLab URL)
+    - Registration token: (You can find this in your GitLab project under Settings > CI/CD > Runners > Set up a specific Runner manually)
+    - Description: (e.g., my-ec2-docker-runner)
+    - Tags: (optional, e.g., docker,aws,ec2)
+    - Executor: docker
+    - Docker image: maven:3.8.4-openjdk-11
 
 4. Configure GitLab Runner (Optional)
 
@@ -121,14 +122,17 @@ Here’s a simple example of a .gitlab-ci.yml file that uses the Docker executor
 
 ```
 
-stages:
-  - test
+image: maven:3.8.4-openjdk-11
 
-test-job:
-  stage: test
+stages:
+  - build
+
+build-job:
+  stage: build
   script:
-    - echo "Running tests"
-    - uname -a
+    - mvn --version
+    - mvn clean install
+
 ```
 By following these steps, you should have a GitLab Runner set up on an EC2 instance using the Docker executor. If you need any more help, feel free to ask!
 
