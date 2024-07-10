@@ -15,17 +15,6 @@
 - Launch instances
 
 
-## Docker Configuration
-
-Run the below command to Install Docker
-
-```
-sudo apt update
-sudo apt install docker.io
-```
-
-All the required configuration is setup !!!
-
 ## Setting up an EC2 instance as a GitLab Runner involves a few steps. Here's a detailed guide to help you through the process:
 1. Launch an EC2 Instance
 
@@ -44,10 +33,20 @@ All the required configuration is setup !!!
 
     SSH into the EC2 instance:
 
-    sh
-
+```
 ssh -i path/to/your-key.pem ec2-user@your-ec2-public-dns
+```
+## Docker Configuration
 
+Run the below command to Install Docker
+
+```
+sudo apt update
+sudo apt install docker.io
+sudo service docker start
+sudo usermod -aG docker ec2-user
+
+```
 Install GitLab Runner:
 - For Ubuntu:
 
