@@ -16,10 +16,12 @@
 
 
 ## Setting up an EC2 instance as a GitLab Runner involves a few steps. Here's a detailed guide to help you through the process:
-1. Launch an EC2 Instance
 
+1. Launch an EC2 Instance
+   
     Log in to AWS Management Console:
         Go to the EC2 Dashboard.
+   
     Launch a new EC2 instance:
         - Choose an Amazon Machine Image (AMI) (e.g., Amazon Linux 2 or Ubuntu).
    
