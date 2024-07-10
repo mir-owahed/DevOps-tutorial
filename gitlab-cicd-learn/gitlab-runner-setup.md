@@ -22,14 +22,20 @@
         Go to the EC2 Dashboard.
     Launch a new EC2 instance:
         - Choose an Amazon Machine Image (AMI) (e.g., Amazon Linux 2 or Ubuntu).
+   
         - Select an instance type (e.g., t2.micro).
+   
         - Configure instance details (e.g., default VPC and subnet).
+   
         - Add storage (e.g., 8 GB or more).
+   
         - Add tags (optional).
+   
         - Configure security group (allow SSH access, and optionally HTTP/HTTPS if your runner will be serving web content).
+   
      - Launch the instance and download the key pair (.pem file) to SSH into your instance.
 
-2. Install GitLab Runner on the EC2 Instance
+3. Install GitLab Runner on the EC2 Instance
 
     SSH into the EC2 instance:
 
