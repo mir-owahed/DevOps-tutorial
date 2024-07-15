@@ -3,6 +3,8 @@
 1. <https://start.spring.io/>
 
 2. <https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html>
+   
+3. <https://github.com/spring-projects/spring-petclinic>
 
 ## commands:
 ```
