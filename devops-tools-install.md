@@ -14,8 +14,9 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update
 sudo apt-get install trivy
 ```
-Install Dependency-Check
+Install OWASP Dependency-Check
 [Reference]
+
 1. <https://github.com/jeremylong/DependencyCheck>
 
 2. <https://jeremylong.github.io/DependencyCheck/>
