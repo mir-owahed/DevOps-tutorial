@@ -15,6 +15,10 @@ sudo apt-get update
 sudo apt-get install trivy
 ```
 Install Dependency-Check
+[Reference]
+1. <https://github.com/jeremylong/DependencyCheck>
+
+2. <https://jeremylong.github.io/DependencyCheck/>
 ```
 $ VERSION=$(curl -s https://jeremylong.github.io/DependencyCheck/current.txt)
 $ curl -Ls "https://github.com/jeremylong/DependencyCheck/releases/download/v$VERSION/dependency-check-$VERSION-release.zip" --output dependency-check.zip
