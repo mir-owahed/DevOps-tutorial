@@ -1,5 +1,7 @@
 # EC2 as Gitlab Runner and use docker executor on CICD pipeline.
 
+![gitlab-architecture](https://github.com/user-attachments/assets/a657bf85-ed54-4fee-8514-886a02c0463a)
+
 ## Breif Overview 
 
 ### Create an EC2 instance:
