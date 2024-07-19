@@ -3,6 +3,6 @@ Reference
 
 
 ![vpc](https://github.com/mir-owahed/DevOps-tutorial/assets/133110800/7421ed1e-4543-40ca-87b4-97efe9ee0cd8)
-
+![VPC]("E:\comp-ndl-mir\Documents-mir-ndl-desk\Documents-mir\mir\devops-mir\vpc-.webp")
 <https://assets.community.aws/a/2cCYwmXeRnGPvBJy2l33LJcN4Wn/vpc-.webp>
 Re
