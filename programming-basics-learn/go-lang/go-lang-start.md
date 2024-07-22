@@ -2,8 +2,10 @@
 Prerequisite:
 Install go on your machine
 
-Reference: https://go.dev/doc/code
-<https://go.dev/doc/install>
+Reference: 
+1. <https://go.dev/doc/code>
+
+2. <https://go.dev/doc/install>
 ```
 Download go
 tar -C /usr/local -xzf go1.22.3.linux-amd64.tar.gz
