@@ -16,6 +16,14 @@ go mod init github.com/mir-owahed/go-lang-app
 go build
 go test
 ```
+Install go using cli on ubuntu
+```
+wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+```
 ```
 go run hello.go
 go build hello.go
