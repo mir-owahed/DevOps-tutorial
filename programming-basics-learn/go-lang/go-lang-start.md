@@ -1,7 +1,9 @@
 # How to run go lang app
 Prerequisite:
 Install go on your machine
+
 Reference: https://go.dev/doc/code
+<https://go.dev/doc/install>
 ```
 Download go
 tar -C /usr/local -xzf go1.22.3.linux-amd64.tar.gz
