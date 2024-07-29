@@ -26,7 +26,7 @@ apt install kubeadm=1.30.0-1.1 kubectl=1.30.0-1.1 kubelet=1.30.0-1.1 -y
 ```bash
 kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
-It generates token . Run the command on slave node with sudo
+It generates token . Run the command on worker node with sudo
 ## Step3:
 
 ### On control plane:
@@ -45,3 +45,18 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
 ```
+## Step5:
+Open the following port
+```
+smtp 25
+custom tcp 3000-10000
+http 80
+https 443
+custom tcp 587
+ssh 22
+custom tcp 6443
+custom tcp 30000-32767
+smtp 465
+custom tcp 27017
+```
+
