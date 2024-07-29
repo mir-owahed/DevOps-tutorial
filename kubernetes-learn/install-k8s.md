@@ -59,4 +59,18 @@ custom tcp 30000-32767
 smtp 465
 custom tcp 27017
 ```
-
+```
+On control plane
+6443/tcp for Kubernetes API Server
+2379-2380 for etcd server client API
+6783/tcp,6784/udp for Weavenet CNI
+10248-10260 for Kubelet API, Kube-scheduler, Kube-controller-manager, Read-Only Kubelet API, Kubelet health
+80,8080,443 Generic Ports
+30000-32767 for NodePort Services
+```
+```
+On worker node
+6783/tcp,6784/udp for Weavenet CNI
+10248-10260 for Kubelet API etc
+30000-32767 for NodePort Services
+```
