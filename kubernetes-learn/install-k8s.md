@@ -4,7 +4,7 @@
 
 ## Step1:
 
-### On Master and slave
+### On control plane and worker node
 
 
 sudo apt  install -y docker.io
@@ -20,7 +20,7 @@ apt install kubeadm=1.30.0-1.1 kubectl=1.30.0-1.1 kubelet=1.30.0-1.1 -y
 
 ## Step2:
 
-### On Master node:
+### On control plane:
 
 ```bash
 kubeadm init --pod-network-cidr=192.168.0.0/16
@@ -28,7 +28,7 @@ kubeadm init --pod-network-cidr=192.168.0.0/16
 It generates token . Run the command on slave node with sudo
 ## Step3:
 
-### On Master node:
+### On control plane:
 
 ```bash
 mkdir -p $HOME/.kube
@@ -38,7 +38,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Step4:
 
-### On Master node:
+### On control plane:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
