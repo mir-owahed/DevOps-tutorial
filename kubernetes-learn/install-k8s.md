@@ -1,8 +1,9 @@
 ## --- KUBERNETES Install Steps ---
+## Step1:
 ```markdown
 
 
-## Step1:
+
 
 ### On control plane and worker node
 
