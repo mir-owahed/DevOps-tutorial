@@ -1,4 +1,4 @@
-## --- KUBERNETES Install Steps ---
+## Install kubernetes on vm , prefer t3.medium, 25gb storage
 ## Step1:
 ```markdown
 
