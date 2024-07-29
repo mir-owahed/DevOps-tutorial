@@ -74,3 +74,6 @@ On worker node
 10248-10260 for Kubelet API etc
 30000-32767 for NodePort Services
 ```
+References:
+1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
+2. <https://kubernetes.io/docs/reference/networking/ports-and-protocols/>
