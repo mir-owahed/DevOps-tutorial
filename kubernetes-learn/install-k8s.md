@@ -1,10 +1,6 @@
-## Install kubernetes on vm , prefer t3.medium, 25gb storage
+## Install self-hosted kubernetes on vm , prefer t2.medium, 25gb storage
 ## Step1:
-```markdown
-
-
-
-
+```
 ### On control plane and worker node
 sudo apt update
 sudo apt  install -y docker.io
@@ -33,8 +29,8 @@ It generates token . Run the command on worker node with sudo
 
 ```bash
 mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 ## Step4:
