@@ -6,7 +6,7 @@
 
 
 ### On control plane and worker node
-
+sudo apt update
 sudo apt  install -y docker.io
 sudo chmod 666 /var/run/docker.sock
 sudo apt-get install wget apt-transport-https gnupg lsb-release
