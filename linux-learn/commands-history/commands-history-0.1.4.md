@@ -3,7 +3,7 @@
     1  sudo apt update
     2  nano install.sh
     3  ls
-    4  chmod +x install.sh
+    4  sudo chmod +x install.sh
     5  ls
     6  ./install.sh
     7  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
