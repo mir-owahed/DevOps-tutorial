@@ -19,7 +19,7 @@ sudo apt-get update
 ```
 make executable
 ```
-chmod +x install_docker.sh
+sudo chmod +x install_docker.sh
 ```
 Run the script
 ```
