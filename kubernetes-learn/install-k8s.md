@@ -2,7 +2,7 @@
 ```
 Prerequisite:
 prefer t2.medium, 25gb storage, 2 vm (1 for control plane and 1 for worker node)
-
+```
 ## Step1:
 ```
 ### On control plane and worker node
