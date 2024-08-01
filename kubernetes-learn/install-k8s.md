@@ -1,11 +1,11 @@
 ## Install self-hosted multinode kubernetes cluster on vm
 ```
 Prerequisite:
-prefer t2.medium, 25gb storage, 2 vm (1 for control plane and 1 for worker node)
+prefer t2.medium, 25gb storage, 2 vm (1 for control-plane and 1 for worker-node)
 ```
 ## Step1:
 ```
-### On control plane and worker node
+### On control-plane and worker-node
 sudo apt update
 sudo apt  install -y docker.io
 sudo chmod 666 /var/run/docker.sock
@@ -21,7 +21,7 @@ sudo apt install kubeadm=1.30.0-1.1 kubectl=1.30.0-1.1 kubelet=1.30.0-1.1 -y
 
 ## Step2:
 
-### On control plane:
+### On control-plane:
 
 ```bash
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
@@ -29,7 +29,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 It generates token . Run the command on worker node with sudo
 ## Step3:
 
-### On control plane:
+### On control-plane:
 
 ```bash
 mkdir -p $HOME/.kube
@@ -39,7 +39,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Step4:
 
-### On control plane:
+### On control-plane:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
@@ -60,7 +60,7 @@ smtp 465
 custom tcp 27017
 ```
 ```
-On control plane
+On control-plane
 6443/tcp for Kubernetes API Server
 2379-2380 for etcd server client API
 6783/tcp,6784/udp for Weavenet CNI
@@ -69,7 +69,7 @@ On control plane
 30000-32767 for NodePort Services
 ```
 ```
-On worker node
+On worker-node
 6783/tcp,6784/udp for Weavenet CNI
 10248-10260 for Kubelet API etc
 30000-32767 for NodePort Services
