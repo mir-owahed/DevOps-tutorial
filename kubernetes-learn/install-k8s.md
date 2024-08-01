@@ -1,4 +1,8 @@
-## Install self-hosted kubernetes on vm , prefer t2.medium, 25gb storage
+## Install self-hosted multinode kubernetes cluster on vm
+```
+Prerequisite:
+prefer t2.medium, 25gb storage, 2 vm (1 for control plane and 1 for worker node)
+
 ## Step1:
 ```
 ### On control plane and worker node
