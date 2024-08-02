@@ -145,7 +145,10 @@ build-job:
 
 ```
 By following these steps, you should have a GitLab Runner set up on an EC2 instance using the Docker executor. If you need any more help, feel free to ask!
-
+```
+sudo rm /home/gitlab-runner/.bash_logout
+sudo gitlab-runner start
+```
 
 
 
