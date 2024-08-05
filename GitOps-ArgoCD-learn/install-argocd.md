@@ -31,6 +31,24 @@ minikube start
 
   314  minikube service argocd-server -n argocd
 ```
+```
+308  kubectl get secret -n argocd
+
+  309  kubectl edit secret argocd-initial-admin-secret -n argocd
+
+  310  echo cVVTQlBFNm5DV2xhNVJ3Wg== | base64 --decode
+
+  311  kubectl get deployment
+
+  312  kubectl get deploy
+
+  313  curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+
+  314  sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+
+  315  rm argocd-linux-amd64
+
+```
 
 References:
 1. <https://github.com/argoproj/argocd-example-apps>
