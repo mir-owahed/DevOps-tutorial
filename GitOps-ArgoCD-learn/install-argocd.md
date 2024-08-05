@@ -30,7 +30,7 @@ minikube start
   313  minikube service list -n argocd
 
   314  minikube service argocd-server -n argocd
-
+```
 
 References:
 1. <https://github.com/argoproj/argocd-example-apps>
