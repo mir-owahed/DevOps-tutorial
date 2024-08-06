@@ -1,4 +1,4 @@
-## Install self-hosted multinode kubernetes cluster on vm
+## Install self-hosted multinode kubernetes cluster using kubeadm on vm
 ```
 Prerequisite:
 prefer t2.medium, 25gb storage, 2 vm (1 for control-plane and 1 for worker-node)
@@ -74,6 +74,20 @@ On worker-node
 10248-10260 for Kubelet API etc
 30000-32767 for NodePort Services
 ```
+### Install kubectl on linux vm and connect k8s cluster configuring kubeconfig
+```
+curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+[mkdir -p ~/.local/bin]
+sudo mv ./kubectl ~/.local/bin/kubectl
+nano kubeconfig.yaml
+past it
+export KUBECONFIG=kubeconfig.yaml
+kubectl get nodes
+kubectl cluster-info
+```
+
 References:
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
 2. <https://kubernetes.io/docs/reference/networking/ports-and-protocols/>
+3. <https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-on-linux>
