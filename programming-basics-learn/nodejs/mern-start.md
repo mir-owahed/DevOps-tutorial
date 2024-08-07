@@ -13,6 +13,10 @@ node -v # should print `v20.14.0`
 
 # verifies the right NPM version is in the environment
 npm -v # should print `10.7.0`
+
+# Yarn install via npm
+npm install --global yarn
+yarn --version
 ```
 ### Run the code
 ```
