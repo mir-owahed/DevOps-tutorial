@@ -32,6 +32,67 @@ npm install express
 npm run build
 npm start
 ```
+```
+git clone https://gitlab.com/mir-owahed/freecodecamp-gitlab-ci.git
+
+  404  ls
+
+  405  cd freecodecamp-gitlab-ci/
+
+  406  ls
+
+  407  code .
+
+  408  cd Documents/
+
+  409  ls
+
+  410  cd freecodecamp-gitlab-ci/
+
+  411  ls
+
+  412  yarn --version
+
+  413  npm --version
+
+  414  node -v
+
+  415  npm install --global yarn
+
+  416  yarn --version
+
+  417  yarn
+
+  418  yarn test
+
+  419  yarn run
+
+  420  yarn start
+
+  421  yarn build
+
+  422  ls
+
+  423  cd build/
+
+  424  ls
+
+  425  cd ..
+
+  426  yarn global add serve
+
+  427  serve -s build
+
+  428  snap install serve
+
+  429  sudo snap install serve
+
+  430  serve -s build
+
+  431  history
+
+  432  history > commands.txt
+```
 Reference:
 1. <http://expressjs.com/en/starter/installing.html>
 2. <http://expressjs.com/en/starter/hello-world.html>
