@@ -23,7 +23,7 @@ mvn package
 ```
 java -jar target/*.jar
 ```
-4.  You can then access the app at <http://localhost:8080/>
+4.  You can then access the app Visit [http://localhost:8080](http://localhost:8080) in your browser.
 ```
 curl http://localhost:8080
 ```
