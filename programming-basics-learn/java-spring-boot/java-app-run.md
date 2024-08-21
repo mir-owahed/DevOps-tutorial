@@ -1,7 +1,14 @@
 Run java based app on VM 
+### Prerequisites
+
+The following items should be installed in your system:
+
+- Java 17 or newer (full JDK, not a JRE)
+- Maven
 1.  Identify any java based app from Github repo
+
 ```
-git clone https://github.com/spring-projects/spring-petclinic.git
+https://github.com/mir-owahed/spring-petclinic.git
 or
 git clone https://github.com/mir-owahed/Boardgame
 ```
@@ -14,11 +21,9 @@ mvn package
 ```
 3.  Run app using package
 ```
-java -jar name-of-the-jar
+java -jar target/*.jar
 ```
-4.  access the app
+4.  You can then access the app at <http://localhost:8080/>
 ```
-http://localhost:8080
-or
 curl http://localhost:8080
 ```
