@@ -6,11 +6,13 @@ The following items should be installed in your system:
 - Java 17 or newer (full JDK, not a JRE)
 - Maven
 1.  Identify any java based app from Github repo
-
+clone it using Git:
 ```
-https://github.com/mir-owahed/spring-petclinic.git
+git clone https://github.com/mir-owahed/spring-petclinic.git
 or
 git clone https://github.com/mir-owahed/Boardgame
+or
+git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 2.  Build the app
 ```
@@ -19,7 +21,7 @@ mvn compile
 mvn test
 mvn package
 ```
-3.  Run app using package
+3.  Run the Application
 ```
 java -jar target/*.jar
 ```
