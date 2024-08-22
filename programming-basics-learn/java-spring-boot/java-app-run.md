@@ -10,7 +10,7 @@ clone it using Git:
 ```
 git clone https://github.com/mir-owahed/spring-petclinic.git
 or
-git clone https://github.com/mir-owahed/Boardgame
+git clone https://github.com/mir-owahed/Boardgame.git
 or
 git clone https://github.com/spring-guides/gs-spring-boot.git
 or
