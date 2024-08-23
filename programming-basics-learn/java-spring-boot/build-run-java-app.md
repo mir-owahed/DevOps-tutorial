@@ -32,15 +32,13 @@ Steps to Clone, Build, Test, and Run the Application
 
     Clone the repository to your local machine:
 
-    ```bash
-
+```
 git clone https://gitlab.com/mir-owahed/Boardgame.git
 ```
 Navigate to the cloned project directory:
 
-```bash
-
-    cd Boardgame
+```
+cd Boardgame
 ```
 2. Understand the Project Structure
 
