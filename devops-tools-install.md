@@ -98,7 +98,8 @@ cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
 
 ...........................
-
+<https://medium.com/@sejalmaniyar9/building-a-continuous-integration-pipeline-with-gitlab-maven-and-sonarqube-on-aws-474e4df07913
+>
 Generating a SonarQube Authentication Token
 
 To secure the interaction between your GitLab CI/CD pipeline and SonarQube, you’ll need to generate an authentication token in SonarQube and configure it in your CI/CD environment variables. This token will allow the pipeline to communicate with SonarQube securely.
