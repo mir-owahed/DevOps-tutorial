@@ -1,3 +1,13 @@
+### Docker Configuration
+
+Run the below command to Install Docker
+
+```
+sudo apt update
+sudo apt install docker.io
+```
+
+
 Install Nexus
 ```
 docker run -d -p 8081:8081 --name nexus sonatype/nexus3
