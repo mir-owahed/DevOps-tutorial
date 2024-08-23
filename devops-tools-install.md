@@ -14,6 +14,17 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update
 sudo apt-get install trivy
 ```
+Trivy File System Scan
+```sh
+trivy fs --format table -o trivy-fs-report.html .
+```
+Trivy Docker Image Scan
+```
+trivy image --format table -o trivy-image-report.html ganeshperumal007/boardshack:latest
+```
+
+
+
 Install OWASP Dependency-Check
 
 [Reference]
