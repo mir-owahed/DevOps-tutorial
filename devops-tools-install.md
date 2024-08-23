@@ -97,3 +97,24 @@ cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 
 Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
 
+...........................
+
+Generating a SonarQube Authentication Token
+
+To secure the interaction between your GitLab CI/CD pipeline and SonarQube, you’ll need to generate an authentication token in SonarQube and configure it in your CI/CD environment variables. This token will allow the pipeline to communicate with SonarQube securely.
+
+Follow these steps to generate a SonarQube authentication token:
+
+    Log in to SonarQube: Access your SonarQube web interface by navigating to http://your-ec2-public-ip:9000 in your web browser. Log in using your SonarQube administrator credentials.
+    Navigate to User Settings: Click on your profile picture or username in the top-right corner of the SonarQube interface, and select “My Account” from the dropdown menu.
+    Generate Token: In the user settings page, click on the “Security” tab. Here, you will find an option to generate a token. Click on the “Generate” button.
+    Provide Token Name: Give your token a meaningful name that will help you identify its purpose. For example, you can name it “GitLab CI/CD Token.”
+    Copy the Token: Once generated, a token will be displayed on the screen. This token is crucial for authenticating your GitLab CI/CD pipeline with SonarQube. Copy the token and keep it secure as it will not be displayed again.
+    Configure GitLab CI/CD Variables: Return to your GitLab project’s settings and navigate to Settings > CI/CD > Variables.
+    Add a New Variable: Create a new variable with the name SONAR_LOGIN and paste the token you generated from SonarQube as the variable’s value.
+    Save Variables: Click on the “Add Variable” button to save the SONAR_LOGIN variable.
+
+Now, your GitLab CI/CD pipeline is configured to use this authentication token when interacting with SonarQube. This token ensures that only authorized access is granted to SonarQube for code analysis and other operations, enhancing the security of your CI/CD process.
+
+With the SonarQube authentication token in place, your CI/CD pipeline can seamlessly integrate with SonarQube to analyze your code for quality and security without compromising on security.
+
