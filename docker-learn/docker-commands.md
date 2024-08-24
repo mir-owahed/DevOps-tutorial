@@ -30,6 +30,7 @@ docker build -t owahed1/python-sample-app:latest .
 # Stop & destroy
 docker stop <ID>
 docker rm <ID>
+docker ps -aq | xargs docker stop | xargs docker rm
 
 # docker manual
 docker --help
