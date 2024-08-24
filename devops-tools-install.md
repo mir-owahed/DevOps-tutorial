@@ -105,21 +105,21 @@ To secure the interaction between your GitLab CI/CD pipeline and SonarQube, you�
 
 Follow these steps to generate a SonarQube authentication token:
 
-    Log in to SonarQube: Access your SonarQube web interface by navigating to http://your-ec2-public-ip:9000 in your web browser. Log in using your SonarQube administrator credentials.
+    - Log in to SonarQube: Access your SonarQube web interface by navigating to http://your-ec2-public-ip:9000 in your web browser. Log in using your SonarQube administrator credentials.
     
-    Navigate to User Settings: Click on your profile picture or username in the top-right corner of the SonarQube interface, and select “My Account” from the dropdown menu.
+    - Navigate to User Settings: Click on your profile picture or username in the top-right corner of the SonarQube interface, and select “My Account” from the dropdown menu.
     
-    Generate Token: In the user settings page, click on the “Security” tab. Here, you will find an option to generate a token. Click on the “Generate” button.
+    - Generate Token: In the user settings page, click on the “Security” tab. Here, you will find an option to generate a token. Click on the “Generate” button.
     
-    Provide Token Name: Give your token a meaningful name that will help you identify its purpose. For example, you can name it “GitLab CI/CD Token.”
+    - Provide Token Name: Give your token a meaningful name that will help you identify its purpose. For example, you can name it “GitLab CI/CD Token.”
     
-    Copy the Token: Once generated, a token will be displayed on the screen. This token is crucial for authenticating your GitLab CI/CD pipeline with SonarQube. Copy the token and keep it secure as it will not be displayed again.
+    - Copy the Token: Once generated, a token will be displayed on the screen. This token is crucial for authenticating your GitLab CI/CD pipeline with SonarQube. Copy the token and keep it secure as it will not be displayed again.
     
-    Configure GitLab CI/CD Variables: Return to your GitLab project’s settings and navigate to Settings > CI/CD > Variables.
+    - Configure GitLab CI/CD Variables: Return to your GitLab project’s settings and navigate to Settings > CI/CD > Variables.
     
-    Add a New Variable: Create a new variable with the name SONAR_LOGIN and paste the token you generated from SonarQube as the variable’s value.
+    - Add a New Variable: Create a new variable with the name SONAR_LOGIN and paste the token you generated from SonarQube as the variable’s value.
     
-    Save Variables: Click on the “Add Variable” button to save the SONAR_LOGIN variable.
+    - Save Variables: Click on the “Add Variable” button to save the SONAR_LOGIN variable.
 
 Now, your GitLab CI/CD pipeline is configured to use this authentication token when interacting with SonarQube. This token ensures that only authorized access is granted to SonarQube for code analysis and other operations, enhancing the security of your CI/CD process.
 
