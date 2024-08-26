@@ -4,7 +4,9 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 OR. Install Argo CD
-<https://operatorhub.io/operator/argocd-operator>
+1. <https://operatorhub.io/operator/argocd-operator>
+2. <https://argocd-operator.readthedocs.io/en/latest/usage/basics/>
+   
 Install on Kubernetes
 
     Install Operator Lifecycle Manager (OLM), a tool to help manage the Operators running on your cluster.
