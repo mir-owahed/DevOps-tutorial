@@ -7,6 +7,10 @@ Change the argocd-server service type to LoadBalancer:
 ```bash
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
+Get Credentials
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
 OR. Install Argo CD
 1. <https://operatorhub.io/operator/argocd-operator>
 2. <https://argocd-operator.readthedocs.io/en/latest/usage/basics/>
