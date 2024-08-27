@@ -3,6 +3,10 @@
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+Change the argocd-server service type to LoadBalancer:
+```bash
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
 OR. Install Argo CD
 1. <https://operatorhub.io/operator/argocd-operator>
 2. <https://argocd-operator.readthedocs.io/en/latest/usage/basics/>
