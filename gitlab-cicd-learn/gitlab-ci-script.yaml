@@ -1,0 +1,58 @@
+
+image: maven:3.8.4-openjdk-17
+
+stages:
+  - compile
+  - test
+  - build
+  - sonarqube-analysis
+  - containerize
+
+variables:
+  SONAR_HOST_URL: http://13.232.229.234:9000
+  SONAR_LOGIN: ${SONAR_LOGIN}
+
+
+compile-job:
+  stage: compile
+  script:
+    - echo "Building the application..."
+    - mvn clean compile
+  tags:
+    - self-hosted
+
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - mvn test
+  tags:
+    - self-hosted
+
+build-job:
+  stage: build
+  script:
+    - echo "Packaging the application..."
+    - mvn package
+  tags:
+    - self-hosted
+
+sonar-code-check-job:
+  stage: sonarqube-analysis
+  script:
+    - mvn sonar:sonar -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_LOGIN}
+
+docker-image-push-job:
+  image: docker:27.1.1
+  services:
+    - docker:27.1.1-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: containerize
+  before_script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+  tags:
+    - self-hosted
