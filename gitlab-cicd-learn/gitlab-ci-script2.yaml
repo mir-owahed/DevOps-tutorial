@@ -8,7 +8,7 @@ stages:
   - containerize
 
 variables:
-    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+    # MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
     IMAGE_NAME: owahed1/demo-app
     IMAGE_TAG: boardgame-java-app-0.0.2
     # DOCKER_HOST: tcp://docker:2376
