@@ -56,7 +56,7 @@ sudo apt install docker.io
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-sudo service docker start
+sudo service docker restart
 sudo usermod -aG docker ec2-user
 
 ```
