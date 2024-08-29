@@ -53,6 +53,9 @@ Run the below command to Install Docker
 ```
 sudo apt update
 sudo apt install docker.io
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
 sudo service docker start
 sudo usermod -aG docker ec2-user
 
