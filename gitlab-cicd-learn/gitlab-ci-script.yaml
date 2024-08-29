@@ -41,6 +41,8 @@ sonar-code-check-job:
   stage: sonarqube-analysis
   script:
     - mvn sonar:sonar -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_LOGIN}
+  tags:
+    - self-hosted
 
 docker-image-push-job:
   image: docker:27.1.1
