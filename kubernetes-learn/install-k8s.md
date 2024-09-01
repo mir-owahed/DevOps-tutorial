@@ -88,6 +88,47 @@ export KUBECONFIG=kubeconfig.yaml
 kubectl get nodes
 kubectl cluster-info
 ```
+install kubectl
+```
+ubuntu@ip-10-0-0-199:~$ history
+    1  sudo apt update
+    2  chmod +x kubectl
+    3  sudo chmod +x kubectl
+    4  ls
+    5  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    6  sudo chmod +x kubectl
+    7  ls
+    8  mkdir -p ~/.local/bin
+    9  ls
+   10  mv ./kubectl ~/.local/bin/kubectl
+   11  ls
+   12  kubectl version --client
+   13  nano kubeconfig.yaml
+   14  export KUBECONFIG=kubeconfig.yaml
+   15  kubectl get nodes
+   16  cd ~/.local/bin/kubectl
+   17  cd ~/.local/bin/
+   18  ls
+   19  nano kubeconfig.yaml
+   20  export KUBECONFIG=kubeconfig.yaml
+   21  kubectl get nodes
+   22  sudo apt-get install -y kubectl
+   23  cd
+   24  sudo apt-get install -y kubectl
+   25  hello
+   26  sudo apt update
+   27  sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+   28  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   29  sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
+   30  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   31  sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as command-not-found to work correctly
+   32  sudo apt-get update
+   33  sudo apt-get install -y kubectl
+   34  kubectl cluster-info
+   35  kubectl get nodes
+   36  history
+ubuntu@ip-10-0-0-199:~$
+```
 
 References:
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
