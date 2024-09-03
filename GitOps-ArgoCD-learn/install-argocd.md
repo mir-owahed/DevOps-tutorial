@@ -1,3 +1,6 @@
+
+![gitops-argocd](https://github.com/user-attachments/assets/f86076e1-e38c-49af-bb48-802e23cba6b2)
+
 1. Install Argo CD¶
 ```
 kubectl create namespace argocd
