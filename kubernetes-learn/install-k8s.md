@@ -84,6 +84,9 @@ chmod +x ./kubectl
 sudo mv ./kubectl ~/.local/bin/kubectl
 [# and then append (or prepend) ~/.local/bin to $PATH]
 sudo export PATH=$PATH:~/.local/bin
+nano .bashrc
+[paste it at end export PATH=$PATH:~/.local/bin]
+source ~/.bashrc
 kubectl version --client
 ...................................................
 sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
