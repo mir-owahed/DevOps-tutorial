@@ -82,6 +82,8 @@ curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/st
 chmod +x ./kubectl
 [mkdir -p ~/.local/bin]
 sudo mv ./kubectl ~/.local/bin/kubectl
+[# and then append (or prepend) ~/.local/bin to $PATH]
+sudo export PATH=$PATH: ~/.local/bin
 nano kubeconfig.yaml
 past it
 export KUBECONFIG=kubeconfig.yaml
