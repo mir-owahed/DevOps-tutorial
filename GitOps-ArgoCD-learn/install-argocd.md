@@ -2,6 +2,10 @@
 ![gitops-argocd](https://github.com/user-attachments/assets/f86076e1-e38c-49af-bb48-802e23cba6b2)
 
 1. Install Argo CD on Kubernetes
+
+Prerequisites
+
+Install Kubernetes or have access to a cluster. You must have Kubernetes installed.
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
