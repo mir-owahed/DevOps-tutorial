@@ -28,7 +28,7 @@ sudo apt install kubeadm=1.30.0-1.1 kubectl=1.30.0-1.1 kubelet=1.30.0-1.1 -y
 ```bash
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
-It generates token . Run the command on worker node with sudo
+It generates token . Run the command on worker node with 'sudo'
 ## Step3:
 
 ### On control-plane:
