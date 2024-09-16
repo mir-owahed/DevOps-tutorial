@@ -14,3 +14,10 @@ add node group
 Create IAM role for node group >> IAM > role> aws service > ec2> permission > worker node policy, container registry read only, eks cni policy>create
 network > subnet > private
 configure remote access > choose key pair > choose SG
+```
+aws configure
+aws sts get-caller-identity
+kubectl config view
+kubectl cluster-info
+kubectl get nodes
+```
