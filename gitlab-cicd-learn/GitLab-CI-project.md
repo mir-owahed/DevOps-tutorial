@@ -170,24 +170,3 @@ build_image_push-job:
 ## Step 4: Running the Pipeline
 
 Once your `.gitlab-ci.yml` file is committed to your GitLab repository, the pipeline will trigger automatically.
-
-### Monitoring Jobs:
-1. Go to your GitLab project and navigate to the **CI/CD** section.
-2. Watch the jobs execute one by one according to the stages.
-3. If successful, the final job will push a Docker image of your Java application to Docker Hub.
-
----
-
-## Conclusion
-
-Congratulations! You have successfully set up a **GitLab CI pipeline** for a **Java-based application**, implemented **DevSecOps** practices, and integrated tools like **SonarQube** and **Docker**. This pipeline will help you streamline your code quality checks, build process, and containerization of your application.
-
-Stay tuned for more tutorials on automating your DevOps workflows!
-
----
-
-**Tags:**  
-#gitlabci #java #devsecops #javapipeline #sonarqube #docker #aws #gitlabrunner #ci_cd #dockerhub #javadevelopment #automation #devopstutorial #codequality #awssetup #gitlabpipeline #containerization #sharedrunner #javaapplications
-``` 
-
-You can save this content into a `.md` file for your blog post.
