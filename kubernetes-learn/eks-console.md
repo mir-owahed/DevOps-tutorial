@@ -105,31 +105,42 @@ Now that your Kubernetes cluster is set up, you can deploy a sample application.
 
 1. Create a file named `sample-app.yaml` with the following content:
    ```yaml
-   apiVersion: v1
-   kind: Pod
-   metadata:
-     name: hello-world
-     labels:
-       app: hello-world
-   spec:
-     containers:
-     - name: hello-world
-       image: k8s.gcr.io/echoserver:1.4
-       ports:
-       - containerPort: 8080
-   ---
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: hello-world-service
-   spec:
-     selector:
-       app: hello-world
-     ports:
-       - protocol: TCP
-         port: 80
-         targetPort: 8080
-     type: LoadBalancer
+  apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: boardgame-deployment
+spec:
+  selector:
+    matchLabels:
+      app: boardgame
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: boardgame
+    spec:
+      containers:
+        - name: boardgame
+          image: owahed1/go-lang-app:0.0.2 # Image that will be used to containers in the cluster
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000 # The port that the container is running on in the cluster
+
+
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: boardgame-service
+spec:
+  selector:
+    app: boardgame
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8000 
+  type: LoadBalancer # type of the service.
    ```
 
 2. Deploy the application with:
@@ -146,27 +157,7 @@ Now that your Kubernetes cluster is set up, you can deploy a sample application.
 
 ---
 
-## Step 8: Access the Application via Bastion Host
-
-Since your Kubernetes cluster is in private subnets, you'll need to access it via the bastion host.
-
-1. SSH into your bastion host:
-   ```bash
-   ssh -i <key-pair.pem> ec2-user@<bastion-host-public-ip>
-   ```
-
-2. Once logged in, use `kubectl` to interact with the cluster or port-forward services to your local machine for testing.
+## Step 8: Access the Application 
 
 ---
-
-## Conclusion
-
-By following this guide, you’ve set up a secure Kubernetes cluster on AWS EKS using the AWS Management Console. You’ve also deployed a sample application and accessed it securely via a bastion host in the public subnet, while keeping your cluster and nodes in private subnets.
-
-This setup is ideal for production environments that require high levels of security and isolation.
-
----
-
-**Tags:**  
-`Kubernetes` `AWS EKS` `Bastion Host` `Private Subnets` `Kubernetes Security` `DevOps`
 
