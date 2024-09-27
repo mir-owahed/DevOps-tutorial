@@ -1,6 +1,7 @@
+# How to Create a Secured Kubernetes Cluster on AWS EKS Using AWS Console
+
 ![eks](https://github.com/user-attachments/assets/f427e4a8-83eb-4f78-addd-566220053dd7)
 
-# How to Create a Secured Kubernetes Cluster on AWS EKS Using AWS Console
 
 In this guide, you'll learn how to set up a secure Kubernetes cluster on AWS Elastic Kubernetes Service (EKS) using the AWS Management Console. We’ll configure a bastion host in the public subnet, deploy your Kubernetes cluster and node group in private subnets, and deploy a sample application to ensure everything is functioning correctly.
 
