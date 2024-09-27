@@ -40,17 +40,11 @@ The **GitLab Runner** is responsible for executing the jobs defined in your `.gi
    sudo apt install docker.io -y
    ```
 3. Install GitLab Runner:
-   ```bash
-   curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
-   sudo chmod +x /usr/local/bin/gitlab-runner
-   sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
-   ```
+   
 4. Register the runner with your GitLab project:
-   ```bash
-   sudo gitlab-runner register
-   ```
+  
    - Use Docker as the executor.
-   - Enter your project-specific GitLab registration token.
+  
 
 The runner is now set up and ready to execute jobs!
 
@@ -64,12 +58,10 @@ For code quality checks, we’ll deploy a **SonarQube** server using Docker on a
 1. Launch another **EC2 instance** (Ubuntu preferred) for SonarQube.
 2. SSH into the instance and install Docker.
 3. Pull the **SonarQube** image from Docker Hub:
-   ```bash
-   sudo docker pull sonarqube
-   ```
+   
 4. Run the SonarQube container:
    ```bash
-   sudo docker run -d --name sonarqube -p 9000:9000 sonarqube
+   docker run -d -p 9000:9000 sonarqube:lts-community
    ```
 5. Access the SonarQube web interface by navigating to `http://<EC2-IP>:9000`.
 
