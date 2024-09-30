@@ -104,6 +104,7 @@ Once your cluster is running, you'll need to configure `kubectl` to interact wit
 Now that your Kubernetes cluster is set up, you can deploy a sample application.
 
 1. Create a file named `sample-app.yaml` with the following content:
+   ```
    ```yaml
   apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
@@ -142,7 +143,7 @@ spec:
       targetPort: 8000 
   type: LoadBalancer # type of the service.
    ```
-
+```
 2. Deploy the application with:
    ```bash
    kubectl apply -f sample-app.yaml
