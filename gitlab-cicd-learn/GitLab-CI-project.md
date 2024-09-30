@@ -30,7 +30,7 @@ Before starting, ensure you have the following ready:
 
 ## Step 1: Setting Up GitLab Runner on AWS
 
-The **GitLab Runner** is responsible for executing the jobs defined in your `.gitlab-ci.yml` file. In this step, we will set up a runner on an AWS EC2 instance using Docker.
+The **GitLab Runner** is responsible for executing the jobs defined in your `.gitlab-ci.yml` file. In this step, we will set up a runner on an AWS EC2 instance.
 
 ### Instructions:
 1. Launch an **EC2 instance** on AWS (Ubuntu preferred).
@@ -152,9 +152,9 @@ build_image_push-job:
 ```
 
 ### Explanation of the Pipeline:
-- **Test Job:** Runs Java tests using Gradle on the Project Runner.
+- **Test Job:** Runs Java tests using Maven on the Project Runner.
 - **Code Quality Job:** Performs a SonarQube scan on the Java code.
-- **Build Job:** Packages the Java application using Gradle.
+- **Build Job:** Packages the Java application using Maven.
 - **Containerize Job:** Builds a Docker image of the application and pushes it to Docker Hub.
 
 ---
