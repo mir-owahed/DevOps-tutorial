@@ -150,7 +150,16 @@ build_image_push-job:
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
 ```
-
+#### Setup the SonarQube Job in Gitlab CI pipeline
+- Access the SonarQube web interface by navigating to http://<EC2-IP>:9000
+- Log into server
+- Choose Devops platform (i.e.- Gitlab)
+- Setup configuration
+- Create Personal Access Token in Gitlab (Gitlab project > settings > Access Token
+- Edit sonar-project.properties in code (copy from the sonar server)
+- Add environmental variables in Gitlab (Gitlab project > settings > CICD > Variables > add variable
+- Copy the script from SonarQube server and Paste it on GitLab CI Pipeline script
+  
 ### Explanation of the Pipeline:
 - **Test Job:** Runs Java tests using Maven on the Project Runner.
 - **Code Quality Job:** Performs a SonarQube scan on the Java code.
