@@ -12,6 +12,7 @@ Reference: (https://docs.github.com/en/authentication/connecting-to-github-with-
 How to clone, push, and pull with git (beginners GitHub tutorial)
 ssh-keygen -t ed25519 -C "bachchu333@gmail.com"
 ls ~/.ssh/
+cd ~/.ssh/
 cat .pub
 [open github > setting >ssh and gpg]
 ```
