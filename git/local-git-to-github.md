@@ -10,7 +10,7 @@ git push -u origin main
 Reference: (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 ```
 How to clone, push, and pull with git (beginners GitHub tutorial)
-ssh-keygen -t rsa -b 4096 -c "bachchu333@gmail.com"
+ssh-keygen -t ed25519 -C "bachchu333@gmail.com"
 ls ~/.ssh/
 cat .pub
 [open github > setting >ssh and gpg]
