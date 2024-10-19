@@ -58,7 +58,7 @@ yarn --version
 
 ### Step 3: Create a GitHub Repository
 
-Create a new repository on GitHub named `tech-with-mir` (or any name you prefer). Clone this repository to your local machine:
+Create a new repository on GitHub named `tech-with-mir` (or any name you prefer).
 
 ---
 
@@ -70,12 +70,6 @@ For JavaScript:
 
 ```bash
 npx create-docusaurus@latest my-website classic --javascript
-```
-
-For TypeScript:
-
-```bash
-npx create-docusaurus@latest tech-with-mir classic --typescript
 ```
 
 Navigate into the project folder:
