@@ -29,7 +29,7 @@ Before we begin, ensure you have the following prerequisites:
 
 ---
 
-### Step 2: Install Node.js and Yarn
+### Step 2: Install Node.js and Yarn on local pc
 
 To install **Node.js** and **Yarn**, we will use **nvm** (Node Version Manager).
 
@@ -60,13 +60,9 @@ yarn --version
 
 Create a new repository on GitHub named `tech-with-mir` (or any name you prefer). Clone this repository to your local machine:
 
-```bash
-git clone git@github.com:your-username/tech-with-mir.git
-```
-
 ---
 
-### Step 4: Initialize Docusaurus Project
+### Step 4: Initialize Docusaurus Project on pc
 
 To create a Docusaurus site, use the `npx` command. You can choose between **JavaScript** or **TypeScript**:
 
@@ -99,6 +95,7 @@ npx docusaurus start
 ```
 
 Visit `http://localhost:3000` to view your website. You can start customizing it with Markdown files in the `docs/` or `src/pages/` directories.
+
 
 ---
 
@@ -153,6 +150,10 @@ module.exports = {
 Docusaurus provides a simple way to deploy your website to GitHub Pages with a single command:
 
 ```bash
+yarn
+yarn start
+yarn build
+USE_SSH=true yarn deploy
 USE_SSH=true yarn deploy
 ```
 
@@ -201,6 +202,7 @@ Every time you make updates to your site, follow these steps to push and deploy:
 3. Deploy again:
 
     ```bash
+    yarn build
     USE_SSH=true yarn deploy
     ```
 
@@ -208,7 +210,4 @@ Every time you make updates to your site, follow these steps to push and deploy:
 
 ### Conclusion
 
-By following this guide, you’ve successfully created, customized, and deployed a static website using Docusaurus and GitHub Pages. Enjoy building your site and continue adding custom content with Markdown!
-```
-
-This Markdown file can be saved as `create-deploy-static-website.md` and added to your Docusaurus documentation or posted on your blog.
+By following this guide, you’ve successfully created, customized, and deployed a static website using Docusaurus and GitHub Pages.
