@@ -7,7 +7,7 @@ In this tutorial, we will walk through the process of creating and deploying a s
 Before we begin, ensure you have the following prerequisites:
 1. **Set up SSH with GitHub account.**
 2. **Install Node.js and Yarn** using the instructions below.
-3. **Create a repository on GitHub** to host your project.
+3. **Create a repository on GitHub** to host your website.
 
 ---
 
@@ -27,54 +27,33 @@ Before we begin, ensure you have the following prerequisites:
 
 3. **Add the SSH key** to your GitHub account by navigating to [GitHub SSH settings](https://github.com/settings/keys) and pasting the key there.
 
-4. Verify your connection to GitHub with:
-
-    ```bash
-    ssh -T git@github.com
-    ```
-
 ---
 
 ### Step 2: Install Node.js and Yarn
 
 To install **Node.js** and **Yarn**, we will use **nvm** (Node Version Manager).
 
-1. **Install `nvm`**:
+```
+# installs nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-    ```bash
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    ```
+# Close the terminal and again open terminal
 
-    Reload your terminal session or run:
+# download and install Node.js (you may need to restart the terminal)
+nvm install 20
+or
+nvm install node
 
-    ```bash
-    source ~/.bashrc
-    ```
+# verifies the right Node.js version is in the environment
+node -v # should print `v20.14.0`
 
-2. **Install Node.js**:
+# verifies the right NPM version is in the environment
+npm -v # should print `10.7.0`
 
-    ```bash
-    nvm install --lts
-    ```
-
-    Check the installation:
-
-    ```bash
-    node -v
-    ```
-
-3. **Install Yarn** globally:
-
-    ```bash
-    npm install --global yarn
-    ```
-
-    Verify Yarn installation:
-
-    ```bash
-    yarn -v
-    ```
-
+# Yarn install via npm
+npm install --global yarn
+yarn --version
+```
 ---
 
 ### Step 3: Create a GitHub Repository
