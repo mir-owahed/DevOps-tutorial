@@ -148,7 +148,6 @@ yarn
 yarn start
 yarn build
 USE_SSH=true yarn deploy
-USE_SSH=true yarn deploy
 ```
 
 This will build and deploy your website to the `gh-pages` branch. The site will be live at `https://your-username.github.io/tech-with-mir/`.
