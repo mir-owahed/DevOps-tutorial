@@ -23,6 +23,17 @@ helm install webserser bitnami/nginx
 helm ls
 helm ls --namespace default
 ```
+# Install wordpress using helm
+```
+helm install wordpress bitnami/wordpress --values=wordpress-values.yml
+kubectl get all
+helm ls
+helm upgrade wordpress bitnami/wordpress --values=wordpress-values.yml
+kubectl edit deploy wordpress
+helm history wordpress
+helm rollback wordpress 1
+helm ls
+```
 Reference:
 1. <https://helm.sh/docs/intro/install/>
 2. <https://artifacthub.io/>
