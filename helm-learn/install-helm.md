@@ -14,6 +14,15 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt-get update
 sudo apt-get install helm
 ```
+# Install mysql using helm
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo ls
+helm search repo nginx
+helm install webserser bitnami/nginx
+helm ls
+helm ls --namespace default
+```
 Reference:
 1. <https://helm.sh/docs/intro/install/>
 2. <https://artifacthub.io/>
