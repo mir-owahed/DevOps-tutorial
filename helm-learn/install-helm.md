@@ -34,6 +34,13 @@ helm history wordpress
 helm rollback wordpress 1
 helm ls
 ```
+# Install wordpress using helm
+```
+helm
+helm version
+helm search hub prometheus
+
+```
 Reference:
 1. <https://helm.sh/docs/intro/install/>
 2. <https://artifacthub.io/>
