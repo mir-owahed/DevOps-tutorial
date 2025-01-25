@@ -359,4 +359,104 @@ mir@ubuntu-vbox:~$ helm list
 NAME	NAMESPACE	REVISION	UPDATED	STATUS	CHART	APP VERSION
 
 ```
+## Install wordpress
+```
+mir@ubuntu-vbox:~/helm-wordpress$ helm list
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHA
+mir@ubuntu-vbox:~/helm-wordpress$ helm repo ls
+NAME    URL                               
+bitnami https://charts.bitnami.com/bitnami
+mir@ubuntu-vbox:~/helm-wordpress$ helm install test-wordpress bitnami/wordpress --version 24.1.7 --values=wordpress-values.yml
+NAME: test-wordpress
+LAST DEPLOYED: Sat Jan 25 22:18:26 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: wordpress
+CHART VERSION: 24.1.7
+APP VERSION: 6.7.1
+
+Did you know there are enterprise versions of the Bitnami catalog? For enhanced secure software supply chain features, unlimited pulls from Docker, LTS support, or application customization, see Bitnami Premium or Tanzu Application Catalog. See https://www.arrow.com/globalecs/na/vendors/bitnami for more information.
+
+** Please be patient while the chart is being deployed **
+
+Your WordPress site can be accessed through the following DNS name from within your cluster:
+
+    test-wordpress.default.svc.cluster.local (port 80)
+
+To access your WordPress site from outside the cluster follow the steps below:
+
+1. Get the WordPress URL by running these commands:
+
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc --namespace default -w test-wordpress'
+
+   export SERVICE_IP=$(kubectl get svc --namespace default test-wordpress --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+   echo "WordPress URL: http://$SERVICE_IP/"
+   echo "WordPress Admin URL: http://$SERVICE_IP/admin"
+mir@ubuntu-vbox:~/helm-wordpress$ kubectl get all
+NAME                                  READY   STATUS    RESTARTS      AGE
+pod/goapp-5d886579d9-x25dw            1/1     Running   2 (30m ago)   22h
+pod/test-wordpress-5697d9c5fc-sk5z6   1/1     Running   0             3m15s
+pod/test-wordpress-mariadb-0          1/1     Running   0             3m15s
+
+NAME                                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+service/kubernetes                        ClusterIP      10.96.0.1       <none>        443/TCP                      2d2h
+service/test-wordpress                    LoadBalancer   10.110.169.49   <pending>     80:31255/TCP,443:30504/TCP   3m15s
+service/test-wordpress-mariadb            ClusterIP      10.99.28.29     <none>        3306/TCP                     3m15s
+service/test-wordpress-mariadb-headless   ClusterIP      None            <none>        3306/TCP                     3m15s
+mir@ubuntu-vbox:~/helm-wordpress$ helm ls
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+test-wordpress  default         1               2025-01-25 22:18:26.183204899 +0530 IST deployed        wordpress-24.1.7        6.7.1      
+mir@ubuntu-vbox:~/helm-wordpress$ helm upgrade test-wordpress bitnami/wordpress --values=wordpress-values.yml
+Release "test-wordpress" has been upgraded. Happy Helming!
+NAME: test-wordpress
+LAST DEPLOYED: Sat Jan 25 22:28:18 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+CHART NAME: wordpress
+CHART VERSION: 24.1.7
+APP VERSION: 6.7.1
+
+mir@ubuntu-vbox:~/helm-wordpress$ helm ls
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+test-wordpress  default         2               2025-01-25 22:28:18.473076685 +0530 IST deployed        wordpress-24.1.7        6.7.1      
+     
+mir@ubuntu-vbox:~/helm-wordpress$ kubectl get all
+NAME                                  READY   STATUS    RESTARTS      AGE
+pod/goapp-5d886579d9-x25dw            1/1     Running   2 (40m ago)   22h
+pod/test-wordpress-5697d9c5fc-sk5z6   1/1     Running   0             13m
+pod/test-wordpress-5b478678d9-nwx48   0/1     Pending   0             3m50s
+pod/test-wordpress-mariadb-0          1/1     Running   0             13m
+
+NAME                                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+service/kubernetes                        ClusterIP      10.96.0.1       <none>        443/TCP                      2d2h
+service/test-wordpress                    LoadBalancer   10.110.169.49   <pending>     80:31255/TCP,443:30504/TCP   13m
+service/test-wordpress-mariadb            ClusterIP      10.99.28.29     <none>        3306/TCP                     13m
+service/test-wordpress-mariadb-headless   ClusterIP      None            <none>        3306/TCP                     13m
+
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/goapp            1/1     1            1           22h
+deployment.apps/test-wordpress   1/1     1            1           13m
+
+NAME                                        DESIRED   CURRENT   READY   AGE
+replicaset.apps/goapp-5d886579d9            1         1         1       22h
+replicaset.apps/test-wordpress-5697d9c5fc   1         1         1       13m
+replicaset.apps/test-wordpress-5b478678d9   1         1         0       3m50s
+
+NAME                                      READY   AGE
+statefulset.apps/test-wordpress-mariadb   1/1     13m
+
+mir@ubuntu-vbox:~/helm-wordpress$ helm history test-wordpress
+REVISION        UPDATED                         STATUS          CHART                   APP VERSION     DESCRIPTION     
+1               Sat Jan 25 22:18:26 2025        superseded      wordpress-24.1.7        6.7.1           Install complete
+2               Sat Jan 25 22:28:18 2025        deployed        wordpress-24.1.7        6.7.1           Upgrade complete
+
+```
+
 
