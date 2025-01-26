@@ -521,6 +521,10 @@ mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ kubectl get svc
 NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 kubernetes                 ClusterIP   10.96.0.1        <none>        443/TCP          2d14h
 myapp-chart-go-app-chart   NodePort    10.101.164.221   <none>        8000:31886/TCP   7m27s
+
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ helm list
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART             APP VERSION
+myapp-chart     default         1               2025-01-26 10:40:01.749274825 +0530 IST deployed        go-app-chart-0.1.01.16.0     
 ```
 
 
