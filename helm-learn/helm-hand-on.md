@@ -458,5 +458,72 @@ REVISION        UPDATED                         STATUS          CHART           
 2               Sat Jan 25 22:28:18 2025        deployed        wordpress-24.1.7        6.7.1           Upgrade complete
 
 ```
+# Deploy Go app on Minikube Cluster using helm chart
+```minikube start
+
+  helm ls
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ docker build -t go-app:letest .
+[+] Building 74.0s (9/9) FINISHED                                                                          docker:default
+ => [internal] load build definition from Dockerfile                                                                 0.2s
+ => => transferring dockerfile: 163B                                                                                 0.0s
+ => [internal] load metadata for docker.io/library/golang:1.22-alpine                                               13.2s
+ => [internal] load .dockerignore                                                                                    0.1s
+ => => transferring context: 2B                                                                                      0.0s
+ => [1/4] FROM docker.io/library/golang:1.22-alpine@sha256:161858498a61ce093c8e2bd704299bfb23e5bff79aef99b6c40bb9c  38.0s
+ => => resolve docker.io/library/golang:1.22-alpine@sha256:161858498a61ce093c8e2bd704299bfb23e5bff79aef99b6c40bb9c6  0.1s
+ => => sha256:95c2bb3c66000349add42940791d5cf80b25f5b007113d83f0b48cb719333b02 1.92kB / 1.92kB                       0.0s
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ helm create 
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+go-app                        letest    62c93ed955e5   15 minutes ago   304MB
+hello-world                   latest    74cc54e27dc4   4 days ago       10.1kB
+gcr.io/k8s-minikube/kicbase   v0.0.46   e72c4cbe9b29   12 days ago      1.31GB
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ helm list
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ helm install myapp-chart go-app-chart
+NAME: myapp-chart
+LAST DEPLOYED: Sun Jan 26 10:40:01 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services myapp-chart-go-app-chart)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ kubectl get all
+NAME                                           READY   STATUS             RESTARTS      AGE
+pod/goapp-5d886579d9-x25dw                     1/1     Running            3 (56m ago)   34h
+pod/myapp-chart-go-app-chart-df8dd9dd6-tkqqz   0/1     ErrImagePull       0             5m4s
+pod/myapp-chart-go-app-chart-df8dd9dd6-vrv7b   0/1     ImagePullBackOff   0             5m4s
+pod/myapp-chart-go-app-chart-df8dd9dd6-vww66   0/1     ImagePullBackOff   0             5m4s
+
+NAME                               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes                 ClusterIP   10.96.0.1        <none>        443/TCP          2d14h
+service/myapp-chart-go-app-chart   NodePort    10.101.164.221   <none>        8000:31886/TCP   5m4s
+
+NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/goapp                      1/1     1            1           34h
+deployment.apps/myapp-chart-go-app-chart   0/3     3            0           5m4s
+
+NAME                                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/goapp-5d886579d9                     1         1         1       34h
+replicaset.apps/myapp-chart-go-app-chart-df8dd9dd6   3         3         0       5m4s
+
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ kubectl get pods
+NAME                                       READY   STATUS             RESTARTS      AGE
+goapp-5d886579d9-x25dw                     1/1     Running            3 (58m ago)   34h
+myapp-chart-go-app-chart-df8dd9dd6-tkqqz   0/1     ImagePullBackOff   0             6m54s
+myapp-chart-go-app-chart-df8dd9dd6-vrv7b   0/1     ImagePullBackOff   0             6m54s
+myapp-chart-go-app-chart-df8dd9dd6-vww66   0/1     ImagePullBackOff   0             6m54s
+mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ kubectl get svc
+NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes                 ClusterIP   10.96.0.1        <none>        443/TCP          2d14h
+myapp-chart-go-app-chart   NodePort    10.101.164.221   <none>        8000:31886/TCP   7m27s
+```
+
+
+
 
 
