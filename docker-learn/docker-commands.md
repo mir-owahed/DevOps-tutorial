@@ -14,7 +14,7 @@ docker pull owahed1/python-sample-app:latest
 docker images
 
 # Run container
-docker run --rm -d -p 5000:5000 owahed1/python-sample-app:latest
+docker run --rm -d 5000:5000 owahed1/python-sample-app:latest
 docker ps
 
 # Analyse container
