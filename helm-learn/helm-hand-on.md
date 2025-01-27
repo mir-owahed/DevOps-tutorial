@@ -526,6 +526,162 @@ mir@ubuntu-vbox:~/helm-wordpress/go-lang-app$ helm list
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART             APP VERSION
 myapp-chart     default         1               2025-01-26 10:40:01.749274825 +0530 IST deployed        go-app-chart-0.1.01.16.0     
 ```
+## helm hands-on at GitHub Codespaces
+```
+@mir-owahed ➜ ~/helm-learn $ helm version
+version.BuildInfo{Version:"v3.16.3", GitCommit:"cfd07493f46efc9debd9cc1b02a0961186df7fdf", GitTreeState:"clean", GoVersion:"go1.22.7"}
+@mir-owahed ➜ ~/helm-learn $ helm list
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+@mir-owahed ➜ ~/helm-learn $ git clone https://github.com/mir-owahed/go-lang-app.git
+Cloning into 'go-lang-app'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 27 (delta 10), reused 9 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (27/27), 7.40 KiB | 7.40 MiB/s, done.
+Resolving deltas: 100% (10/10), done.
+@mir-owahed ➜ ~/helm-learn $ ls
+go-lang-app
+@mir-owahed ➜ ~/helm-learn $ cd go-lang-app/
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ code .
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl version
+Client Version: v1.32.0
+Kustomize Version: v5.5.0
+Server Version: v1.32.0
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d23h
+
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED       SIZE
+gcr.io/k8s-minikube/kicbase   v0.0.46   e72c4cbe9b29   13 days ago   1.31GB
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ free 
+              total        used        free      shared  buff/cache   available
+Mem:        8119864     2214316      308596       72840     5596952     5510296
+Swap:             0           0           0
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ free -h
+              total        used        free      shared  buff/cache   available
+Mem:          7.7Gi       2.1Gi       293Mi        71Mi       5.3Gi       5.2Gi
+Swap:            0B          0B          0B
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G   14G   17G  47% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/root        29G   24G  5.2G  83% /vscode
+/dev/sda1        44G   22G   21G  51% /tmp
+/dev/loop4       32G   14G   17G  47% /workspaces
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker build -t g-app:latest .
+[+] Building 34.3s (10/10) FINISHED
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED      STATUS          PORTS                                                                                                                                  NAMES
+15848f652909   gcr.io/k8s-minikube/kicbase:v0.0.46   "/usr/local/bin/entr…"   3 days ago   Up 27 minutes   127.0.0.1:32768->22/tcp, 127.0.0.1:32769->2376/tcp, 127.0.0.1:32770->5000/tcp, 127.0.0.1:32771->8443/tcp, 127.0.0.1:32772->32443/tcp   minikube
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker run --rm -p 8000:8000 g-app:latest
+Mir's server is now running
+/ping endpoint was invoked
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+g-app                         latest    2d000a23a07f   11 minutes ago   304MB
+gcr.io/k8s-minikube/kicbase   v0.0.46   e72c4cbe9b29   13 days ago      1.31GB
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm create go-app-chart
+Creating go-app-chart
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ ls
+Dockerfile  README.md  commands.txt  dockerfile.multi  go-app-chart  go.mod  hello.go
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm install go-app go-app-chart/
+NAME: go-app
+LAST DEPLOYED: Mon Jan 27 05:36:12 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services go-app-go-app-chart)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         1               2025-01-27 05:36:12.325569941 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0     
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl get all
+NAME                                      READY   STATUS             RESTARTS   AGE
+pod/go-app-go-app-chart-8f6669cd4-xqdq6   0/1     ImagePullBackOff   0          2m9s
+
+NAME                          TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+service/go-app-go-app-chart   NodePort    10.98.69.60   <none>        8000:30742/TCP   2m9s
+service/kubernetes            ClusterIP   10.96.0.1     <none>        443/TCP          3d
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/go-app-go-app-chart   0/1     1            0           2m9s
+
+NAME                                            DESIRED   CURRENT   READY   AGE
+replicaset.apps/go-app-go-app-chart-8f6669cd4   1         1         0       2m9s
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         1               2025-01-27 05:36:12.325569941 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0     
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm status go-app
+NAME: go-app
+LAST DEPLOYED: Mon Jan 27 05:36:12 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services go-app-go-app-chart)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         1               2025-01-27 05:36:12.325569941 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0     
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm upgrade go-app go-app-chart/
+Release "go-app" has been upgraded. Happy Helming!
+NAME: go-app
+LAST DEPLOYED: Mon Jan 27 05:53:26 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services go-app-go-app-chart)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         2               2025-01-27 05:53:26.702565453 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm rollback go-app 1
+Rollback was a success! Happy Helming!
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         3               2025-01-27 06:08:49.281279931 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+go-app  default         3               2025-01-27 06:08:49.281279931 +0000 UTC deployed        go-app-chart-0.1.0      1.16.0     
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm history go-app 
+REVISION        UPDATED                         STATUS          CHART                   APP VERSION     DESCRIPTION     
+1               Mon Jan 27 05:36:12 2025        superseded      go-app-chart-0.1.0      1.16.0          Install complete
+2               Mon Jan 27 05:53:26 2025        superseded      go-app-chart-0.1.0      1.16.0          Upgrade complete
+3               Mon Jan 27 06:08:49 2025        deployed        go-app-chart-0.1.0      1.16.0          Rollback to 1
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm uninstall go-app --keep-history
+release "go-app" uninstalled
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm ls
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm history go-app
+REVISION        UPDATED                         STATUS          CHART                   APP VERSION     DESCRIPTION            
+1               Mon Jan 27 05:36:12 2025        superseded      go-app-chart-0.1.0      1.16.0          Install complete       
+2               Mon Jan 27 05:53:26 2025        superseded      go-app-chart-0.1.0      1.16.0          Upgrade complete       
+3               Mon Jan 27 06:08:49 2025        uninstalled     go-app-chart-0.1.0      1.16.0          Uninstallation complete
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm uninstall go-app 
+release "go-app" uninstalled
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ helm history go-app
+Error: release: not found
+```
 
 
 
