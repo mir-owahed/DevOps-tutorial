@@ -17,6 +17,7 @@ sudo apt-get install helm
 # Install Nginx using helm
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
 helm repo ls
 helm search repo nginx
 helm install webserser bitnami/nginx
