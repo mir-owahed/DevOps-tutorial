@@ -92,6 +92,7 @@ d4cb46b28ee9   8cab3d2a8bd0                 "kube-controller-man…"   28 minute
 591979809ac3   registry.k8s.io/pause:3.10   "/pause"                 28 minutes ago   Up 28 minutes             k8s_POD_kube-scheduler-prod_kube-system_c10be55b810257607439a1ae078d0e44_1
 82128155b775   registry.k8s.io/pause:3.10   "/pause"                 28 minutes ago   Up 28 minutes             k8s_POD_kube-controller-manager-prod_kube-system_89748744e274f901cde86401741cf02f_1
 root@prod:/#
+```
 ## Minikube
 
 ```
