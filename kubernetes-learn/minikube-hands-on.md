@@ -327,6 +327,7 @@ prometheus-server-ext                 NodePort    10.101.118.16   <none>        
 
 @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
 Error from server (AlreadyExists): services "grafana-ext" already exists
+```
 
 
 
