@@ -329,6 +329,45 @@ prometheus-server-ext                 NodePort    10.101.118.16   <none>        
 
 @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
 Error from server (AlreadyExists): services "grafana-ext" already exists
+
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ kubectl get all
+NAME                                                     READY   STATUS    RESTARTS   AGE
+pod/grafana-7f47bb8f55-srqwb                             1/1     Running   0          24m
+pod/prometheus-alertmanager-0                            1/1     Running   0          70m
+pod/prometheus-kube-state-metrics-5cb7f5d847-8scpc       1/1     Running   0          70m
+pod/prometheus-prometheus-node-exporter-ftw5m            1/1     Running   0          70m
+pod/prometheus-prometheus-pushgateway-76465f5849-b4kpm   1/1     Running   0          70m
+pod/prometheus-server-5dbdb658f9-zhxss                   2/2     Running   0          70m
+
+NAME                                          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/grafana                               ClusterIP   10.97.61.0      <none>        80/TCP         24m
+service/grafana-ext                           NodePort    10.109.74.11    <none>        80:32689/TCP   20m
+service/kubernetes                            ClusterIP   10.96.0.1       <none>        443/TCP        4d5h
+service/prometheus-alertmanager               ClusterIP   10.105.104.1    <none>        9093/TCP       70m
+service/prometheus-alertmanager-headless      ClusterIP   None            <none>        9093/TCP       70m
+service/prometheus-kube-state-metrics         ClusterIP   10.99.190.239   <none>        8080/TCP       70m
+service/prometheus-prometheus-node-exporter   ClusterIP   10.99.131.181   <none>        9100/TCP       70m
+service/prometheus-prometheus-pushgateway     ClusterIP   10.111.84.177   <none>        9091/TCP       70m
+service/prometheus-server                     ClusterIP   10.100.53.156   <none>        80/TCP         70m
+service/prometheus-server-ext                 NodePort    10.101.118.16   <none>        80:30645/TCP   42m
+
+NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/prometheus-prometheus-node-exporter   1         1         1       1            1           kubernetes.io/os=linux   70m
+
+NAME                                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana                             1/1     1            1           24m
+deployment.apps/prometheus-kube-state-metrics       1/1     1            1           70m
+deployment.apps/prometheus-prometheus-pushgateway   1/1     1            1           70m
+deployment.apps/prometheus-server                   1/1     1            1           70m
+
+NAME                                                           DESIRED   CURRENT   READY   AGE
+replicaset.apps/grafana-7f47bb8f55                             1         1         1       24m
+replicaset.apps/prometheus-kube-state-metrics-5cb7f5d847       1         1         1       70m
+replicaset.apps/prometheus-prometheus-pushgateway-76465f5849   1         1         1       70m
+replicaset.apps/prometheus-server-5dbdb658f9                   1         1         1       70m
+
+NAME                                       READY   AGE
+statefulset.apps/prometheus-alertmanager   1/1     70m
 ```
 
 
