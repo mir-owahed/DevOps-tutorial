@@ -146,6 +146,58 @@ ubuntu@ip-10-0-0-199:~$ history
    36  history
 ubuntu@ip-10-0-0-199:~$
 ```
+# install kubectl
+```
+ubuntu@ip-10-0-4-253:~$ history
+    1  apt update
+    2  sudo apt update
+    3  sudo apt  install -y docker.io
+    4  sudo chmod 666 /var/run/docker.sock
+    5  sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+    6  sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+    7  sudo mkdir -p -m 755 /etc/apt/keyrings
+    8  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    9  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   10  sudo apt-get -y update
+   11  sudo apt install kubeadm=1.30.0-1.1 kubectl=1.30.0-1.1 kubelet=1.30.0-1.1 -y
+   12  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+   13  mkdir -p $HOME/.kube
+   14  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   15  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   16  kubectl get cluster-info
+   17  history
+   18  kubectl get nodes
+   19  kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
+   20  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
+   21  kubectl get cluster-info
+   22  kubectl cluster-info
+   23  kubectl config get-clusters
+   24  kubectl get nodes
+   25  kubectl get namespace
+   26  docker images
+   27  history
+
+ubuntu@ip-10-0-4-253:~$ kubectl cluster-info
+Kubernetes control plane is running at https://10.0.4.253:6443
+CoreDNS is running at https://10.0.4.253:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+ubuntu@ip-10-0-4-253:~$ kubectl config get-clusters
+NAME
+kubernetes
+ubuntu@ip-10-0-4-253:~$ kubectl get nodes
+NAME            STATUS   ROLES           AGE    VERSION
+ip-10-0-1-198   Ready    <none>          4m5s   v1.30.0
+ip-10-0-4-253   Ready    control-plane   5m8s   v1.30.0
+ubuntu@ip-10-0-4-253:~$ kubectl get namespace
+NAME              STATUS   AGE
+default           Active   5m39s
+ingress-nginx     Active   2m17s
+kube-node-lease   Active   5m39s
+kube-public       Active   5m39s
+kube-system       Active   5m39s
+
+```
 
 References:
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
