@@ -369,7 +369,263 @@ replicaset.apps/prometheus-server-5dbdb658f9                   1         1      
 NAME                                       READY   AGE
 statefulset.apps/prometheus-alertmanager   1/1     70m
 ```
+# install minkube on ubuntu
+```
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+nstall minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  119M  100  119M    0     0  35.1M      0  0:00:03  0:00:03 --:--:-- 51.5M
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ ls
+Dockerfile  README.md  commands.txt  go.mod  hello.go
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+go-app       0.0.1     e761962cf2ea   12 minutes ago   15MB
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ minikube start
+😄  minikube v1.35.0 on Ubuntu 20.04 (docker/amd64)
+✨  Automatically selected the docker driver. Other choices: ssh, none
+📌  Using Docker driver with root privileges
+👍  Starting "minikube" primary control-plane node in "minikube" cluster
+🚜  Pulling base image v0.0.46 ...
+💾  Downloading Kubernetes v1.32.0 preload ...
+    > gcr.io/k8s-minikube/kicbase...:  500.31 MiB / 500.31 MiB  100.00% 40.30 M
+    > preloaded-images-k8s-v18-v1...:  333.57 MiB / 333.57 MiB  100.00% 15.25 M
+🔥  Creating docker container (CPUs=2, Memory=2200MB) ...
+🐳  Preparing Kubernetes v1.32.0 on Docker 27.4.1 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+go-app                        0.0.1     e761962cf2ea   20 minutes ago   15MB
+gcr.io/k8s-minikube/kicbase   v0.0.46   e72c4cbe9b29   2 weeks ago      1.31GB
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED         STATUS         PORTS                                                                                                                                  NAMES
+beae4b343746   gcr.io/k8s-minikube/kicbase:v0.0.46   "/usr/local/bin/entr…"   6 minutes ago   Up 6 minutes   127.0.0.1:32768->22/tcp, 127.0.0.1:32769->2376/tcp, 127.0.0.1:32770->5000/tcp, 127.0.0.1:32771->8443/tcp, 127.0.0.1:32772->32443/tcp   minikube
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
 
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get node
+NAME       STATUS   ROLES           AGE     VERSION
+minikube   Ready    control-plane   6m53s   v1.32.0
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl cluster-info
+Kubernetes control plane is running at https://192.168.49.2:8443
+CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   8m5s
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get namespaces
+NAME              STATUS   AGE
+default           Active   9m4s
+kube-node-lease   Active   9m4s
+kube-public       Active   9m4s
+kube-system       Active   9m4s
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl apply -f go-deploy.yaml 
+deployment.apps/boardgame-deployment created
+service/boardgame-service created
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get pods
+NAME                                    READY   STATUS              RESTARTS   AGE
+boardgame-deployment-746775fb47-9hdft   0/1     ContainerCreating   0          13s
+boardgame-deployment-746775fb47-wj7zk   0/1     ContainerCreating   0          13s
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get all
+NAME                                        READY   STATUS    RESTARTS   AGE
+pod/boardgame-deployment-746775fb47-9hdft   1/1     Running   0          30s
+pod/boardgame-deployment-746775fb47-wj7zk   1/1     Running   0          30s
+
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/boardgame-service   NodePort    10.101.148.124   <none>        80:30980/TCP   30s
+service/kubernetes          ClusterIP   10.96.0.1        <none>        443/TCP        14m
+
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/boardgame-deployment   2/2     2            2           30s
+
+NAME                                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/boardgame-deployment-746775fb47   2         2         2       30s
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl get pods -o wide
+NAME                                    READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+boardgame-deployment-746775fb47-9hdft   1/1     Running   0          56s   10.244.0.4   minikube   <none>           <none>
+boardgame-deployment-746775fb47-wj7zk   1/1     Running   0          56s   10.244.0.3   minikube   <none>           <none>
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl describe pod boardgame-deployment-746775fb47-9hdft
+Name:             boardgame-deployment-746775fb47-9hdft
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Thu, 30 Jan 2025 11:05:33 +0000
+Labels:           app=boardgame
+                  pod-template-hash=746775fb47
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.4
+IPs:
+  IP:           10.244.0.4
+Controlled By:  ReplicaSet/boardgame-deployment-746775fb47
+Containers:
+  boardgame:
+    Container ID:   docker://c5eae132e1766936561a053539107fc6baac2998abb050ef7fedff559dd054b6
+    Image:          owahed1/go-lang-app:0.0.2
+    Image ID:       docker-pullable://owahed1/go-lang-app@sha256:60fd8bf7c535868a780235fda331c4eb576de7dff03d875a3b86773b27ac09ee
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 30 Jan 2025 11:05:51 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-7w2sm (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-7w2sm:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  5m20s  default-scheduler  Successfully assigned default/boardgame-deployment-746775fb47-9hdft to minikube
+  Normal  Pulling    5m19s  kubelet            Pulling image "owahed1/go-lang-app:0.0.2"
+  Normal  Pulled     5m2s   kubelet            Successfully pulled image "owahed1/go-lang-app:0.0.2" in 2.028s (17.706s including waiting). Image size: 302971707 bytes.
+  Normal  Created    5m2s   kubelet            Created container: boardgame
+  Normal  Started    5m2s   kubelet            Started container boardgame
+
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl describe deployments.apps boardgame-deployment 
+Name:                   boardgame-deployment
+Namespace:              default
+CreationTimestamp:      Thu, 30 Jan 2025 11:05:33 +0000
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=boardgame
+Replicas:               5 desired | 5 updated | 5 total | 5 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=boardgame
+  Containers:
+   boardgame:
+    Image:         owahed1/go-lang-app:0.0.2
+    Port:          8000/TCP
+    Host Port:     0/TCP
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   boardgame-deployment-746775fb47 (5/5 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  10m    deployment-controller  Scaled up replica set boardgame-deployment-746775fb47 from 0 to 2
+  Normal  ScalingReplicaSet  2m27s  deployment-controller  Scaled up replica set boardgame-deployment-746775fb47 from 2 to 5
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $ kubectl describe service boardgame-service 
+Name:                     boardgame-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=boardgame
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.101.148.124
+IPs:                      10.101.148.124
+Port:                     <unset>  80/TCP
+TargetPort:               8000/TCP
+NodePort:                 <unset>  30980/TCP
+Endpoints:                10.244.0.3:8000,10.244.0.4:8000,10.244.0.5:8000 + 2 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+@mir-owahed ➜ /workspaces/learn-linux/go-lang-app (main) $
+
+Commands:
+ 1  docker images
+    2  docker rmi go-app:multi
+    3  docker ps
+    4  docker build -t go-app:0.0.1 .
+    5  docker images
+    6  docker ps
+    7  docker run --rm -p 8000:8000 go-app:0.0.1
+    8  docker rmi go-app:multi
+    9  docker rmi go-app:0.0.1
+   10  docker build -t go-app:0.0.1 .
+   11  docker images
+   12  docker run --rm -p 8000:8000 go-app:0.0.1
+   13  docker ps
+   14  minikube status
+   15  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+   16  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+   17  ls
+   18  docker images
+   19  docker ps
+   20  minikube start
+   21  docker images
+   22  docker ps
+   23  minikube status
+   24  kubectl get node
+   25  kubectl cluster-info
+   26  kubectl get all
+   27  kubectl get namespaces
+   28  kubectl apply -f go-deploy.yaml 
+   29  kubectl get pods
+   30  kubectl get all
+   31  kubectl get pods -o wide
+   32  kubectl get pods pod/boardgame-deployment-746775fb47-9hdft
+   33  kubectl describe pods pod/boardgame-deployment-746775fb47-9hdft
+   34  kubectl describe pod pod/boardgame-deployment-746775fb47-9hdft
+   35  kubectl describe pod boardgame-deployment-746775fb47-9hdft
+   36  kubectl apply -f go-deploy.yaml 
+   37  kubectl get pods -o wide
+   38  kubectl get all
+   39  kubectl describe deployments.apps boardgame-deployment 
+   40  kubectl describe service boardgame-service 
+   41  kubectl get pods
+   42  kubectl describe pod boardgame-deployment-746775fb47-mdscb
+   43  kubectl delete pod boardgame-deployment-746775fb47-mdscb
+   44  kubectl get pods
+   45  kubectl delete deployments.apps boardgame-deployment 
+   46  kubectl get pods
+   47  kubectl get all
+   48  minikube stop
+   49  history
+```
 
 
 
