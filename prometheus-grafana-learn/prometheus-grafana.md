@@ -1,4 +1,4 @@
-## install Prometheus on k8s
+## Install Prometheus on k8s using helm
 ```
 @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ minikube status
 minikube
