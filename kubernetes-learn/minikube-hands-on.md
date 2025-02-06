@@ -1,5 +1,87 @@
 # Minikube hands-on at Codespaces
 ```
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ history
+    1  python main.py 
+    2  git init
+    3  git status
+    4  git add .
+    5  git commit -m "add main.py"
+    6  git push
+    7  python3 -m venv env
+    8  source env/bin/activate
+    9  deactivate
+   10  exit
+   11  docker version
+   12  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+   13  ls
+   14  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+   15  rm minikube-linux-amd64
+   16  ls
+   17  minikube start
+   18  minikube status
+   19  history
+   20  helm version
+   21  helm ls
+   22  helm repo ls
+   23  helm repo add https://charts.bitnami.com/bitnami
+   24  helm repo add bitnami https://charts.bitnami.com/bitnami
+   25  helm repo ls
+   26  helm ls
+   27  helm list --all-name-spaces
+   28  helm list --all-namespaces
+   29  helm search repo ngins
+   30  helm search repo nginx
+   31  cd
+   32  ls
+   33  mkdir helm-learn
+   34  cd helm-learn/
+   35  helm repo search nginx
+   36  helm ls
+   37  helm repo ls
+   38  helm repo search nginx
+   39  helm search repo nginx
+   40  helm install webserver bitnami/nginx
+   41  helm ls
+   42  kubectl get all
+   43  kubectl edit service/webserver-nginx 
+   44  kubectl get all
+   45  ip add
+   46  helm ls
+   47  helm status
+   48  helm status webserver 
+   49  echo "http://${SERVICE_IP}:${SERVICE_PORT}"
+   50  helm uninstall webserver 
+   51  helm ls
+   52  exit
+   53  docker images
+   54  docker ps
+   55  minikube start --nodes 3 -p prod
+   56  minikube status
+   57  minikube status -p prod
+   58  docker ps
+   59  docker exec -it 521fc1be712c /bin/bash
+   60  @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker ps
+   61  CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS          PORTS                                                                                                                                  NAMES
+   62  a8643532d4c7   gcr.io/k8s-minikube/kicbase:v0.0.46   "/usr/local/bin/entr…"   30 minutes ago   Up 21 minutes   127.0.0.1:32778->22/tcp, 127.0.0.1:32779->2376/tcp, 127.0.0.1:32780->5000/tcp, 127.0.0.1:32781->8443/tcp, 127.0.0.1:32782->32443/tcp   prod-m03
+   63  521fc1be712c   gcr.io/k8s-minikube/kicbase:v0.0.46   "/usr/local/bin/entr…"   31 minutes ago   Up 22 minutes   127.0.0.1:32773->22/tcp, 127.0.0.1:32774->2376/tcp, 127.0.0.1:32775->5000/tcp, 127.0.0.1:32776->8443/tcp, 127.0.0.1:32777->32443/tcp   prod-m02
+   64  6d10470a5213   gcr.io/k8s-minikube/kicbase:v0.0.46   "/usr/local/bin/entr…"   32 minutes ago   Up 22 minutes   127.0.0.1:32768->22/tcp, 127.0.0.1:32769->2376/tcp, 127.0.0.1:32770->5000/tcp, 127.0.0.1:32771->8443/tcp, 127.0.0.1:32772->32443/tcp   prod
+   65  @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker exec -it 521fc1be712c /bin/bash
+   66  root@prod-m02:/# docker ps
+   67  CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS     NAMES
+   68  f983359c596e   50415e5d05f0                 "/bin/kindnetd"          24 minutes ago   Up 23 minutes             k8s_kindnet-cni_kindnet-jj24b_kube-system_15a36ae6-f616-4c89-80e5-a425f43306ac_1
+   69  3c225b926a6f   040f9f8aac8c                 "/usr/local/bin/kube…"   24 minutes ago   Up 23 minutes             k8s_kube-proxy_kube-proxy-vnngk_kube-system_dc439012-3f29-4955-9e8d-0f0a81436ae9_1
+   70  68a70a89e650   registry.k8s.io/pause:3.10   "/pause"                 24 minutes ago   Up 23 minutes             k8s_POD_kindnet-jj24b_kube-system_15a36ae6-f616-4c89-80e5-a425f43306ac_1
+   71  029e2f8e88a4   registry.k8s.io/pause:3.10   "/pause"                 24 minutes ago   Up 23 minutes             k8s_POD_kube-proxy-vnngk_kube-system_dc439012-3f29-4955-9e8d-0f0a81436ae9_1
+   72  root@prod-m02:/# exit
+   73  docker ps
+   74  docker exec -it 6d10470a5213 /bin/bash
+   75  history
+   76  exit
+   77  docker ps
+   78  history
+@mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ 
+```
+```
 @mir-owahed ➜ ~/helm-learn/go-lang-app (main) $ docker images
 REPOSITORY                    TAG       IMAGE ID       CREATED       SIZE
 gcr.io/k8s-minikube/kicbase   v0.0.46   e72c4cbe9b29   13 days ago   1.31GB
