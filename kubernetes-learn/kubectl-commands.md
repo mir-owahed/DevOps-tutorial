@@ -408,4 +408,20 @@ deployment.apps "productcatalogservice" deleted
 @mir-owahed ➜ ~/microservices-demo (main) $ kubectl delete service adservice
 service "adservice" deleted
 
+@mir-owahed ➜ ~/microservices-demo (main) $ kubectl delete service adservice
+service "adservice" deleted
+@mir-owahed ➜ ~/microservices-demo (main) $ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+@mir-owahed ➜ ~/microservices-demo (main) $ minikube stop
+✋  Stopping node "minikube"  ...
+🛑  Powering off "minikube" via SSH ...
+🛑  1 node stopped.
+
+
 ```
