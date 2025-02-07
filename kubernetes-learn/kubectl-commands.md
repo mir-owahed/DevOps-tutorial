@@ -391,7 +391,21 @@ Examples:
   # Return snapshot logs from pod nginx with only one container
   kubectl logs nginx
 
+prometheus-server
+@mir-owahed ➜ ~/microservices-demo (main) $ kubectl delete deployments.apps adservice cartservice checkoutservice
+deployment.apps "adservice" deleted
+deployment.apps "cartservice" deleted
+deployment.apps "checkoutservice" deleted
+@mir-owahed ➜ ~/microservices-demo (main) $ kubectl delete deployments.apps currencyservice emailservice frontend grafana loadgenerator paymentservice productcatalogservice
+deployment.apps "currencyservice" deleted
+deployment.apps "emailservice" deleted
+deployment.apps "frontend" deleted
+deployment.apps "grafana" deleted
+deployment.apps "loadgenerator" deleted
+deployment.apps "paymentservice" deleted
+deployment.apps "productcatalogservice" deleted
 
-
+@mir-owahed ➜ ~/microservices-demo (main) $ kubectl delete service adservice
+service "adservice" deleted
 
 ```
