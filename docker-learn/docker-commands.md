@@ -100,13 +100,18 @@ docker images
 
 # Run container
 docker run --rm -p 5000:5000 owahed1/python-sample-app:latest
+docker run -d -p 5000:5000 owahed1/python-sample-app:latest
 docker ps
+docker ps -a
 
 # Analyse container
 docker inspect <ID> | vim -
 docker logs -f <ID>
+docker logs <ID>
 docker exec -it <ID> /bin/ls -al
 docker exec -it <ID> /bin/bash
+docker exec <ID> pwd
+docker exec <ID> ls -la
 
 # Remove image, Build again, with versioning
 docker rmi <ID>
