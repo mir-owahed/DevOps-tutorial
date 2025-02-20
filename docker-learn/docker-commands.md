@@ -1,5 +1,50 @@
 # Docker commands
 ```
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ history 
+    1  docker version
+    2  ls
+    3  docker ps
+    4  docker images
+    5  docker ps -a
+    6  docker build -t go-app:v1 .
+    7  docker images
+    8  docker run -d -p 8080:8000 go-app:v1
+    9  docker ps
+   10  docker ps -a
+   11  docker images
+   12  docker stop a75c3e430c95
+   13  docker ps
+   14  docker ps -a
+   15  docker rmi 378513c83eaf
+   16  docker rm a75c3e430c95
+   17  docker ps -a
+   18  docker rmi 378513c83eaf
+   19  docker images
+   20  docker build -t go-app:v1 -f dockerfile.multi .
+   21  docker images
+   22  docker tag go-app:v1 owahed1/demo-app:go-app-v1
+   23  docker images
+   24  docker rmi go-app:v1
+   25  docker images
+   26  docker login -u owahed1
+   27  docker push owahed1/demo-app:go-app-v1
+   28  docker login -u owahed1
+   29  docker push owahed1/demo-app:go-app-v1
+   30  docker images
+   31  docker rmi b1bab61ef405
+   32  docker images
+   33  docker pull owahed1/demo-app:go-app-v1
+   34  docker run -d -p 8000:8000 owahed1/demo-app:go-app-v1
+   35  docker ps
+   36  docker exec ed8e8ee93c60 pwd
+   37  docker exec -it ed8e8ee93c60 pwd
+   38  docker exec -it ed8e8ee93c60 ls -la
+   39  docker exec -it ed8e8ee93c60 /bash
+   40  docker inspect ed8e8ee93c60 | vim -
+   41  docker logs ed8e8ee93c60
+   42  history 
+```
+```
 @mir-owahed ➜ ~ $ docker ps -a
 CONTAINER ID   IMAGE                COMMAND               CREATED      STATUS                  PORTS     NAMES
 2f53ded79854   product-catalog:v1   "./product-catalog"   2 days ago   Exited (1) 2 days ago             serene_curie
