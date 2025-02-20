@@ -153,6 +153,7 @@ docker ps -a
 docker inspect <ID> | vim -
 docker logs -f <ID>
 docker logs <ID>
+docker exec -it <ID> sh
 docker exec -it <ID> /bin/ls -al
 docker exec -it <ID> /bin/bash
 docker exec -it <ID> pwd
