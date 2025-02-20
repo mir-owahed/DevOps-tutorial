@@ -441,7 +441,99 @@ Vim: Reading from stdin...
 
 @mir-owahed ➜ /workspaces/go-lang-app (main) $ docker logs ed8e8ee93c60
 Mir's server is now running
-@mir-owahed ➜ /workspaces/go-lang-app (main) $ 
+@mir-owahed ➜ /workspaces/go-lang-app (main) $
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY         TAG         IMAGE ID       CREATED       SIZE
+owahed1/demo-app   go-app-v1   b1bab61ef405   3 hours ago   27.7MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi owahed1/demo-app:go-app-v1
+Error response from daemon: conflict: unable to remove repository reference "owahed1/demo-app:go-app-v1" (must force) - container ed8e8ee93c60 is using its referenced image b1bab61ef405
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE                        COMMAND           CREATED       STATUS                       PORTS                                       NAMES
+ed8e8ee93c60   owahed1/demo-app:go-app-v1   "./go-lang-app"   3 hours ago   Exited (255) 4 minutes ago   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   zealous_cohen
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rm ed8e8ee93c60
+ed8e8ee93c60
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi owahed1/demo-app:go-app-v1
+Untagged: owahed1/demo-app:go-app-v1
+Untagged: owahed1/demo-app@sha256:f1ded8d2f427478c0f78ffd3219c49aeaa6ae91feab3c331e4705d87bbc80344
+Deleted: sha256:b1bab61ef405ab9c5a1aef700df721bc44bad7ff746869dad8d61bf0dc11b618
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ ls
+Dockerfile  README.md  command.txt  commands.txt  dockerfile.multi  go.mod  hello.go
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY         TAG         IMAGE ID       CREATED       SIZE
+owahed1/demo-app   go-app-v1   b1bab61ef405   3 hours ago   27.7MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi owahed1/demo-app:go-app-v1
+Error response from daemon: conflict: unable to remove repository reference "owahed1/demo-app:go-app-v1" (must force) - container ed8e8ee93c60 is using its referenced image b1bab61ef405
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE                        COMMAND           CREATED       STATUS                       PORTS                                       NAMES
+ed8e8ee93c60   owahed1/demo-app:go-app-v1   "./go-lang-app"   3 hours ago   Exited (255) 4 minutes ago   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   zealous_cohen
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rm ed8e8ee93c60
+ed8e8ee93c60
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi owahed1/demo-app:go-app-v1
+Untagged: owahed1/demo-app:go-app-v1
+Untagged: owahed1/demo-app@sha256:f1ded8d2f427478c0f78ffd3219c49aeaa6ae91feab3c331e4705d87bbc80344
+Deleted: sha256:b1bab61ef405ab9c5a1aef700df721bc44bad7ff746869dad8d61bf0dc11b618
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ ls
+Dockerfile  README.md  command.txt  commands.txt  dockerfile.multi  go.mod  hello.go
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ ls
+Dockerfile  README.md  command.txt  commands.txt  dockerfile.multi  go.mod  hello.go
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker build -t go-app:v2 .
+[+] Building 21.2s (10/10) FINISHED                                                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                     0.0s
+ => => transferring dockerfile: 163B                                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/golang:1.22-alpine                                                                                                    1.5s
+ => [auth] library/golang:pull token for registry-1.docker.io                                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                                          0.0s
+ => [1/4] FROM docker.io/library/golang:1.22-alpine@sha256:1699c10032ca2582ec89a24a1312d986a3f094aed3d5c1147b19880afe40e052                                              0.0s
+ => [internal] load build context                                                                                                                                        0.0s
+ => => transferring context: 14.48kB                                                                                                                                     0.0s
+ => CACHED [2/4] WORKDIR /src                                                                                                                                            0.0s
+ => [3/4] ADD . .                                                                                                                                                        0.1s
+ => [4/4] RUN CGO_ENABLED=0 go build -o go-lang-app .                                                                                                                   18.1s
+ => exporting to image                                                                                                                                                   1.5s
+ => => exporting layers                                                                                                                                                  1.5s
+ => => writing image sha256:c24a911803f613f61baaa77adf93aec64da13d81e5ecb751243decda06c47e73                                                                             0.0s
+ => => naming to docker.io/library/go-app:v2                                                                                                                             0.0s
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+go-app       v2        c24a911803f6   26 seconds ago   304MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it c24a911803f6 pwd
+Error response from daemon: No such container: c24a911803f6
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker run -d -p 8090:8000 go-app:v2
+9ce7f9d7c73106d1323ae00704e8f99cc70d176775623bda631f7401a795e426
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE       COMMAND           CREATED         STATUS         PORTS                                         NAMES
+9ce7f9d7c731   go-app:v2   "./go-lang-app"   4 seconds ago   Up 4 seconds   0.0.0.0:8090->8000/tcp, [::]:8090->8000/tcp   pensive_albattani
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it 9ce7f9d7c731 pwd
+/src
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it 9ce7f9d7c731 ls -la
+total 6892
+drwxr-xr-x    1 root     root          4096 Feb 20 09:31 .
+drwxr-xr-x    1 root     root          4096 Feb 20 09:34 ..
+drwxrwxrwx    9 root     root          4096 Feb 20 09:30 .git
+-rw-rw-rw-    1 root     root            11 Feb 20 06:09 .gitignore
+-rw-rw-rw-    1 root     root           126 Feb 20 06:09 Dockerfile
+-rw-rw-rw-    1 root     root           399 Feb 20 06:09 README.md
+-rw-rw-rw-    1 root     root          1283 Feb 20 07:04 command.txt
+-rw-rw-rw-    1 root     root         11853 Feb 20 06:09 commands.txt
+-rw-rw-rw-    1 root     root           246 Feb 20 06:09 dockerfile.multi
+-rwxr-xr-x    1 root     root       7002878 Feb 20 09:31 go-lang-app
+-rw-rw-rw-    1 root     root            52 Feb 20 06:09 go.mod
+-rw-rw-rw-    1 root     root           623 Feb 20 06:09 hello.go
+
+
 ```
 
 
