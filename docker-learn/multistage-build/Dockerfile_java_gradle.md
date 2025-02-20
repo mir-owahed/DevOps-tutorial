@@ -28,3 +28,5 @@ ENV AD_PORT 9099
 ENTRYPOINT ["./build/install/opentelemetry-demo-ad/bin/Ad"]
 
 ```
+GitHub app repo:
+1. <https://github.com/open-telemetry/opentelemetry-demo>
