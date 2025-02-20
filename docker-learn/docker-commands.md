@@ -110,8 +110,8 @@ docker logs -f <ID>
 docker logs <ID>
 docker exec -it <ID> /bin/ls -al
 docker exec -it <ID> /bin/bash
-docker exec <ID> pwd
-docker exec <ID> ls -la
+docker exec -it <ID> pwd
+docker exec -it <ID> ls -la
 
 # Remove image, Build again, with versioning
 docker rmi <ID>
@@ -126,6 +126,277 @@ docker ps -aq | xargs docker stop | xargs docker rm
 docker --help
 docker command --help
 docker logs --help
+```
+```
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker version
+Client:
+ Version:           27.3.1-1
+ API version:       1.47
+ Go version:        go1.22.8
+ Git commit:        ce1223035ac3ab8922717092e63a184cf67b493d
+ Built:             Fri Sep 20 11:01:47 UTC 2024
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server:
+ Engine:
+  Version:          27.3.1-1
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.22.8
+  Git commit:       41ca978a0a5400cc24b274137efa9f25517fcc0b
+  Built:            Wed Sep 18 10:25:38 2024
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.6.36-1
+  GitCommit:        88c3d9bc5b5a193f40b7c14fa996d23532d6f956
+ runc:
+  Version:          1.1.15-1
+  GitCommit:        bc20cb4497af9af01bea4a8044f1678ffca2745c
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ ls
+Dockerfile  README.md  commands.txt  dockerfile.multi  go.mod  hello.go
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker build -t go-app:v1 .
+[+] Building 31.8s (10/10) FINISHED                                                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                     0.0s
+ => => transferring dockerfile: 163B                                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/golang:1.22-alpine                                                                                                    2.5s
+ => [auth] library/golang:pull token for registry-1.docker.io                                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                                          0.0s
+ => [1/4] FROM docker.io/library/golang:1.22-alpine@sha256:1699c10032ca2582ec89a24a1312d986a3f094aed3d5c1147b19880afe40e052                                             10.2s
+ => => resolve docker.io/library/golang:1.22-alpine@sha256:1699c10032ca2582ec89a24a1312d986a3f094aed3d5c1147b19880afe40e052                                              0.0s
+ => => sha256:4129f51f28c9ae5de799b958ba2aaa8f92f26cc7bf47c107891673fe4b516c03 2.08kB / 2.08kB                                                                           0.0s
+ => => sha256:1f3e46996e2966e4faa5846e56e76e3748b7315e2ded61476c24403d592134f0 3.64MB / 3.64MB                                                                           0.3s
+ => => sha256:4d75fd4b73869ed224045c010cdec78756eefb6752a5a8e4804294009eac11e9 294.90kB / 294.90kB                                                                       0.4s
+ => => sha256:afa154b433c7f72db064d19e1bcfa84ee196ad29120328f6bdb2c5fbd7b8eeac 69.36MB / 69.36MB                                                                         1.8s
+ => => sha256:1699c10032ca2582ec89a24a1312d986a3f094aed3d5c1147b19880afe40e052 10.30kB / 10.30kB                                                                         0.0s
+ => => sha256:6d405dfc5fdf3a45df1529cf060b920041f52ce523487e0f36f02765af294a51 1.92kB / 1.92kB                                                                           0.0s
+ => => extracting sha256:1f3e46996e2966e4faa5846e56e76e3748b7315e2ded61476c24403d592134f0                                                                                0.1s
+ => => sha256:5f837c998576dcb54bc285997f33fcc2166dff6aa48fe3a374da92474efd5fe8 126B / 126B                                                                               0.7s
+ => => extracting sha256:4d75fd4b73869ed224045c010cdec78756eefb6752a5a8e4804294009eac11e9                                                                                0.0s
+ => => sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B                                                                                 0.8s
+ => => extracting sha256:afa154b433c7f72db064d19e1bcfa84ee196ad29120328f6bdb2c5fbd7b8eeac                                                                                4.6s
+ => => extracting sha256:5f837c998576dcb54bc285997f33fcc2166dff6aa48fe3a374da92474efd5fe8                                                                                0.0s
+ => => extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1                                                                                0.0s
+ => [internal] load build context                                                                                                                                        0.0s
+ => => transferring context: 60.15kB                                                                                                                                     0.0s
+ => [2/4] WORKDIR /src                                                                                                                                                   0.0s
+ => [3/4] ADD . .                                                                                                                                                        0.0s
+ => [4/4] RUN CGO_ENABLED=0 go build -o go-lang-app .                                                                                                                   17.1s
+ => exporting to image                                                                                                                                                   1.8s
+ => => exporting layers                                                                                                                                                  1.8s
+ => => writing image sha256:378513c83eaf2717deebf95d5874729fdba6a692e93979492e502f88cf8d29f8                                                                             0.0s
+ => => naming to docker.io/library/go-app:v1                                                                                                                             0.0s
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+go-app       v1        378513c83eaf   17 seconds ago   304MB
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker run -d -p 8080:8000 go-app:v1
+a75c3e430c95f9f2ec7ef0f635b14804ddf03dd8e6fd0959f796ebd8f3613cdd
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE       COMMAND           CREATED          STATUS          PORTS                                         NAMES
+a75c3e430c95   go-app:v1   "./go-lang-app"   49 seconds ago   Up 48 seconds   0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   romantic_napier
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE       COMMAND           CREATED         STATUS         PORTS                                         NAMES
+a75c3e430c95   go-app:v1   "./go-lang-app"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   romantic_napier
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+go-app       v1        378513c83eaf   6 minutes ago   304MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker stop a75c3e430c95
+a75c3e430c95
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE       COMMAND           CREATED         STATUS                      PORTS     NAMES
+a75c3e430c95   go-app:v1   "./go-lang-app"   4 minutes ago   Exited (2) 18 seconds ago             romantic_napier
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi 378513c83eaf
+Error response from daemon: conflict: unable to delete 378513c83eaf (must be forced) - image is being used by stopped container a75c3e430c95
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rm a75c3e430c95
+a75c3e430c95
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi 378513c83eaf
+Untagged: go-app:v1
+Deleted: sha256:378513c83eaf2717deebf95d5874729fdba6a692e93979492e502f88cf8d29f8
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker build -t go-app:v1 -f dockerfile.multi .
+[+] Building 21.1s (14/14) FINISHED                                                                                                                            docker:default
+ => [internal] load build definition from dockerfile.multi                                                                                                               0.0s
+ => => transferring dockerfile: 291B                                                                                                                                     0.0s
+ => [internal] load metadata for gcr.io/distroless/base-debian12:latest                                                                                                  2.2s
+ => [internal] load metadata for docker.io/library/golang:1.22-alpine                                                                                                    1.4s
+ => [auth] library/golang:pull token for registry-1.docker.io                                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                                          0.0s
+ => CACHED [builder 1/4] FROM docker.io/library/golang:1.22-alpine@sha256:1699c10032ca2582ec89a24a1312d986a3f094aed3d5c1147b19880afe40e052                               0.0s
+ => [stage-1 1/3] FROM gcr.io/distroless/base-debian12:latest@sha256:74ddbf52d93fafbdd21b399271b0b4aac1babf8fa98cab59e5692e01169a1348                                    4.8s
+ => => resolve gcr.io/distroless/base-debian12:latest@sha256:74ddbf52d93fafbdd21b399271b0b4aac1babf8fa98cab59e5692e01169a1348                                            0.0s
+ => => sha256:74ddbf52d93fafbdd21b399271b0b4aac1babf8fa98cab59e5692e01169a1348 1.51kB / 1.51kB                                                                           0.0s
+ => => sha256:fab58a7ef52ea73a8c91e19d80e590a03596ba016e530a9d2aad928995811633 1.71kB / 1.71kB                                                                           0.0s
+ => => sha256:688513194d7a0f0d77e4a3692748d21c4ccd1af6a5ff9012f18f053ed9573c13 104.24kB / 104.24kB                                                                       1.0s
+ => => sha256:ad04bf079b9ed668d38fe2138cfe575847795985097b38a400f4ef1ff69a561a 2.27kB / 2.27kB                                                                           0.0s
+ => => sha256:bfb59b82a9b65e47d485e53b3e815bca3b3e21a095bd0cb88ced9ac0b48062bf 13.36kB / 13.36kB                                                                         1.0s
+ => => sha256:efa9d1d5d3a286c60a7261496166fdf31cec2284dafe7eef7cda89eba2f675d6 541.99kB / 541.99kB                                                                       1.2s
+ => => extracting sha256:688513194d7a0f0d77e4a3692748d21c4ccd1af6a5ff9012f18f053ed9573c13                                                                                0.0s
+ => => sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212 188B / 188B                                                                               1.3s
+ => => extracting sha256:bfb59b82a9b65e47d485e53b3e815bca3b3e21a095bd0cb88ced9ac0b48062bf                                                                                0.0s
+ => => sha256:a62778643d563b511190663ef9a77c30d46d282facfdce4f3a7aecc03423c1f3 67B / 67B                                                                                 1.4s
+ => => extracting sha256:efa9d1d5d3a286c60a7261496166fdf31cec2284dafe7eef7cda89eba2f675d6                                                                                0.4s
+ => => sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4 123B / 123B                                                                               1.6s
+ => => sha256:5664b15f108bf9436ce3312090a767300800edbbfd4511aa1a6d64357024d5dd 168B / 168B                                                                               1.7s
+ => => sha256:0bab15eea81d0fe6ab56ebf5fba14e02c4c1775a7f7436fbddd3505add4e18fa 93B / 93B                                                                                 1.7s
+ => => sha256:4aa0ea1413d37a58615488592a0b827ea4b2e48fa5a77cf707d0e35f025e613f 385B / 385B                                                                               2.0s
+ => => sha256:da7816fa955ea24533c388143c78804c28682eef99b4ee3723b548c70148bba6 321B / 321B                                                                               2.1s
+ => => sha256:9aee425378d2c16cd44177dc54a274b312897f5860a8e78fdfda555a0d79dd71 130.50kB / 130.50kB                                                                       2.7s
+ => => extracting sha256:a62778643d563b511190663ef9a77c30d46d282facfdce4f3a7aecc03423c1f3                                                                                0.0s
+ => => extracting sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212                                                                                0.0s
+ => => extracting sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4                                                                                0.0s
+ => => sha256:701c983262e9aa33e628c7928b9351c0c69c5e2c6b37051d2e03ad6027c5bff6 5.84MB / 5.84MB                                                                           3.7s
+ => => sha256:221438ca359c95b5f7ecb07541b094ae1e5ce63442a404e8a38b6d84b6a7bcb4 2.83MB / 2.83MB                                                                           3.6s
+ => => extracting sha256:5664b15f108bf9436ce3312090a767300800edbbfd4511aa1a6d64357024d5dd                                                                                0.0s
+ => => extracting sha256:0bab15eea81d0fe6ab56ebf5fba14e02c4c1775a7f7436fbddd3505add4e18fa                                                                                0.0s
+ => => extracting sha256:4aa0ea1413d37a58615488592a0b827ea4b2e48fa5a77cf707d0e35f025e613f                                                                                0.0s
+ => => extracting sha256:da7816fa955ea24533c388143c78804c28682eef99b4ee3723b548c70148bba6                                                                                0.0s
+ => => extracting sha256:9aee425378d2c16cd44177dc54a274b312897f5860a8e78fdfda555a0d79dd71                                                                                0.0s
+ => => extracting sha256:701c983262e9aa33e628c7928b9351c0c69c5e2c6b37051d2e03ad6027c5bff6                                                                                0.4s
+ => => extracting sha256:221438ca359c95b5f7ecb07541b094ae1e5ce63442a404e8a38b6d84b6a7bcb4                                                                                0.1s
+ => [internal] load build context                                                                                                                                        0.0s
+ => => transferring context: 6.21kB                                                                                                                                      0.0s
+ => [builder 2/4] WORKDIR /build                                                                                                                                         0.0s
+ => [builder 3/4] COPY . .                                                                                                                                               0.0s
+ => [builder 4/4] RUN CGO_ENABLED=0 go build -o ./go-lang-app                                                                                                           17.8s
+ => [stage-1 2/3] WORKDIR /app                                                                                                                                           0.0s
+ => [stage-1 3/3] COPY --from=builder /build/go-lang-app ./go-lang-app                                                                                                   0.1s
+ => exporting to image                                                                                                                                                   0.8s
+ => => exporting layers                                                                                                                                                  0.8s
+ => => writing image sha256:b1bab61ef405ab9c5a1aef700df721bc44bad7ff746869dad8d61bf0dc11b618                                                                             0.0s
+ => => naming to docker.io/library/go-app:v1
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+go-app       v1        b1bab61ef405   45 seconds ago   27.7MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker tag go-app:v1 owahed1/demo-app:go-app-v1
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY         TAG         IMAGE ID       CREATED         SIZE
+go-app             v1          b1bab61ef405   2 minutes ago   27.7MB
+owahed1/demo-app   go-app-v1   b1bab61ef405   2 minutes ago   27.7MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi go-app:v1
+Untagged: go-app:v1
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY         TAG         IMAGE ID       CREATED         SIZE
+owahed1/demo-app   go-app-v1   b1bab61ef405   2 minutes ago   27.7MB
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker login -u owahed1
+Password: 
+WARNING! Your password will be stored unencrypted in /home/codespace/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker push owahed1/demo-app:go-app-v1
+The push refers to repository [docker.io/owahed1/demo-app]
+f1ccbba4d77a: Preparing 
+fe57a433df52: Preparing 
+378aeea05457: Preparing 
+58dd21421eb6: Preparing 
+b336e209998f: Preparing 
+f4aee9e53c42: Waiting 
+1a73b54f556b: Waiting 
+2a92d6ac9e4f: Waiting 
+bbb6cacb8c82: Waiting 
+6f1cdceb6a31: Waiting 
+af5aa97ebe6c: Waiting 
+4d049f83d9cf: Waiting 
+a80545a98dcd: Waiting 
+8fa10c0194df: Waiting 
+f920c5680b0b: Waiting 
+unauthorized: access token has insufficient scopes
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker login -u owahed1
+Password: 
+WARNING! Your password will be stored unencrypted in /home/codespace/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker push owahed1/demo-app:go-app-v1
+The push refers to repository [docker.io/owahed1/demo-app]
+f1ccbba4d77a: Pushed 
+fe57a433df52: Pushed 
+378aeea05457: Pushed 
+58dd21421eb6: Pushed 
+b336e209998f: Pushed 
+f4aee9e53c42: Pushed 
+1a73b54f556b: Pushed 
+2a92d6ac9e4f: Pushed 
+bbb6cacb8c82: Pushed 
+6f1cdceb6a31: Pushed 
+af5aa97ebe6c: Pushed 
+4d049f83d9cf: Pushed 
+a80545a98dcd: Pushed 
+8fa10c0194df: Pushed 
+f920c5680b0b: Pushed 
+go-app-v1: digest: sha256:f1ded8d2f427478c0f78ffd3219c49aeaa6ae91feab3c331e4705d87bbc80344 size: 3441
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY         TAG         IMAGE ID       CREATED          SIZE
+owahed1/demo-app   go-app-v1   b1bab61ef405   10 minutes ago   27.7MB
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker rmi b1bab61ef405
+Untagged: owahed1/demo-app:go-app-v1
+Untagged: owahed1/demo-app@sha256:f1ded8d2f427478c0f78ffd3219c49aeaa6ae91feab3c331e4705d87bbc80344
+Deleted: sha256:b1bab61ef405ab9c5a1aef700df721bc44bad7ff746869dad8d61bf0dc11b618
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker pull owahed1/demo-app:go-app-v1
+go-app-v1: Pulling from owahed1/demo-app
+38f4a9ccb8d6: Already exists 
+2e4cf50eeb92: Already exists 
+d44d440ac96b: Already exists 
+0f8b424aa0b9: Already exists 
+d557676654e5: Already exists 
+d82bc7a76a83: Already exists 
+d858cbc252ad: Already exists 
+1069fc2daed1: Already exists 
+b40161cd83fc: Already exists 
+3f4e2c586348: Already exists 
+80a8c047508a: Already exists 
+68096f3f5ab9: Already exists 
+04155d74e8b4: Already exists 
+4037b355c923: Already exists 
+7ab8644db086: Already exists 
+Digest: sha256:f1ded8d2f427478c0f78ffd3219c49aeaa6ae91feab3c331e4705d87bbc80344
+Status: Downloaded newer image for owahed1/demo-app:go-app-v1
+docker.io/owahed1/demo-app:go-app-v1
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker run -d -p 8000:8000 owahed1/demo-app:go-app-v1
+ed8e8ee93c6047a63b6b6152d7aa91ed1af67c17228a1e4ba341971860988b51
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE                        COMMAND           CREATED              STATUS              PORTS                                       NAMES
+ed8e8ee93c60   owahed1/demo-app:go-app-v1   "./go-lang-app"   About a minute ago   Up About a minute   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   zealous_cohen
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ 
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec ed8e8ee93c60 pwd
+OCI runtime exec failed: exec failed: unable to start container process: exec: "pwd": executable file not found in $PATH: unknown
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it ed8e8ee93c60 pwd
+OCI runtime exec failed: exec failed: unable to start container process: exec: "pwd": executable file not found in $PATH: unknown
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it ed8e8ee93c60 ls -la
+OCI runtime exec failed: exec failed: unable to start container process: exec: "ls": executable file not found in $PATH: unknown
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker exec -it ed8e8ee93c60 /bash
+OCI runtime exec failed: exec failed: unable to start container process: exec: "/bash": stat /bash: no such file or directory: unknown
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker inspect ed8e8ee93c60 | vim -
+Vim: Reading from stdin...
+
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ docker logs ed8e8ee93c60
+Mir's server is now running
+@mir-owahed ➜ /workspaces/go-lang-app (main) $ 
 ```
 
 
