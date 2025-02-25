@@ -42,7 +42,39 @@
    39  docker exec -it ed8e8ee93c60 /bash
    40  docker inspect ed8e8ee93c60 | vim -
    41  docker logs ed8e8ee93c60
-   42  history 
+   42  history
+................................................
+@mir-owahed ➜ /workspaces/codespaces-blank $ history
+    1  history
+    2  ls
+    3  docker ps -a
+    4  docker system prune -a
+    5  docker ps -a
+    6  history
+    7  docker images
+    8  docker pull alpine
+    9  docker images
+   10  docker ps
+   11  docker run -d -t --name server alpine
+   12  docker ps
+   13  docker exec -it d108148f4e56 ls -la
+   14  docker exec -it sh
+   15  docker exec -it d108148f4e56 sh
+   16  history
+   17  docker ps -a
+   18  docker exec -it d108148f4e56 /bin/bash
+   19  docker exec -it d108148f4e56 /bin/sh
+   20  docker ps -a
+   21  docker ps
+   22  docker stop d108148f4e56
+   23  docker ps
+   24  docker ps -a
+   25  docker rm d108148f4e56
+   26  docker ps -a
+   27  docker images
+   28  docker rmi aded1e1a5b37
+   29  hisory
+   30  history
 ```
 ```
 @mir-owahed ➜ ~ $ docker ps -a
@@ -533,6 +565,159 @@ drwxrwxrwx    9 root     root          4096 Feb 20 09:30 .git
 -rwxr-xr-x    1 root     root       7002878 Feb 20 09:31 go-lang-app
 -rw-rw-rw-    1 root     root            52 Feb 20 06:09 go.mod
 -rw-rw-rw-    1 root     root           623 Feb 20 06:09 hello.go
+
+................................
+@mir-owahed ➜ /workspaces/codespaces-blank $ ls
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND       CREATED        STATUS                        PORTS     NAMES
+8601d5e3ead2   rockylinux:9.3.20231119-minimal   "/bin/bash"   2 hours ago    Exited (255) 34 seconds ago             rocky
+2137842fe1da   rockylinux:9.3.20231119-minimal   "/bin/bash"   2 hours ago    Exited (0) 2 hours ago                  amazing_liskov
+97fd4a300aee   centos                            "/bin/bash"   2 hours ago    Exited (255) 34 seconds ago             server
+eed20b0e59bb   centos:latest                     "/bin/bash"   2 hours ago    Exited (0) 2 hours ago                  great_wozniak
+9c4b120859de   hello-world:latest                "/hello"      15 hours ago   Exited (0) 15 hours ago                 musing_heisenberg
+19063bd37478   hello-world:latest                "/hello"      15 hours ago   Exited (0) 15 hours ago                 optimistic_knuth
+bd9bed75a951   hello-world                       "/sh"         15 hours ago   Created                                 boring_shtern
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker system prune -a
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker pull alpine
+Using default tag: latest
+latest: Pulling from library/alpine
+f18232174bc9: Pull complete 
+Digest: sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+alpine       latest    aded1e1a5b37   11 days ago   7.83MB
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker run -d -t --name server alpine
+d108148f4e56afb3fec2be02352c0332fbe1b75923010fa436aceeb4a3ed3d00
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+d108148f4e56   alpine    "/bin/sh"   6 seconds ago   Up 5 seconds             server
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 ls -la
+total 64
+drwxr-xr-x    1 root     root          4096 Feb 25 08:53 .
+drwxr-xr-x    1 root     root          4096 Feb 25 08:53 ..
+-rwxr-xr-x    1 root     root             0 Feb 25 08:53 .dockerenv
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 bin
+drwxr-xr-x    5 root     root           360 Feb 25 08:53 dev
+drwxr-xr-x    1 root     root          4096 Feb 25 08:53 etc
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 home
+drwxr-xr-x    6 root     root          4096 Feb 13 23:04 lib
+drwxr-xr-x    5 root     root          4096 Feb 13 23:04 media
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 mnt
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 opt
+dr-xr-xr-x  231 root     root             0 Feb 25 08:53 proc
+drwx------    2 root     root          4096 Feb 13 23:04 root
+drwxr-xr-x    3 root     root          4096 Feb 13 23:04 run
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 sbin
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 srv
+dr-xr-xr-x   12 root     root             0 Feb 25 08:53 sys
+drwxrwxrwt    2 root     root          4096 Feb 13 23:04 tmp
+drwxr-xr-x    7 root     root          4096 Feb 13 23:04 usr
+drwxr-xr-x   11 root     root          4096 Feb 13 23:04 var
+
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 sh
+/ # ls
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+/ # mkdir test
+/ # ls
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    test   tmp    usr    var
+/ # pwd
+/
+/ # whoami
+root
+/ # yum update
+sh: yum: not found
+/ # dnf update
+sh: dnf: not found
+/ # ls -la
+total 68
+drwxr-xr-x    1 root     root          4096 Feb 25 08:56 .
+drwxr-xr-x    1 root     root          4096 Feb 25 08:56 ..
+-rwxr-xr-x    1 root     root             0 Feb 25 08:53 .dockerenv
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 bin
+drwxr-xr-x    5 root     root           360 Feb 25 08:53 dev
+drwxr-xr-x    1 root     root          4096 Feb 25 08:53 etc
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 home
+drwxr-xr-x    6 root     root          4096 Feb 13 23:04 lib
+drwxr-xr-x    5 root     root          4096 Feb 13 23:04 media
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 mnt
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 opt
+dr-xr-xr-x  224 root     root             0 Feb 25 08:53 proc
+drwx------    1 root     root          4096 Feb 25 08:55 root
+drwxr-xr-x    3 root     root          4096 Feb 13 23:04 run
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 sbin
+drwxr-xr-x    2 root     root          4096 Feb 13 23:04 srv
+dr-xr-xr-x   12 root     root             0 Feb 25 08:53 sys
+drwxr-xr-x    2 root     root          4096 Feb 25 08:56 test
+drwxrwxrwt    2 root     root          4096 Feb 13 23:04 tmp
+drwxr-xr-x    7 root     root          4096 Feb 13 23:04 usr
+drwxr-xr-x   11 root     root          4096 Feb 13 23:04 var
+/ # cat /etc/os-release 
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.21.3
+PRETTY_NAME="Alpine Linux v3.21"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+/ # lsb_release -d
+sh: lsb_release: not found
+/ # exit
+
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+d108148f4e56   alpine    "/bin/sh"   6 minutes ago   Up 6 minutes             server
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 /b
+bin/  boot/ 
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 /b
+bin/  boot/ 
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 /bin/bas
+base32    base64    basename  bash      bashbug   
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 /bin/bash
+OCI runtime exec failed: exec failed: unable to start container process: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker exec -it d108148f4e56 /bin/sh
+/ # exit
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+d108148f4e56   alpine    "/bin/sh"   9 minutes ago   Up 9 minutes             server
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+d108148f4e56   alpine    "/bin/sh"   9 minutes ago   Up 9 minutes             server
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker stop d108148f4e56
+d108148f4e56
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS                            PORTS     NAMES
+d108148f4e56   alpine    "/bin/sh"   11 minutes ago   Exited (137) About a minute ago             server
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker rm d108148f4e56
+d108148f4e56
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+alpine       latest    aded1e1a5b37   11 days ago   7.83MB
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker rmi aded1e1a5b37
+Untagged: alpine:latest
+Untagged: alpine@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
+Deleted: sha256:aded1e1a5b3705116fa0a92ba074a5e0b0031647d9c315983ccba2ee5428ec8b
+Deleted: sha256:08000c18d16dadf9553d747a58cf44023423a9ab010aab96cf263d2216b8b350
+@mir-owahed ➜ /workspaces/codespaces-blank $
+   30  history
+@mir-owahed ➜ /workspaces/codespaces-blank $ docker system prune -a
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all images without at least one container associated to them
+  - all build cache
+
+Are you sure you want to continue? [y/N] y
+Total reclaimed space: 0B
+
 
 
 ```
