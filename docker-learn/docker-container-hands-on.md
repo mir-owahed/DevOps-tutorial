@@ -1,5 +1,63 @@
 docker-container-hands-on totorial
 ```
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ history
+    1  ls -la
+    2  pwd
+    3  docker ps
+    4  docker ps -a
+    5  docker images
+    6  docker pull rockylinux
+    7  docker pull rockylinux:9.3.20231119-minimal
+    8  docker images
+    9  docker pull ubuntu
+   10  docker images
+   11  docker run -d -t --name ubuntu-container ubuntu
+   12  docker ps
+   13  docker exec -it 569afeff5213 /bin/bash
+   14  docker images
+   15  docker run -d -t --name rocky-server rockylinux
+   16  docker run -d -t --name rocky-server rockylinux:9.3.20231119-minimal
+   17  docker ps
+   18  docker exec -it c504e4e4b678 /bin/sh
+   19  docker exec -it c504e4e4b678 ls -la
+   20  git clone https://github.com/mir-owahed/go-lang-app.git
+   21  ls
+   22  cd go-lang-app/
+   23  ls
+   24  docker build -t go-app:v1 .
+   25  docker images
+   26  docker run -d -p 8080:8000 go-app:v1
+   27  docker ps
+   28  docker images
+   29  docker ps
+   30  docker exec -it 4cc565a675dc /app
+   31  docker exec -it 4cc565a675dc ls -la
+   32  nano Dockerfile 
+   33  docker exec -it 4cc565a675dc /src
+   34  docker exec -it 4cc565a675dc /bin/bash
+   35  docker exec -it 4cc565a675dc /sh
+   36  docker exec -it 4cc565a675dc /bin/sh
+   37  clear
+   38  docker ps
+   39  docker inspect 4cc565a675dc | vim -
+   40  docker logs 4cc565a675dc
+   41  docker logs -f 4cc565a675dc
+   42  docker ps -a
+   43  docker ps
+   44  docker stop 569afeff5213
+   45  docker rm 569afeff5213
+   46  docker images
+   47  docker rmi a04dc4851cbc
+   48  docker system prune -a
+   49  docker images
+   50  docker ps
+   51  docker stop c504e4e4b678 4cc565a675dc
+   52  docker system prune -a
+   53  docker images
+   54  docker ps -a
+   55  history
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ 
+.........................
 @mir-owahed ➜ /workspaces/codespaces-blank $ ls -la
 total 8
 drwxrwxrwx+ 2 codespace root 4096 Feb 25 16:40 .
@@ -220,5 +278,89 @@ CONTAINER ID   IMAGE                             COMMAND           CREATED      
 4cc565a675dc   go-app:v1                         "./go-lang-app"   5 seconds ago    Up 4 seconds    0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   blissful_jones
 c504e4e4b678   rockylinux:9.3.20231119-minimal   "/bin/bash"       17 minutes ago   Up 17 minutes                                                 rocky-server
 569afeff5213   ubuntu                            "/bin/bash"       29 minutes ago   Up 29 minutes                                                 ubuntu-container
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $
+
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker exec -it 4cc565a675dc /app
+OCI runtime exec failed: exec failed: unable to start container process: exec: "/app": stat /app: no such file or directory: unknown
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker exec -it 4cc565a675dc ls -la
+total 6892
+drwxr-xr-x    1 root     root          4096 Feb 26 10:24 .
+drwxr-xr-x    1 root     root          4096 Feb 26 10:27 ..
+drwxrwxrwx    8 root     root          4096 Feb 26 10:22 .git
+-rw-rw-rw-    1 root     root            11 Feb 26 10:22 .gitignore
+-rw-rw-rw-    1 root     root           126 Feb 26 10:22 Dockerfile
+-rw-rw-rw-    1 root     root           399 Feb 26 10:22 README.md
+-rw-rw-rw-    1 root     root          2271 Feb 26 10:22 command.txt
+-rw-rw-rw-    1 root     root         11853 Feb 26 10:22 commands.txt
+-rw-rw-rw-    1 root     root           246 Feb 26 10:22 dockerfile.multi
+-rwxr-xr-x    1 root     root       7002878 Feb 26 10:24 go-lang-app
+-rw-rw-rw-    1 root     root            52 Feb 26 10:22 go.mod
+-rw-rw-rw-    1 root     root           623 Feb 26 10:22 hello.go
+
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker exec -it 4cc565a675dc /bin/sh
+/src # ls -la
+total 6892
+drwxr-xr-x    1 root     root          4096 Feb 26 10:24 .
+drwxr-xr-x    1 root     root          4096 Feb 26 10:27 ..
+drwxrwxrwx    8 root     root          4096 Feb 26 10:22 .git
+-rw-rw-rw-    1 root     root            11 Feb 26 10:22 .gitignore
+-rw-rw-rw-    1 root     root           126 Feb 26 10:22 Dockerfile
+-rw-rw-rw-    1 root     root           399 Feb 26 10:22 README.md
+-rw-rw-rw-    1 root     root          2271 Feb 26 10:22 command.txt
+-rw-rw-rw-    1 root     root         11853 Feb 26 10:22 commands.txt
+-rw-rw-rw-    1 root     root           246 Feb 26 10:22 dockerfile.multi
+-rwxr-xr-x    1 root     root       7002878 Feb 26 10:24 go-lang-app
+-rw-rw-rw-    1 root     root            52 Feb 26 10:22 go.mod
+-rw-rw-rw-    1 root     root           623 Feb 26 10:22 hello.go
+/src # exit
+
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE                             COMMAND           CREATED          STATUS          PORTS                                         NAMES
+4cc565a675dc   go-app:v1                         "./go-lang-app"   28 minutes ago   Up 28 minutes   0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   blissful_jones
+c504e4e4b678   rockylinux:9.3.20231119-minimal   "/bin/bash"       45 minutes ago   Up 45 minutes                                                 rocky-server
+569afeff5213   ubuntu                            "/bin/bash"       57 minutes ago   Up 57 minutes                                                 ubuntu-container
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker inspect 4cc565a675dc | vim -
+Vim: Reading from stdin...
+
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker logs 4cc565a675dc
+Mir's server is now running
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker logs -f 4cc565a675dc
+Mir's server is now running
+/ping endpoint was invoked
+/hello endpoint was invoked
+^Ccontext canceled
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ curl localhost:8080
+404 page not found
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ curl localhost:8080/ping
+PONG@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ curl localhost:8080/pong
+404 page not found
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ curl localhost:8080/hello
+HELLO WORLD!!@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $
+
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND           CREATED             STATUS             PORTS                                         NAMES
+4cc565a675dc   go-app:v1                         "./go-lang-app"   36 minutes ago      Up 36 minutes      0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   blissful_jones
+c504e4e4b678   rockylinux:9.3.20231119-minimal   "/bin/bash"       53 minutes ago      Up 53 minutes                                                    rocky-server
+569afeff5213   ubuntu                            "/bin/bash"       About an hour ago   Up About an hour                                                 ubuntu-container
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker ps
+CONTAINER ID   IMAGE                             COMMAND           CREATED             STATUS             PORTS                                         NAMES
+4cc565a675dc   go-app:v1                         "./go-lang-app"   36 minutes ago      Up 36 minutes      0.0.0.0:8080->8000/tcp, [::]:8080->8000/tcp   blissful_jones
+c504e4e4b678   rockylinux:9.3.20231119-minimal   "/bin/bash"       53 minutes ago      Up 53 minutes                                                    rocky-server
+569afeff5213   ubuntu                            "/bin/bash"       About an hour ago   Up About an hour                                                 ubuntu-container
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker stop 569afeff5213
+569afeff5213
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker rm 569afeff5213
+569afeff5213
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker images
+REPOSITORY   TAG                    IMAGE ID       CREATED          SIZE
+go-app       v1                     2f6db502a926   40 minutes ago   304MB
+ubuntu       latest                 a04dc4851cbc   4 weeks ago      78.1MB
+rockylinux   9.3.20231119-minimal   dfaa211c6b30   15 months ago    118MB
+@mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ docker rmi a04dc4851cbc
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:72297848456d5d37d1262630108ab308d3e9ec7ed1c3286a32fe09856619a782
+Deleted: sha256:a04dc4851cbcbb42b54d1f52a41f5f9eca6a5fd03748c3f6eb2cbeb238ca99bd
+Deleted: sha256:4b7c01ed0534d4f9be9cf97d068da1598c6c20b26cb6134fad066defdb6d541d
 @mir-owahed ➜ /workspaces/codespaces-blank/go-lang-app (main) $ 
 ```
