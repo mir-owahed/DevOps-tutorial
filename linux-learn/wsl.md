@@ -1,5 +1,15 @@
 # how to install Linux on windows WSL2
 ```
+Prerequisite:
+Windows 10 or Windows 11
+Restart pc and at the time of booting press Delete Key
+Enable Virtualization.
+
+click search bar > winver
+
+Search cmd and right click and open with administrator
+execute the following command
+
 wsl --install
 wsl -d ubuntu
 wsl --list --online
