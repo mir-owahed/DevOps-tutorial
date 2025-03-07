@@ -11,6 +11,7 @@ Search cmd and right click and open with administrator
 execute the following command
 
 wsl --install
+[Reboot and put username and password]
 wsl -d ubuntu
 wsl --list --online
 wsl --install <distroname>
