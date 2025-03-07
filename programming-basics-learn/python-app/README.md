@@ -21,4 +21,17 @@ ubuntu@ip-10-0-0-122:/python-app$
    42  pip3 install flask
    43  sudo pip3 install flask
 ```
+```
+91  python3 app.py
+   92  pip install flsk
+   93  pip install flask
+   94  python3 app.py
+   95  pip install pillow
+   96  python3 app.py
+   97  pip install rembg
+   98  python3 app.py
+   99  pip install onnxruntime
+  100  python3 app.py
+  101  /bin/python3 /home/mir/.vscode/extensions/ms-python.python-2025.2.0-linux-x64/python_files/printEnvVariablesToFile.py /home/mir/.vscode/extensions/ms-python.python-2025.2.0-linux-x64/python_files/deactivate/bash/envVars.txt
+```
 
