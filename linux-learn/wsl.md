@@ -12,6 +12,8 @@ execute the following command
 
 wsl --install
 [Reboot and put username and password]
+sudo apt update
+...........................................
 wsl -d ubuntu
 wsl --list --online
 wsl --install <distroname>
