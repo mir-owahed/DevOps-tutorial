@@ -32,6 +32,17 @@ go build hello.go
 ./hello (to run the executable)
 go build -o application hello.go
 ```
+# How to Build and Run go lang app
+Clone the following Repo:
+Reference: 
+1. <https://github.com/mir-owahed/go-lang-app.git>
+2. <https://github.com/mir-owahed/ultimate-devops-project-demo.git>
+3. <https://github.com/mir-owahed/go-web-app.git>
+4. <https://github.com/open-telemetry/opentelemetry-demo.git>
+
+
+
+
 ### Dockerfile
 ```
 FROM golang:1.22-alpine
