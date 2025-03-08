@@ -22,3 +22,5 @@ ENV PRODUCT_CATALOG_PORT 8080
 
 ENTRYPOINT ["./product-catalog"]
 ```
+GitHub app repo:
+1. <https://github.com/open-telemetry/opentelemetry-demo>
