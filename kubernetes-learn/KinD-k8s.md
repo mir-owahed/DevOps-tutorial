@@ -22,3 +22,4 @@ You can create a multi node cluster with the following config:
 
 Reference:
 1. <https://kind.sigs.k8s.io/>
+2. <https://kind.sigs.k8s.io/docs/user/quick-start/#installation>
