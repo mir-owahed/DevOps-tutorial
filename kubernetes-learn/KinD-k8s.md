@@ -136,6 +136,17 @@ localhost:8989
   116  kind delete cluster
 
   117  kind get clusters
+87  kind get clusters
+
+   88  kind delete cluster --name single-node-k8s
+
+   89  kind get clusters
+
+   90  docker ps
+
+   91  docker ps -a
+
+
 
   118  history
 
