@@ -14,6 +14,7 @@ Expose the application: kubectl port-forward
 kubectl create deployment nginx --image nginx
 kubectl get pods -w
 kubectl port-forward pod/  8989:80
+kubectl port-forward pod/  9000:80 -n argocd --address 0.0.0.0
 access from browser
 localhost:8989
 ```
