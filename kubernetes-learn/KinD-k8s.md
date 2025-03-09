@@ -13,8 +13,9 @@ docker ps | grep -i 9-node-k8s
 Expose the application: kubectl port-forward
 kubectl create deployment nginx --image nginx
 kubectl get pods -w
-kubectl port-forward pod/  8989:80
-kubectl port-forward pod/  9000:80 -n argocd --address 0.0.0.0
+kubectl port-forward pod/pod-name  8989:80
+kubectl port-forward svc/argocd-server  9000:80 -n argocd [local pc]
+kubectl port-forward svc/argocd-server  9000:80 -n argocd --address 0.0.0.0 [cloud VM]
 access from browser
 localhost:8989
 ```
