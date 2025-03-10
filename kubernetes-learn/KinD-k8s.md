@@ -1,4 +1,6 @@
-#KinD
+# Kubernetes in Docker
+Prerequisite: install docker
+install kind
 ```
 kind version
 kind create cluster --name single-node-k8s
