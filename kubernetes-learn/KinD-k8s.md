@@ -15,6 +15,8 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
+KinD commands
+```
 kind version
 kind create cluster --name single-node-k8s
 kind get clusters
