@@ -20,7 +20,7 @@ Install go using cli on ubuntu
 ```
 wget https://go.dev/dl/go1.24.1.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz
 sudo nano .bashrc
 add the below line
 export PATH=$PATH:/usr/local/go/bin
