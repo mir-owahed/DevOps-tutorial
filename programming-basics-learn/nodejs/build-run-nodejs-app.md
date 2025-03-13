@@ -11,7 +11,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/devsecops-demo.git
+   git clone https://github.com/mir-owahed/devsecops-demo.git
    cd devsecops-demo
    ```
 
