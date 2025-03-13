@@ -170,6 +170,56 @@ localhost:8989
 mir@ubuntu22-vm-vbox:~/Documents$ 
 
 ```
+```
+ 144  docker ps
+  145  vim install_docker.sh
+  146  ls
+  147  sudo chmod +x install_docker.sh
+  148  ls
+  149  ./install_docker.sh
+  150  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  151  ls
+  152  docker version
+  153  sudo usermod -aG $USER
+  154  sudo usermod -aG docker $USER
+  155  docker version
+  156  docker ps
+  157  pwd
+  158  # For AMD64 / x86_64
+  159  [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+  160  # For ARM64
+  161  [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-arm64
+  162  chmod +x ./kind
+  163  sudo mv ./kind /usr/local/bin/kind
+  164  ls
+  165  kind version
+  166  kind create cluster 1-node-k8s
+  167  kind create cluster --name 1-node-k8s
+  168  kind get cluster
+  169  kind get clusters
+  170  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  171  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  172  kubectl version --client
+  173  kubectl config current-context
+  174  mkdir k8s
+  175  cd k8s/
+  176  code .
+  177  docker ps
+  178  kubectl gets pods
+  179  kubectl get pods
+  180  nano multinode-cluster.yaml
+  181  kind create cluster --name 9-node-k8s --config=multinode-cluster.yaml
+  182  kubectl config current-context
+  183  kubectl get clusters
+  184  kubectl get cluster
+  185  kind get clusters
+  186  kind delete cluster
+  187  kind get clusters
+   189  kind delete cluster --name 1-node-k8s
+  190  kind delete cluster --name 9-node-k8s
+  191  history
+mir@DESKTOP-JASRD4A:~/k8s$
+```
 You can create a multi node cluster with the following config:
 
 Reference:
