@@ -16,7 +16,7 @@ Create python virtual environment
    source env/bin/activate
    deactivate
 ```
-
+```
 ubuntu@ip-10-0-0-122:/python-app$ 
    34  mkdir python-app
    35  sudo mkdir python-app
