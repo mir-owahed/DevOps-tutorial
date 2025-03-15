@@ -36,6 +36,14 @@ kubectl port-forward svc/argocd-server  9000:80 -n argocd --address 0.0.0.0 [clo
 access from browser
 localhost:8989
 ```
+Run `kubectl get pods` to verify the Pods are ready and running.
+
+Run `kubectl port-forward deployment/frontend 8080:8080` to forward a port to the frontend service.
+
+Navigate to `localhost:8080` to access the web frontend.
+
+
+
 ## Minikube - Local Cluster 
 
 Launch a local Kubernetes cluster with one of the following tools:
