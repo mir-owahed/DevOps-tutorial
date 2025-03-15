@@ -9,6 +9,13 @@ pip3 install -r requirements.txt
 
 python3 app.py
 
+Create python virtual environment
+```
+   python3 -m venv env
+   source env/bin/activate
+   deactivate
+```
+
 ubuntu@ip-10-0-0-122:/python-app$ 
    34  mkdir python-app
    35  sudo mkdir python-app
