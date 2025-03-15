@@ -36,9 +36,9 @@ kubectl port-forward svc/argocd-server  9000:80 -n argocd --address 0.0.0.0 [clo
 access from browser
 localhost:8989
 ```
-## Option 2 - Local Cluster 
+## Minikube - Local Cluster 
 
-1. Launch a local Kubernetes cluster with one of the following tools:
+Launch a local Kubernetes cluster with one of the following tools:
 
     - To launch **Minikube** (tested with Ubuntu Linux). Please, ensure that the
        local Kubernetes cluster has at least:
