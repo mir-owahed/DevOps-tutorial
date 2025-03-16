@@ -1,5 +1,8 @@
 # Kubernetes in Docker
 Prerequisite: install docker
+```
+https://github.com/mir-owahed/DevOps-tutorial/blob/Main/docker-learn/docker-installation-sh.md
+```
 install kind
 ```
 # For AMD64 / x86_64
