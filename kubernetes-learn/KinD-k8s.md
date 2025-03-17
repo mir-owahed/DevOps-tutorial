@@ -46,7 +46,17 @@ Run `kubectl port-forward deployment/frontend 8080:8080` to forward a port to th
 
 Navigate to `localhost:8080` to access the web frontend.
 
+You can create a multi node cluster with the following config:
+```
+# three node (two workers) cluster config
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
 
+```
 
 ## Minikube - Local Cluster 
 
@@ -67,6 +77,44 @@ https://github.com/GoogleCloudPlatform/microservices-demo.git
 ```
 
 ## KinD commands history
+```
+mir@DESKTOP-JASRD4A:~$ kind create cluster --config kind-multi-cluster-info.yaml --name 3-node-kind-cluster
+Creating cluster "3-node-kind-cluster" ...
+ ✓ Ensuring node image (kindest/node:v1.32.2) 🖼
+ ✓ Preparing nodes 📦 📦 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+ ✓ Joining worker nodes 🚜
+Set kubectl context to "kind-3-node-kind-cluster"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-3-node-kind-cluster
+
+Thanks for using kind! 😊
+mir@DESKTOP-JASRD4A:~$ kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:39995
+CoreDNS is running at https://127.0.0.1:39995/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+mir@DESKTOP-JASRD4A:~$ kind get clusters
+3-node-kind-cluster
+mir@DESKTOP-JASRD4A:~$ kubectl config current-context
+kind-3-node-kind-cluster
+mir@DESKTOP-JASRD4A:~$ kind get nodes
+No kind nodes found for cluster "kind".
+mir@DESKTOP-JASRD4A:~$ kubectl get nodes
+NAME                                STATUS   ROLES           AGE   VERSION
+3-node-kind-cluster-control-plane   Ready    control-plane   18m   v1.32.2
+3-node-kind-cluster-worker          Ready    <none>          18m   v1.32.2
+3-node-kind-cluster-worker2         Ready    <none>          18m   v1.32.2
+mir@DESKTOP-JASRD4A:~$
+
+
+```
+
+
 ```
 60  docker version
 
