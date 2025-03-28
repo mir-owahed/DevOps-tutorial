@@ -25,6 +25,8 @@ kind version
 kind create cluster --name single-node-k8s
 kind get clusters
 kubectl config current-context
+kubectl config view
+kubectl config use-context kind-single-node-cluster
 kubectl create deployment nginx --image nginx
 kubectl get pods -w
 vim multi-node-k8s-cluster.yaml
