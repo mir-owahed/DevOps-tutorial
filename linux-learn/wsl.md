@@ -22,7 +22,7 @@ wsl --list --verbose
 wsl --shutdown
 wsl --terminate <distroname>
 wsl --list --verbose
-wsl --status
+wsl --update
 wsl --unregister <distroname>
 ...............
 cd /mnt/d
