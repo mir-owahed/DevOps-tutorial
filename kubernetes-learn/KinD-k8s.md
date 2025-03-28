@@ -71,6 +71,10 @@ Launch a local Kubernetes cluster with one of the following tools:
       ```shell
       minikube start --cpus=4 --memory 4096 --disk-size 32g
       ```
+      ```shell
+      minikube start --nodes 3 -p prod
+      ```
+
 Demo app
 ```
 https://github.com/GoogleCloudPlatform/microservices-demo.git
