@@ -27,6 +27,9 @@ kind get clusters
 kubectl config current-context
 kubectl config view
 kubectl config use-context kind-single-node-cluster
+kubectl get nodes
+kubectl get sa
+kubectl get sa -n kube-system
 kubectl create deployment nginx --image nginx
 kubectl get pods -w
 vim multi-node-k8s-cluster.yaml
