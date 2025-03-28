@@ -299,6 +299,19 @@ mir@ubuntu22-vm-vbox:~/Documents$
 mir@DESKTOP-JASRD4A:~/k8s$
 ```
 You can create a multi node cluster with the following config:
+```
+kind create cluster --config kind-example-config.yaml
+```
+nano kind-example-config.yaml
+```
+# three node (two workers) cluster config
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
+```
 
 Reference:
 1. <https://kind.sigs.k8s.io/>
