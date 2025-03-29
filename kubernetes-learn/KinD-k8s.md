@@ -218,6 +218,56 @@ users:
     client-certificate-data: DATA+OMITTED
     client-key-data: DATA+OMITTED
 
+mir@LAPTOP-VEPS2P4F:~$ kubectl config use-context kind-kind-3-node-cluster
+Switched to context "kind-kind-3-node-cluster".
+mir@LAPTOP-VEPS2P4F:~$ vim k8s-deployment-service.yaml
+mir@LAPTOP-VEPS2P4F:~$ vim k8s-deployment-service.yaml
+mir@LAPTOP-VEPS2P4F:~$ kubectl apply -f k8s-deployment-service.yaml
+deployment.apps/goapp-deployment created
+service/goapp-service created
+mir@LAPTOP-VEPS2P4F:~$ kubectl get pods -w
+NAME                                READY   STATUS              RESTARTS   AGE
+goapp-deployment-67776fc699-bhrpm   0/1     ContainerCreating   0          9s
+goapp-deployment-67776fc699-s9r4r   0/1     ContainerCreating   0          9s
+goapp-deployment-67776fc699-bhrpm   1/1     Running             0          27s
+goapp-deployment-67776fc699-s9r4r   1/1     Running             0          28s
+^Cmir@LAPTOP-VEPS2P4F:~$ kubectl get all
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/goapp-deployment-67776fc699-bhrpm   1/1     Running   0          3m20s
+pod/goapp-deployment-67776fc699-s9r4r   1/1     Running   0          3m20s
+
+NAME                    TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+service/goapp-service   LoadBalancer   10.96.50.29   <pending>     80:31930/TCP   3m20s
+service/kubernetes      ClusterIP      10.96.0.1     <none>        443/TCP        33m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/goapp-deployment   2/2     2            2           3m20s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/goapp-deployment-67776fc699   2         2         2       3m20s
+mir@LAPTOP-VEPS2P4F:~$ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+goapp-deployment   2/2     2            2           4m16s
+mir@LAPTOP-VEPS2P4F:~$ kubectl get svc
+NAME            TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+goapp-service   LoadBalancer   10.96.50.29   <pending>     80:31930/TCP   4m49s
+kubernetes      ClusterIP      10.96.0.1     <none>        443/TCP        34m
+mir@LAPTOP-VEPS2P4F:~$ kubectl get nodes
+NAME                                STATUS   ROLES           AGE   VERSION
+kind-3-node-cluster-control-plane   Ready    control-plane   36m   v1.32.2
+kind-3-node-cluster-worker          Ready    <none>          36m   v1.32.2
+kind-3-node-cluster-worker2         Ready    <none>          36m   v1.32.2
+mir@LAPTOP-VEPS2P4F:~$ kubectl port-forward service/goapp-service 8383:8000
+error: Service goapp-service does not have a service port 8000
+mir@LAPTOP-VEPS2P4F:~$ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+goapp-deployment-67776fc699-bhrpm   1/1     Running   0          11m
+goapp-deployment-67776fc699-s9r4r   1/1     Running   0          11m
+mir@LAPTOP-VEPS2P4F:~$ kubectl port-forward goapp-deployment-67776fc699-bhrpm 8383:8000
+Forwarding from 127.0.0.1:8383 -> 8000
+Forwarding from [::1]:8383 -> 8000
+Handling connection for 8383
+^Cmir@LAPTOP-VEPS2P4F:~$
 
 
 ```
