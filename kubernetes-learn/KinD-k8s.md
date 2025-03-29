@@ -120,6 +120,105 @@ NAME                                STATUS   ROLES           AGE   VERSION
 3-node-kind-cluster-worker2         Ready    <none>          18m   v1.32.2
 mir@DESKTOP-JASRD4A:~$
 
+mir@LAPTOP-VEPS2P4F:~$ kind get clusters
+single-node-cluster
+mir@LAPTOP-VEPS2P4F:~$ kubectl get nodes
+NAME                                STATUS   ROLES           AGE   VERSION
+single-node-cluster-control-plane   Ready    control-plane   12d   v1.32.2
+mir@LAPTOP-VEPS2P4F:~$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://127.0.0.1:43915
+  name: kind-single-node-cluster
+contexts:
+- context:
+    cluster: kind-single-node-cluster
+    user: kind-single-node-cluster
+  name: kind-single-node-cluster
+current-context: kind-single-node-cluster
+kind: Config
+preferences: {}
+users:
+- name: kind-single-node-cluster
+  user:
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
+mir@LAPTOP-VEPS2P4F:~$ kubectl config current-context
+kind-single-node-cluster
+mir@LAPTOP-VEPS2P4F:~$ ls
+go-deploy.yaml  install_docker.sh  microservices-demo  test-vm-public_key.pem
+go-lang-app     kubectl            spring-petclinic    test-vm-public_key.pem:Zone.Identifier
+mir@LAPTOP-VEPS2P4F:~$
+
+mir@LAPTOP-VEPS2P4F:~$ kubectl config current-context
+kind-single-node-cluster
+mir@LAPTOP-VEPS2P4F:~$ ls
+go-deploy.yaml  install_docker.sh  microservices-demo  test-vm-public_key.pem
+go-lang-app     kubectl            spring-petclinic    test-vm-public_key.pem:Zone.Identifier
+mir@LAPTOP-VEPS2P4F:~$ vim kind-3-node-cluster-config.yaml
+mir@LAPTOP-VEPS2P4F:~$ kind create cluster --config kind-3-node-cluster-config.yaml --name kind-3-node-cluster
+Creating cluster "kind-3-node-cluster" ...
+ ✓ Ensuring node image (kindest/node:v1.32.2) 🖼
+ ✓ Preparing nodes 📦 📦 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+ ✓ Joining worker nodes 🚜
+Set kubectl context to "kind-kind-3-node-cluster"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind-3-node-cluster
+
+Thanks for using kind! 😊
+mir@LAPTOP-VEPS2P4F:~$ kind get clusters
+kind-3-node-cluster
+single-node-cluster
+mir@LAPTOP-VEPS2P4F:~$ kubectl config current-context
+kind-kind-3-node-cluster
+mir@LAPTOP-VEPS2P4F:~$ kubectl config use-context single-node-cluster
+error: no context exists with the name: "single-node-cluster"
+mir@LAPTOP-VEPS2P4F:~$ kubectl config use-context single-node-cluster
+error: no context exists with the name: "single-node-cluster"
+mir@LAPTOP-VEPS2P4F:~$ kubectl config use-context kind-single-node-cluster
+Switched to context "kind-single-node-cluster".
+mir@LAPTOP-VEPS2P4F:~$
+mir@LAPTOP-VEPS2P4F:~$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://127.0.0.1:34779
+  name: kind-kind-3-node-cluster
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://127.0.0.1:43915
+  name: kind-single-node-cluster
+contexts:
+- context:
+    cluster: kind-kind-3-node-cluster
+    user: kind-kind-3-node-cluster
+  name: kind-kind-3-node-cluster
+- context:
+    cluster: kind-single-node-cluster
+    user: kind-single-node-cluster
+  name: kind-single-node-cluster
+current-context: kind-single-node-cluster
+kind: Config
+preferences: {}
+users:
+- name: kind-kind-3-node-cluster
+  user:
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
+- name: kind-single-node-cluster
+  user:
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
+
+
 
 ```
 
@@ -309,9 +408,9 @@ mir@DESKTOP-JASRD4A:~/k8s$
 ```
 You can create a multi node cluster with the following config:
 ```
-kind create cluster --config kind-example-config.yaml
+kind create cluster --config kind-3-node-cluster-config.yaml --name kind-3-node-cluster
 ```
-nano kind-example-config.yaml
+vim kind-3-node-cluster-config.yaml
 ```
 # three node (two workers) cluster config
 kind: Cluster
