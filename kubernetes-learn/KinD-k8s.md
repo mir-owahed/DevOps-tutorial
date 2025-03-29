@@ -268,7 +268,32 @@ Forwarding from 127.0.0.1:8383 -> 8000
 Forwarding from [::1]:8383 -> 8000
 Handling connection for 8383
 ^Cmir@LAPTOP-VEPS2P4F:~$
+mir@LAPTOP-VEPS2P4F:~$ kubectl get all
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/goapp-deployment-67776fc699-bhrpm   1/1     Running   0          38m
+pod/goapp-deployment-67776fc699-s9r4r   1/1     Running   0          38m
 
+NAME                    TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+service/goapp-service   NodePort    10.96.50.29   <none>        80:31930/TCP   38m
+service/kubernetes      ClusterIP   10.96.0.1     <none>        443/TCP        68m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/goapp-deployment   2/2     2            2           38m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/goapp-deployment-67776fc699   2         2         2       38m
+mir@LAPTOP-VEPS2P4F:~$ kubectl delete deployment goapp-deployment
+deployment.apps "goapp-deployment" deleted
+mir@LAPTOP-VEPS2P4F:~$ kubectl get all
+NAME                    TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+service/goapp-service   NodePort    10.96.50.29   <none>        80:31930/TCP   39m
+service/kubernetes      ClusterIP   10.96.0.1     <none>        443/TCP        69m
+mir@LAPTOP-VEPS2P4F:~$ kubectl delete svc goapp-service
+service "goapp-service" deleted
+mir@LAPTOP-VEPS2P4F:~$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   70m
+mir@LAPTOP-VEPS2P4F:~$
 
 ```
 
