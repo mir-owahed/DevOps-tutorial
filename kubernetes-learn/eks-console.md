@@ -89,6 +89,14 @@ Now we’ll create an IAM role for your worker nodes.
 4. Click **Create** and wait for the node group to be ready.
 
 ---
+## Step : Edit Security Group in the EKS Cluster
+
+1. In the **EKS cluster**, select Networking
+2. Click **Add Security Group**.
+3. Fill out the following details:
+   - **add 443 and bastion host sg
+  
+---
 
 ## Step 6: Configure kubectl to Access the Cluster
 
@@ -100,7 +108,7 @@ Once your cluster is running, you'll need to configure `kubectl` to interact wit
    ```
 2. Now, you can verify the configuration:
    ```bash
-   kubectl get svc
+   aws eks describe-cluster --name <cluster-name>
    ```
 
 ---
