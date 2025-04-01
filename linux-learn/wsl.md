@@ -26,6 +26,7 @@ wsl --update
 wsl --unregister <distroname>
 ...............
 cd /mnt/d
+cd /mnt/c/Users/bachc/Documents
 explorer.exe .
 ```
 ```
