@@ -12,6 +12,7 @@ python3 app.py
 
 Create python virtual environment
 ```
+apt install python3.12-venv
 python3 -m venv venv
 source venv/bin/activate
 deactivate
