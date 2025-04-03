@@ -12,9 +12,9 @@ python3 app.py
 
 Create python virtual environment
 ```
-   python3 -m venv env
-   source env/bin/activate
-   deactivate
+python3 -m venv venv
+source venv/bin/activate
+deactivate
 ```
 ```
 ubuntu@ip-10-0-0-122:/python-app$ 
