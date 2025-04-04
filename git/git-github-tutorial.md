@@ -147,6 +147,7 @@ To stay updated with remote changes, use:
 ```bash
 git fetch            # Fetch changes
 git pull --ff        # Pull with fast-forward
+git pull origin main
 ```
 
 ---
