@@ -102,11 +102,23 @@ Now we’ll create an IAM role for your worker nodes.
 
 Once your cluster is running, you'll need to configure `kubectl` to interact with it.
 ```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+
+```
+
+Once your cluster is running, you'll need to configure `aws cli` to interact with it.
+```
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 aws --version
 
+```
+aws configure
+```
+aws configure
 ```
 
 1. Open your terminal and run the following command:
