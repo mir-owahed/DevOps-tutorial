@@ -156,6 +156,7 @@ kubectl create secret docker-registry ecr-credentials \
   --docker-username=AWS \  
   --docker-password=$(aws ecr get-login-password) \  
   --docker-email=<your-email>```
+kubectl get secret
 ```
 
 ---
