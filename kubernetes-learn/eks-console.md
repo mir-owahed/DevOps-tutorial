@@ -45,6 +45,19 @@ To securely access your private Kubernetes cluster, you'll need a bastion host i
 4. Create or select an existing key pair for SSH access.
 5. Configure **Security Groups** to allow SSH access (port 22) from your IP address.
 6. Launch the instance.
+7. User data
+```
+#!/bin/bash
+apt-get update -y
+apt-get install -y unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+curl -LO "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+aws --version
+kubectl version --client
+```
 
 ---
 
@@ -95,6 +108,7 @@ Now we’ll create an IAM role for your worker nodes.
 2. Click **Add Security Group**.
 3. Fill out the following details:
    - **add 443 and bastion host sg
+   - **add 33080 and bastion host sg
   
 ---
 
@@ -123,16 +137,26 @@ aws configure
 aws configure
 ```
 
-1. Open your terminal and run the following command:
-   ```bash
-   aws eks --region <region-code> update-kubeconfig --name <cluster-name>
-   ```
 2. Now, you can verify the configuration:
    ```bash
    aws eks describe-cluster --name <cluster-name>
    kubectl get nodes
    kubectl cluster-info
    ```
+
+
+1. Open your terminal and run the following command:
+   ```bash
+   aws eks --region <region-code> update-kubeconfig --name <cluster-name>
+   ```
+      Create a Kubernetes secret command
+```
+kubectl create secret docker-registry ecr-credentials \  
+  --docker-server=<ECR-URL> \  
+  --docker-username=AWS \  
+  --docker-password=$(aws ecr get-login-password) \  
+  --docker-email=<your-email>```
+```
 
 ---
 
