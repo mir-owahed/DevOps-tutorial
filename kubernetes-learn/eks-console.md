@@ -195,4 +195,10 @@ spec:
 ## Step 8: Access the Application 
 
 ---
-
+## Delete eks cluster
+```
+delete node group first
+delete cluster
+delete NAT Gateway
+delete VPC
+```
