@@ -131,6 +131,7 @@ aws configure
    ```bash
    aws eks describe-cluster --name <cluster-name>
    kubectl get nodes
+   kubectl cluster-info
    ```
 
 ---
