@@ -101,6 +101,13 @@ Now we’ll create an IAM role for your worker nodes.
 ## Step 6: Configure kubectl to Access the Cluster
 
 Once your cluster is running, you'll need to configure `kubectl` to interact with it.
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+aws --version
+
+```
 
 1. Open your terminal and run the following command:
    ```bash
