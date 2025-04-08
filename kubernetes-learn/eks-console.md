@@ -128,6 +128,7 @@ aws configure
 2. Now, you can verify the configuration:
    ```bash
    aws eks describe-cluster --name <cluster-name>
+   kubectl get nodes
    ```
 
 ---
