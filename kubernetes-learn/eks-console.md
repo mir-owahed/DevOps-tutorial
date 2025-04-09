@@ -179,19 +179,19 @@ Now that your Kubernetes cluster is set up, you can deploy a sample application.
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: boardgame-deployment
+  name: goapp-deployment
 spec:
   selector:
     matchLabels:
-      app: boardgame
+      app: goapp
   replicas: 2 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: boardgame
+        app: goapp
     spec:
       containers:
-        - name: boardgame
+        - name: goapp
           image: owahed1/go-lang-app:0.0.2 # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
@@ -203,10 +203,10 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: boardgame-service
+  name: goapp-service
 spec:
   selector:
-    app: boardgame
+    app: goapp
   ports:
     - protocol: "TCP"
       port: 80
