@@ -58,24 +58,9 @@ install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 aws --version
 kubectl version --client
 ```
-
 ---
 
-## Step 3: Create an EKS Cluster
-
-1. Go to the **Amazon EKS Console** and click **Create Cluster**.
-2. Fill out the following details:
-   - **Cluster Name**: Give your cluster a name.
-   - **Kubernetes Version**: Choose the latest stable version.
-   - **Role**: Select an appropriate IAM role with the `AmazonEKSClusterPolicy` attached.
-   - **VPC and Subnets**: Select the VPC and **private subnets** created earlier.
-   - **Security Group**: Ensure the security group allows communication between the control plane and worker nodes.
-
-3. Click **Create** and wait for the cluster to be provisioned.
-
----
-
-## Step 4: Create an IAM Role for Worker Nodes
+## Step 3: Create an IAM Role for Worker Nodes
 
 Now we’ll create an IAM role for your worker nodes.
 
@@ -88,6 +73,21 @@ Now we’ll create an IAM role for your worker nodes.
 4. Name the role (e.g., `eks-node-role`) and create it.
 
 ---
+---
+
+## Step 4: Create an EKS Cluster
+
+1. Go to the **Amazon EKS Console** and click **Create Cluster**.
+2. Fill out the following details:
+   - **Cluster Name**: Give your cluster a name.
+   - **Kubernetes Version**: Choose the latest stable version.
+   - **Role**: Select an appropriate IAM role with the `AmazonEKSClusterPolicy` attached.
+   - **VPC and Subnets**: Select the VPC and **private subnets** created earlier.
+   - **Security Group**: Ensure the security group allows communication between the control plane and worker nodes.
+
+3. Click **Create** and wait for the cluster to be provisioned.
+
+
 
 ## Step 5: Create a Node Group in the Private Subnets
 
