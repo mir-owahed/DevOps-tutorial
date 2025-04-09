@@ -60,7 +60,14 @@ kubectl version --client
 ```
 ---
 
-## Step 3: Create an IAM Role for Worker Nodes
+## Step 3: Create an IAM Role for Control Plane and Worker Nodes
+create an IAM role for your Cluster
+1. Go to the **IAM Console** and create a new role.
+2. Choose **EKS Cluster** as the trusted entity.
+3. Attach the following managed policies:
+  `AmazonEKSClusterPolicy`
+4. Name the role (e.g., `eks-cluster-role`) and create it.
+
 
 Now we’ll create an IAM role for your worker nodes.
 
