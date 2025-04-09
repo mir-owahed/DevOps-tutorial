@@ -143,6 +143,10 @@ aws configure
 ```
 aws configure
 ```
+1. Open your terminal and run the following command:
+   ```bash
+   aws eks --region <region-code> update-kubeconfig --name <cluster-name>
+   ```
 
 2. Now, you can verify the configuration:
    ```bash
@@ -152,10 +156,7 @@ aws configure
    ```
 
 
-1. Open your terminal and run the following command:
-   ```bash
-   aws eks --region <region-code> update-kubeconfig --name <cluster-name>
-   ```
+
       Create a Kubernetes secret command
 ```
 kubectl create secret docker-registry ecr-credentials \  
@@ -175,7 +176,7 @@ Now that your Kubernetes cluster is set up, you can deploy a sample application.
 1. Create a file named `sample-app.yaml` with the following content:
 ```
    
-  apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
   name: boardgame-deployment
@@ -236,4 +237,6 @@ delete node group first
 delete cluster
 delete NAT Gateway
 delete VPC
+delete Load Balancer
+delete elastic IP
 ```
