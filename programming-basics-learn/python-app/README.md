@@ -17,6 +17,29 @@ python3 -m venv venv
 source venv/bin/activate
 deactivate
 ```
+## uv : An extremely fast Python package and project manager, written in Rust.
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+mkdir hello-world
+cd hello-world
+uv init
+```
+Creating a virtual environment
+```
+uv venv
+source .venv/bin/activate
+deactivate
+```
+Run and build
+```
+uv add -r requirements.txt
+uv run main.py
+```
+```
+uv build
+ls dist/
+```
+
 ```
 ubuntu@ip-10-0-0-122:/python-app$ 
    34  mkdir python-app
