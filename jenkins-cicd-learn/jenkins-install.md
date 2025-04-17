@@ -55,6 +55,7 @@ sudo su -
 usermod -aG docker jenkins
 usermod -aG docker $USER
 systemctl restart docker
+ps -ef | grep jenkins
 ```
 ## Restart Jenkins:
 ```sh
@@ -64,7 +65,7 @@ http://<ec2-instance-public-ip>:8080/restart
 pipeline script from SCM
 Use docker as agent
 ```
-### Plugib
+### Plugin
 ```
 Manage jenkins > available plugin > sonar scanner
 ```
