@@ -20,6 +20,7 @@ deactivate
 ## uv : An extremely fast Python package and project manager, written in Rust.
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install
 mkdir hello-world
 cd hello-world
 uv init
