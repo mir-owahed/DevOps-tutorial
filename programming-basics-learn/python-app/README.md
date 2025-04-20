@@ -40,6 +40,10 @@ uv run main.py
 uv build
 ls dist/
 ```
+```
+uv lock
+uv sync
+```
 
 ```
 ubuntu@ip-10-0-0-122:/python-app$ 
