@@ -15,7 +15,8 @@ Before getting started, ensure you have the following:
 ---
 ## Watch the Tutorial
 
-[![Create a Private EKS Cluster on AWS Console]](https://youtu.be/MXvLcwbYb8E)
+[![Create a Private EKS Cluster on AWS Console]()](https://youtu.be/MXvLcwbYb8E)
+![eks_cluster_aws](https://github.com/user-attachments/assets/18e81e91-97b1-41f9-be30-018d8cf2fedd)
 
 [Watch the full tutorial on YouTube](https://youtu.be/MXvLcwbYb8E) to follow along with step-by-step instructions.
 
