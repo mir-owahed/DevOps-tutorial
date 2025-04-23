@@ -185,3 +185,85 @@ pipeline {
 }
 
 ```
+push the image with docker hub
+```
+pipeline {
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        DOCKER_IMAGE = 'boardgame-app:jenkins'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Dockerize') {
+            steps {
+                sh '''
+                    docker --version
+                    docker build -t $DOCKER_IMAGE .
+                '''
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker tag $DOCKER_IMAGE $DOCKER_USER/boardgame-app:jenkins
+                        docker push $DOCKER_USER/boardgame-app:jenkins
+                    '''
+                }
+            }
+        }
+
+        stage('Scan Docker Image') {
+            steps {
+                sh '''
+                    mkdir -p trivy-report
+                    docker run --rm \
+                        -v /var/run/docker.sock:/var/run/docker.sock \
+                        -v $PWD/trivy-report:/report \
+                        aquasec/trivy:latest image \
+                        --format html \
+                        --output /report/report.html \
+                        --severity CRITICAL,HIGH \
+                        $DOCKER_IMAGE || echo "Scan completed with vulnerabilities."
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'trivy-report/report.html', fingerprint: true
+
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'trivy-report',
+                reportFiles: 'report.html',
+                reportName: 'Trivy Security Report'
+            ])
+        }
+    }
+}
+
+```
