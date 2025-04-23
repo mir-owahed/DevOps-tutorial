@@ -1,0 +1,39 @@
+# Jenkins pipeline for java based app and use docker container as build agent
+```
+pipeline {
+    agent {
+  docker {
+    image 'maven:3.8.7-openjdk-18-slim'
+  }
+}
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+        
+        stage('check version') {
+            steps {
+                sh '''
+                mvn --version
+                java --version
+                '''
+            }
+        }
+        
+        stage('compile') {
+            steps {
+                sh 'mvn validate'
+            }
+        }
+        
+        stage('package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        
+    }
+}
+```
