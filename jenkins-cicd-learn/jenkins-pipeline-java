@@ -75,3 +75,52 @@ pipeline {
 }
 
 ```
+Jenkins pipeline, uses docker container as agent, image scan with trivy
+```
+pipeline {
+     agent {
+    docker {
+      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+    }
+  }
+
+    environment {
+        DOCKER_IMAGE = 'boardgame-app:latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Dockerize') {
+            steps {
+                sh '''
+                    docker --version
+                    docker build -t $DOCKER_IMAGE .
+                '''
+            }
+        }
+        
+        stage('Scan Docker Image') {
+    steps {
+        sh '''
+            docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --exit-code 1 --severity CRITICAL,HIGH $DOCKER_IMAGE || echo "Scan completed with vulnerabilities."
+        '''
+    }
+}
+
+        
+    }
+}
+
+```
