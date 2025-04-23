@@ -124,3 +124,64 @@ pipeline {
 }
 
 ```
+trivy scan with report
+```
+pipeline {
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        DOCKER_IMAGE = 'boardgame-app:latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Dockerize') {
+            steps {
+                sh '''
+                    docker --version
+                    docker build -t $DOCKER_IMAGE .
+                '''
+            }
+        }
+
+        stage('Scan Docker Image') {
+            steps {
+                sh '''
+                    mkdir -p trivy-report
+                    docker run --rm \
+                      -v /var/run/docker.sock:/var/run/docker.sock \
+                      -v $(pwd)/trivy-report:/root/reports \
+                      aquasec/trivy:latest \
+                      image --format template \
+                      --template "@contrib/html.tpl" \
+                      -o /root/reports/report.html \
+                      $DOCKER_IMAGE || echo "Scan completed with findings."
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'trivy-report/report.html', fingerprint: true
+        }
+    }
+}
+
+```
