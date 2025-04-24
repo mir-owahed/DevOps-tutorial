@@ -282,9 +282,9 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/mir-owahed/Boardgame.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
             }
         }
 
@@ -364,5 +364,6 @@ pipeline {
         }
     }
 }
+
 
 ```
