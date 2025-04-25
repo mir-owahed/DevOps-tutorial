@@ -5,7 +5,63 @@ This stage updates the Kubernetes deployment manifest `deployment-service.yaml` 
 ### ✅ Pipeline Stage Code
 
 ```groovy
-stage('Update Deployment File & Push to GitHub') {
+pipeline {
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'owahed1/boardgame-app'
+        SONAR_URL = "http://localhost:9000"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+        
+        stage('Get Commit Hash') {
+            steps {
+                script {
+                    env.GIT_TAG = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Dockerize') {
+            steps {
+                sh '''
+                    docker --version
+                    docker build -t $IMAGE_NAME:$GIT_TAG .
+                    docker tag $IMAGE_NAME:$GIT_TAG $IMAGE_NAME:latest
+                '''
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker push $IMAGE_NAME:$GIT_TAG
+                        docker push $IMAGE_NAME:latest
+                    '''
+                }
+            }
+        }
+
+        stage('Update Deployment File & Push to GitHub') {
     environment {
         GIT_REPO_NAME = "Boardgame"
         GIT_USER_NAME = "mir-owahed"
@@ -25,6 +81,10 @@ stage('Update Deployment File & Push to GitHub') {
                 git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
             '''
         }
+    }
+}
+
+   
     }
 }
 ```
