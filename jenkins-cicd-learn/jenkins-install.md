@@ -29,6 +29,10 @@ You can check the status of the Jenkins service using the command:
 ```sh
 sudo systemctl status jenkins
 ```
+You can check the status of the Jenkins service using the command:
+```sh
+ps -ef | grep jenkins
+```
 print the password at console
 ```sh
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
