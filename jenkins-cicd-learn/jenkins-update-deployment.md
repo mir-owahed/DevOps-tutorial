@@ -103,3 +103,13 @@ To allow Jenkins to push changes to your GitHub repository, add the following cr
 | **Description** | GitHub token for push access                    |
 
 📌 **Note:** Make sure the GitHub token has the `repo` scope enabled to allow pushing commits to your repositories.
+
+That stage is doing a full GitOps-style update by:
+
+    Replacing the image tag placeholder in the Kubernetes YAML.
+
+    Committing and pushing the updated manifest back to the GitHub repo.
+
+    Using a GitHub token securely from Jenkins credentials.
+
+Let’s adapt this pattern to your pipeline, updating the Kubernetes deployment file in your own repo: mir-owahed/Boardgame, and replacing the image tag with $GIT_TAG instead of $BUILD_NUMBER
