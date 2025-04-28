@@ -367,3 +367,48 @@ pipeline {
 
 
 ```
+```
+pipeline {
+    agent {
+        docker {
+            image 'docker:20.10.7'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'owahed1/boardgame-app'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Check Docker Version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+
+        stage('Build Docker Image with Build Number Tag') {
+            steps {
+                sh '''
+                    echo "Building Docker image with tag: $BUILD_NUMBER"
+                    docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                    docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
+                '''
+            }
+        }
+
+        stage('List Docker Images') {
+            steps {
+                sh 'docker images'
+            }
+        }
+    }
+}
+
+```
