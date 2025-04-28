@@ -41,3 +41,10 @@ WORKDIR /workspace
 CMD ["mvn", "--version"]
 
 ```
+```
+sudo nano Dockerfile
+docker build -t owahed1/maven-mir-docker-agent:v1 .
+docker login -u owahed1
+provide PAT
+docker push owahed1/maven-mir-docker-agent:v1
+```
