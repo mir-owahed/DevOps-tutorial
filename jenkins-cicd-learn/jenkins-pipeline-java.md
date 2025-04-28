@@ -449,3 +449,46 @@ pipeline {
 }
 
 ```
+```
+pipeline {
+    agent {
+        docker {
+            image 'owahed1/maven-mir-docker-agent:v1'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('check version') {
+            steps {
+                sh '''
+                mvn --version
+                java --version
+                '''
+            }
+        }
+        
+        
+        stage('Check Docker Version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        
+    }
+}
+
+```
