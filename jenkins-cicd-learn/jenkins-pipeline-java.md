@@ -706,7 +706,7 @@ pipeline {
             }
         }
 
-        stage('Dockerize (DinD)') {
+        stage('Dockerize') {
             steps {
                 sh """
                     echo "Building Docker image: $IMAGE_NAME:$BUILD_NUMBER"
