@@ -331,10 +331,36 @@ To access a **private GitHub repository** in a Jenkins pipeline, you'll need to 
 ### 🛠️ Step 3: Use `github-creds-id` in Jenkins Pipeline
 
 ```groovy
-withCredentials([usernamePassword(credentialsId: 'github-creds-id',
-                                  usernameVariable: 'GIT_USER',
-                                  passwordVariable: 'GIT_TOKEN')]) {
-    git url: "https://${GIT_USER}:${GIT_TOKEN}@github.com/your-username/your-private-repo.git",
-        branch: 'main'
+pipeline {
+    agent {
+        docker {
+            image 'owahed1/maven-mir-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+    
+
+    stages {
+
+        stage('Checkout Code') {
+    steps {
+        git branch: 'main',
+            credentialsId: 'github-creds-id',
+            url: 'https://github.com/mir-owahed/spring-java-1st-code.git'
+    }
 }
 
+
+        stage('Check Versions') {
+            steps {
+                sh '''
+                    mvn --version
+                    java --version
+                    docker --version
+                '''
+            }
+        }
+
+        
+    }
+}
