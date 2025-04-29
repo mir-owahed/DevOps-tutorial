@@ -285,3 +285,56 @@ pipeline {
 - Docker Hub credentials are securely managed via Jenkins Credentials Binding
 
 ---
+
+## 🔐 Configure Jenkins to Access Private GitHub Repository
+
+To access a **private GitHub repository** in a Jenkins pipeline, you'll need to set up credentials securely using a GitHub **Personal Access Token (PAT)**.
+
+---
+
+### ✅ Step 1: Generate a GitHub Personal Access Token
+
+1. Go to your GitHub account:  
+   [GitHub → Settings → Developer settings → Personal access tokens](https://github.com/settings/tokens)
+
+2. Click on **"Generate new token (classic)"**.
+
+3. Provide:
+   - **Note**: `Jenkins Git Access`
+   - **Expiration**: e.g., 90 days
+   - **Scopes**: Check ✅ `repo` for full access to private repositories
+
+4. Click **Generate Token** and **copy it immediately**.
+
+---
+
+### 🔧 Step 2: Add Credentials in Jenkins
+
+1. Open Jenkins Dashboard.
+
+2. Navigate to:  
+   **Manage Jenkins → Credentials → (Global or specific domain) → Add Credentials**
+
+3. Fill out the form:
+   | Field              | Value                                      |
+   |--------------------|--------------------------------------------|
+   | Kind               | `Username with password`                   |
+   | Username           | Your GitHub username                       |
+   | Password           | Paste the GitHub **Personal Access Token** |
+   | ID                 | `github-creds-id` (used in your pipeline)  |
+   | Description        | e.g., "GitHub PAT for private repo"        |
+
+4. Click **OK** to save.
+
+---
+
+### 🛠️ Step 3: Use `github-creds-id` in Jenkins Pipeline
+
+```groovy
+withCredentials([usernamePassword(credentialsId: 'github-creds-id',
+                                  usernameVariable: 'GIT_USER',
+                                  passwordVariable: 'GIT_TOKEN')]) {
+    git url: "https://${GIT_USER}:${GIT_TOKEN}@github.com/your-username/your-private-repo.git",
+        branch: 'main'
+}
+
