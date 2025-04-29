@@ -364,6 +364,7 @@ pipeline {
         
     }
 }
+```
 
 # 🧰 Step-by-Step: Set Up Jenkins to Use This Jenkinsfile from GitHub (SCM)
 ## ✅ 1. Generate a GitHub Personal Access Token (PAT)
