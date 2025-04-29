@@ -364,3 +364,77 @@ pipeline {
         
     }
 }
+
+# 🧰 Step-by-Step: Set Up Jenkins to Use This Jenkinsfile from GitHub (SCM)
+
+---
+
+## ✅ 1. Generate a GitHub Personal Access Token (PAT)
+
+1. Go to **GitHub > Settings > Developer settings > Personal access tokens**
+2. Click **Generate new token (classic)**
+3. Select the following scopes:
+    - `repo` (full repo access)
+    - `read:org`
+4. Click **Generate token** and **copy** the token — you'll use this in Jenkins.
+
+---
+
+## 🔐 2. Add GitHub Credentials to Jenkins
+
+1. Navigate to: **Jenkins > Manage Jenkins > Credentials > Global > Add Credentials**
+2. Fill in:
+    - **Kind**: `Username with password`
+    - **Username**: your GitHub username
+    - **Password**: your GitHub PAT
+    - **ID**: `github-creds-id` (this must match the `credentialsId` in the Jenkinsfile)
+
+---
+
+## 📁 3. Create a New Pipeline Project (SCM-based)
+
+1. Go to **Jenkins Dashboard > New Item**
+2. Name the job: `spring-java-pipeline`
+3. Select **Pipeline** type
+4. Click **OK**
+
+---
+
+## ⚙️ 4. Configure SCM Pipeline Settings
+
+1. In the pipeline configuration, go to **Pipeline** section:
+    - **Definition**: `Pipeline script from SCM`
+    - **SCM**: `Git`
+    - **Repository URL**:  
+      `https://github.com/mir-owahed/spring-java-1st-code.git`
+    - **Credentials**: Select `github-creds-id`
+    - **Branch Specifier**: `*/main`
+    - **Script Path**: `Jenkinsfile` (default path)
+
+2. Click **Save**
+
+---
+
+## ▶️ 5. Run the Pipeline
+
+1. Go to the job page
+2. Click **Build Now**
+
+The pipeline should:
+
+- Use your Docker-based Maven image
+- Checkout code from the private GitHub repo
+- Run version checks for Maven, Java, Docker
+
+---
+
+## 🔍 Bonus: Common Issues
+
+| Error                             | Fix                                                                 |
+|----------------------------------|----------------------------------------------------------------------|
+| `Permission denied (publickey)` | Use PAT instead of SSH unless you've configured SSH auth in Jenkins |
+| `Invalid credentialsId`         | Ensure Jenkins credentials ID matches the one in the Jenkinsfile    |
+| Docker socket errors            | Ensure `-v /var/run/docker.sock:/var/run/docker.sock` is mounted    |
+
+---
+
