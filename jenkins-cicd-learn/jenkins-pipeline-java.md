@@ -559,3 +559,168 @@ pipeline {
 }
 
 ```
+## 🚀 Jenkins Pipeline to Build and Push Docker Image Using DinD
+```
+pipeline {
+    agent {
+        docker {
+            image 'owahed1/maven-mir-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'owahed1/boardgame-app'
+        DOCKER_HUB_CREDENTIALS_ID = 'docker-hub-credentials'  // Jenkins Credentials ID for Docker Hub
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    changelog: false,
+                    poll: false,
+                    url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Check Versions') {
+            steps {
+                sh '''
+                    mvn --version
+                    java --version
+                    docker --version
+                '''
+            }
+        }
+
+        stage('Build Java Project') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Dockerize (DinD)') {
+            agent {
+                docker {
+                    image 'docker:20.10.7-dind'
+                    args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                sh """
+                    echo "Building Docker image: $IMAGE_NAME:$BUILD_NUMBER"
+                    docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                    docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
+                """
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            agent {
+                docker {
+                    image 'docker:20.10.7-dind'
+                    args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: "${DOCKER_HUB_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh '''
+                        echo "🔐 Logging into Docker Hub"
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+                        echo "📦 Pushing Docker image: $IMAGE_NAME:$BUILD_NUMBER"
+                        docker push $IMAGE_NAME:$BUILD_NUMBER
+
+                        echo "📦 Pushing Docker image: $IMAGE_NAME:latest"
+                        docker push $IMAGE_NAME:latest
+
+                        echo "🚪 Logging out from Docker Hub"
+                        docker logout
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Docker image $IMAGE_NAME:$BUILD_NUMBER pushed to Docker Hub."
+        }
+        failure {
+            echo "❌ Pipeline failed."
+        }
+    }
+}
+```
+📋 Jenkins Credential Setup
+
+    Go to: Jenkins → Manage Jenkins → Credentials → Global → Add Credentials
+
+    Kind: Username and Password
+
+    ID: docker-hub-credentials
+
+    Username: Your Docker Hub username
+
+    Password: Your Docker Hub password or access token
+
+    Description: Docker Hub credentials for pushing images
+
+```
+pipeline {
+    agent {
+        docker {
+            image 'owahed1/maven-mir-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'owahed1/boardgame-app'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    changelog: false,
+                    poll: false,
+                    url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Check Versions') {
+            steps {
+                sh '''
+                    mvn --version
+                    java --version
+                    docker --version
+                '''
+            }
+        }
+
+        
+
+        stage('Dockerize (DinD)') {
+            steps {
+                sh """
+                    echo "Building Docker image: $IMAGE_NAME:$BUILD_NUMBER"
+                    docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                    docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
+                """
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Docker image $IMAGE_NAME:$BUILD_NUMBER built and tagged as latest."
+        }
+        failure {
+            echo "❌ Pipeline failed."
+        }
+    }
+}
+
+```
