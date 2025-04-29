@@ -170,6 +170,55 @@ This tutorial demonstrates how to set up a Jenkins pipeline using Docker to buil
   - Credentials Binding
 - Docker Hub credentials stored in Jenkins (ID: `docker-hub-creds`)
 
+## 🔐 Step-by-Step: Store Docker Hub Credentials in Jenkins (ID: `docker-hub-creds`)
+
+### 1. Log in to Jenkins
+- Open your Jenkins dashboard in the browser.
+- Log in as an admin or a user with credential‐management permissions.
+
+---
+
+### 2. Navigate to Credentials
+1. Click **Manage Jenkins** in the left menu.  
+2. Select **Credentials**.  
+3. Under **Stores scoped to Jenkins**, click **(global)** → **Global credentials (unrestricted)**.
+
+---
+
+### 3. Add New Credentials
+1. Click **Add Credentials** in the sidebar.  
+2. In the **Kind** dropdown, choose **Username with password**.  
+3. Fill in the fields:
+   - **Scope**: `Global`  
+   - **Username**: _Your Docker Hub username_ (e.g., `owahed1`)  
+   - **Password**: _Your Docker Hub password or Personal Access Token_  
+   - **ID**: `docker-hub-creds`  
+   - **Description**: _Docker Hub login for image push_ (optional)  
+4. Click **OK** to save.
+
+---
+
+### 4. Use It in Your `Jenkinsfile`
+Reference the credentials in your pipeline:
+
+```groovy
+stage('Push to Docker Hub') {
+  steps {
+    withCredentials([usernamePassword(
+      credentialsId: 'docker-hub-creds',
+      usernameVariable: 'DOCKER_USER',
+      passwordVariable: 'DOCKER_PASS'
+    )]) {
+      sh '''
+        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+        docker push $IMAGE_NAME:$BUILD_NUMBER
+        docker push $IMAGE_NAME:latest
+      '''
+    }
+  }
+}
+
+
 ## 🧪 Jenkinsfile
 
 Below is a complete `Jenkinsfile` for the pipeline:
