@@ -48,6 +48,65 @@ docker login -u owahed1
 provide PAT
 docker push owahed1/maven-mir-docker-agent:v1
 ```
+```
+# Use Eclipse Temurin OpenJDK 17 as base image
+FROM eclipse-temurin:17-jdk
+
+# Ensure UTF-8 locale
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+# Install Maven, Git, curl, Docker CLI, and other utilities in one layer
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      maven \
+      git \
+      curl \
+      ca-certificates \
+      gnupg2 \
+      lsb-release \
+      tar \
+      docker.io && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Docker CLI (no daemon, static binary) by downloading the static binary
+RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-25.0.0.tgz \
+    | tar -xz --strip-components=1 -C /usr/local/bin docker/docker
+
+# Create docker group and a non-root 'jenkins' user for safer execution
+RUN groupadd -g 1001 docker && \
+    useradd -m -u 1001 -g docker jenkins
+
+# Switch to non-root user
+USER jenkins
+
+# Create an entrypoint to enable Docker-in-Docker (DinD) capability
+COPY --chmod=+x << 'EOF' /usr/local/bin/dind-entrypoint.sh
+#!/bin/sh
+set -e
+
+# Start Docker daemon (DinD)
+dockerd-entrypoint.sh &
+
+# Wait until Docker daemon is responsive
+while ! docker info > /dev/null 2>&1; do
+  echo "Waiting for Docker daemon..."
+  sleep 1
+done
+
+# Exec the Jenkins agent/program command
+exec "$@"
+EOF
+
+# Set working directory for builds
+WORKDIR /workspace
+
+# Default command (Jenkins will override with its own commands)
+ENTRYPOINT ["/usr/local/bin/dind-entrypoint.sh"]
+CMD ["sh"]
+
+```
 # 🚀 Boardgame Java Application CI/CD Pipeline using Jenkins, Docker, and Docker Hub
 
 This project demonstrates a full CI/CD workflow for a **Java Maven** application:  
