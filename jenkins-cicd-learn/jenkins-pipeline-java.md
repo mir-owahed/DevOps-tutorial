@@ -744,3 +744,70 @@ pipeline {
 
 
 ```
+```
+pipeline {
+    agent {
+        docker {
+            image 'docker:20.10.7-dind'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock --user root'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'owahed1/boardgame-app'
+    }
+
+    stages {
+        stage('Start Docker Daemon') {
+            steps {
+                sh '''
+                    dockerd-entrypoint.sh > /tmp/docker.log 2>&1 &
+                    sleep 10
+                    docker version
+                '''
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    changelog: false,
+                    poll: false,
+                    url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Install Maven') {
+            steps {
+                sh '''
+                    apk add --no-cache maven openjdk11
+                    mvn --version
+                    java --version
+                '''
+            }
+        }
+
+        
+
+        stage('Dockerize') {
+            steps {
+                sh '''
+                    echo "Building Docker image: $IMAGE_NAME:$BUILD_NUMBER"
+                    docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                    docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Docker image $IMAGE_NAME:$BUILD_NUMBER built and tagged as latest."
+        }
+        failure {
+            echo "❌ Pipeline failed."
+        }
+    }
+}
+
+```
