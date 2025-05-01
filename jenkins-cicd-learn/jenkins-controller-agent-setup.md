@@ -15,6 +15,12 @@ Setting up a Jenkins Master-Slave (Controller-Agent) architecture on AWS EC2 all
 - Security group allowing:
   - Port **8080** (for Jenkins UI)
   - Port **22** (for SSH)
+ 
+ - EC2 Key Pairs:
+
+    - controller-key.pem: For SSH access to Jenkins Controller
+
+    - agent-key.pem: For SSH access to Jenkins Agent
 
 - Java installed on both EC2s (OpenJDK 11 or higher)
 
