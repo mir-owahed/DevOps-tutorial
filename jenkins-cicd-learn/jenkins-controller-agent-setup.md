@@ -70,6 +70,7 @@ sudo apt install openjdk-11-jdk -y
 ```bash
 sudo adduser jenkins
 ```
+## 🔐 Step 4: Setup SSH from Jenkins Master to Agent
 
 
 
