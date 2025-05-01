@@ -71,6 +71,82 @@ sudo apt install openjdk-11-jdk -y
 sudo adduser jenkins
 ```
 
+
+
+...
+# 🚀 Jenkins Master-Slave (Controller-Agent) Setup on AWS EC2
+
+Setting up a Jenkins Master-Slave (Controller-Agent) architecture on AWS EC2 allows you to distribute build tasks efficiently. Below is a step-by-step guide to help you set up Jenkins Master-Slave on EC2 instances:
+
+---
+
+## ✅ Prerequisites
+
+- 2 EC2 instances:
+  - **Master** (Jenkins Controller)
+  - **Slave** (Jenkins Agent)
+
+- OS: Ubuntu 20.04/22.04 (recommended)
+
+- Security group allowing:
+  - Port **8080** (for Jenkins UI)
+  - Port **22** (for SSH)
+
+- Java installed on both EC2s (OpenJDK 11 or higher)
+
+---
+
+## 🔧 Step 1: Install Jenkins on the Master EC2
+
+SSH into your **Master EC2** and run:
+
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+```
+
+Access Jenkins at: `http://<Master_Public_IP>:8080`
+
+---
+
+## 🔐 Step 2: Unlock Jenkins and Install Plugins
+
+- Run the following to get the initial admin password:
+
+  ```bash
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  ```
+
+- Complete the setup wizard.
+
+- Install **suggested plugins**.
+
+- Create an **admin user**.
+
+---
+
+## 💻 Step 3: Prepare the Slave EC2 (Agent)
+
+SSH into the **Slave EC2** and run:
+
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+```
+
+(Optional) Create a `jenkins` user on the agent:
+
+```bash
+sudo adduser jenkins
+```
+
 ---
 
 ## 🔐 Step 4: Setup SSH from Jenkins Master to Agent
