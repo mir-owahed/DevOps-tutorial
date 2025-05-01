@@ -78,7 +78,9 @@ sudo adduser jenkins
 ```
 ## 🔐 Step 4: Setup SSH from Jenkins Master to Agent
 
-
+Copy the agent-key.pem
+chmod 400 agent-key.pem
+ssh -i agent-key.pem ubuntu@agent-ip
 
 ...
 # 🚀 Jenkins Master-Slave (Controller-Agent) Setup on AWS EC2
