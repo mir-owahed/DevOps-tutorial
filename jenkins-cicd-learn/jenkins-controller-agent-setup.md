@@ -80,11 +80,37 @@ sudo apt install openjdk-11-jdk -y
 sudo adduser jenkins
 ```
 ## 🔐 Step 4: Setup SSH from Jenkins Master to Agent
-
+```
 Copy the agent-key.pem
 chmod 400 agent-key.pem
 ssh -i agent-key.pem ubuntu@agent-ip
+```
+### 🔐 Add SSH Credentials in Jenkins
 
+In the **Jenkins Web UI**:
+
+1. Go to: **Manage Jenkins** > **Manage Credentials** > (global) > **Add Credentials**
+2. **Kind**: `SSH Username with private key`
+3. **Username**: `ubuntu`
+4. **Private Key**: `Enter directly` → Paste the private key from above
+5. **ID** (optional): `jenkins-slave-key`
+6. Click **Save**
+
+---
+
+### ✅ Step 6: Add a New Node (Agent) in Jenkins
+
+1. Go to **Manage Jenkins** > **Nodes** > **New Node**
+2. Name: `slave-agent-1`
+3. Type: `Permanent Agent`
+4. Configure:
+   - **# of executors**: 1 or more
+   - **Remote root directory**: `/home/ubuntu`
+   - **Labels**: `linux` (or any label you want)
+   - **Launch method**: `Launch agents via SSH`
+   - **Host**: `<slave-public-ip>`
+   - **Credentials**: Select the one you just created (e.g., `jenkins-slave-key`)
+5. Click **Save** and then **Launch Agent**
 ...
 # 🚀 Jenkins Master-Slave (Controller-Agent) Setup on AWS EC2
 
