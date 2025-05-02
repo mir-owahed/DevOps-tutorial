@@ -19,8 +19,22 @@ docker run -d --name sonarqube \
   -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
   sonarqube:community
 ```
+### Configure a Sonar Server locally
 
-- Access it at: [http://localhost:9000](http://localhost:9000)
+```
+apt install unzip
+adduser sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+```
+
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
+
+
 
 **Default credentials:**
 
