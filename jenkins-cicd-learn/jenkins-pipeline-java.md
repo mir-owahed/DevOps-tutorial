@@ -2,8 +2,8 @@
 ```
 pipeline {
     agent {
-  docker {
-    image 'maven:3.8.7-openjdk-18-slim'
+        docker {
+        image 'maven:3.8.7-openjdk-18-slim'
   }
 }
     stages {
