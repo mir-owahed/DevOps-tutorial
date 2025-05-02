@@ -40,6 +40,10 @@ sudo usermod -aG docker $USER
 newgrp docker
 sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
 ```
+Changing docker.sock permissions
+```
+While 'sudo chmod 777 /var/run/docker.sock' might seem like a solution, it opens a security vulnerability by granting access to everyone. It should only be used for testing purposes on local systems.
+```
 Let's play
 ```
 docker version
