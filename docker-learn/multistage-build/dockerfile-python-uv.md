@@ -35,3 +35,36 @@ EXPOSE 8181
 CMD ["uv", "run", "main.py"]
 
 ```
+```
+# Use the official Python 3.12 slim image as base
+FROM python:3.12-slim-bookworm
+
+# Install curl and certs for uv installer
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and install uv
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Add uv binary to PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+# Copy the project into the image (including pyproject.toml and uv.lock)
+ADD . /app
+
+# Set working directory
+WORKDIR /app
+
+# Sync the project into a new environment using the lockfile
+RUN uv sync --locked
+
+# Expose your app's port
+EXPOSE 8181
+
+# Run the application
+CMD ["uv", "run", "main.py"]
+
+```
