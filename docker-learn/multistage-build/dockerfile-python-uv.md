@@ -68,3 +68,52 @@ EXPOSE 8181
 CMD ["uv", "run", "main.py"]
 
 ```
+```
+# === Stage 1: Build with uv ===
+FROM python:3.12-slim-bookworm AS builder
+
+# Install curl and certificates needed for uv installer
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install uv
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+ENV PATH="/root/.local/bin:$PATH"
+
+# Set work directory and copy app
+WORKDIR /app
+ADD . /app
+
+# Ensure lockfile is used for reproducible builds
+RUN uv sync --locked
+
+# === Stage 2: Final slim image ===
+FROM python:3.12-slim-bookworm
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash appuser
+
+# Install only required system deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy environment from builder
+COPY --from=builder /app /app
+
+# Use appuser
+USER appuser
+
+# Set work directory
+WORKDIR /app
+
+# Expose port for app
+EXPOSE 8181
+
+# Run the application using uv
+CMD ["/app/.venv/bin/python", "main.py"]
+
+```
