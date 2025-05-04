@@ -977,3 +977,56 @@ pipeline {
 }
 
 ```
+Use agent any
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            agent {
+                docker {
+                    image 'maven:3.8.7-openjdk-18-slim'
+                }
+            }            
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('Check Versions') {            
+            steps {
+                sh '''
+                    mvn --version
+                    java --version
+                '''
+            }
+        }
+
+        stage('Compile') {
+            agent {
+                docker {
+                    image 'owahed1/maven-mir-docker-agent:v1'
+                    args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                sh 'mvn validate'
+            }
+        }
+
+        stage('Package') {
+            agent {
+                docker {
+                    image 'owahed1/maven-mir-docker-agent:v1'
+                    args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
+
+```
