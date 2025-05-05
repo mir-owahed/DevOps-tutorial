@@ -57,7 +57,6 @@ sudo apt install docker.io
 ```sh
 sudo groupadd docker
 sudo usermod -aG docker $USER
-sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
 sudo usermod -aG docker jenkins
 newgrp docker
 sudo systemctl restart docker
