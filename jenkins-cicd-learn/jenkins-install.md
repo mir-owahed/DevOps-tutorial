@@ -55,10 +55,13 @@ sudo apt install docker.io
 ```
 ## Grant Jenkins user and Ubuntu user permission to docker:
 ```sh
-sudo su - 
-usermod -aG docker jenkins
-usermod -aG docker $USER
-systemctl restart docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo usermod -aG docker ubuntu [ubuntu is name of the user of vps server]
+sudo usermod -aG docker jenkins
+newgrp docker
+sudo systemctl restart docker
+
 ps -ef | grep jenkins
 ```
 ## Restart Jenkins:
