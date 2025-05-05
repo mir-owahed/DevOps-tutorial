@@ -41,7 +41,7 @@ pipeline {
 pipeline {
      agent {
     docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      image 'owahed1/maven-mir-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
@@ -80,7 +80,7 @@ Jenkins pipeline, uses docker container as agent, image scan with trivy
 pipeline {
      agent {
     docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      image 'owahed1/maven-mir-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
@@ -129,7 +129,7 @@ trivy scan with report
 pipeline {
     agent {
         docker {
-            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            image 'owahed1/maven-mir-docker-agent:v1'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -190,7 +190,7 @@ push the image with docker hub
 pipeline {
     agent {
         docker {
-            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            image 'owahed1/maven-mir-docker-agent:v1'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -272,7 +272,7 @@ generate a unique tag per build
 pipeline {
     agent {
         docker {
-            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            image 'owahed1/maven-mir-docker-agent:v1'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
