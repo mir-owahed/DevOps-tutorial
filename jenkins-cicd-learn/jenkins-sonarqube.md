@@ -15,6 +15,34 @@ Before starting, ensure the following:
 - **SonarQube Scanner Plugin** is installed in Jenkins through the **Jenkins UI**.
 - A **SonarQube token** is generated for authentication.
 
+  ### Configure a Sonar Server locally
+
+```
+sudo apt install unzip
+sudo adduser sonarqube
+sudo su - sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+./sonar.sh status
+```
+
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
+
+
+
+**Default credentials:**
+
+- Username: `admin`  
+- Password: `admin`
+
+> 👉 Change the password on first login.
+
+
+
 ## Step 1: Set Up Jenkins with SonarQube Plugin
 
 ### 1.1. Install the SonarQube Scanner Plugin
@@ -358,14 +386,16 @@ docker run -d --name sonarqube \
 ### Configure a Sonar Server locally
 
 ```
-apt install unzip
-adduser sonarqube
+sudo apt install unzip
+sudo adduser sonarqube
+sudo su - sonarqube
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
 unzip *
 chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
 chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
 cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 ./sonar.sh start
+./sonar.sh status
 ```
 
 Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
