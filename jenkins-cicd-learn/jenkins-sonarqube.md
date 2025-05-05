@@ -15,7 +15,7 @@ Before starting, ensure the following:
 - **SonarQube Scanner Plugin** is installed in Jenkins through the **Jenkins UI**.
 - A **SonarQube token** is generated for authentication.
 
-  ### Configure a Sonar Server locally
+  ### Configure a Sonar Server on ubuntu
 
 ```
 sudo apt install unzip
