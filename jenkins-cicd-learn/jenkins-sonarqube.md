@@ -107,6 +107,45 @@ Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000
 ## ✅ You’re Ready to Use SonarQube in Your Pipeline!
 
 ### Example usage in a `Jenkinsfile`:
+```
+pipeline {
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        SONAR_URL = "http://34.201.116.83:9000"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        
+
+        stage('SonarQube Code Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                    sh '''
+                        mvn sonar:sonar \
+                          -Dsonar.projectKey=boardgame-app \
+                          -Dsonar.host.url=$SONAR_URL \
+                          -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
+            }
+        }
+
+        
+    }
+}
+```
 
 ```groovy
 pipeline {
