@@ -306,7 +306,7 @@ Replace `my-project` with your actual SonarQube project key.
 
 Here’s the **step-by-step blog post** in markdown format for integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
 
-````markdown
+
 # Jenkins Pipeline for SonarQube Integration: Code Analysis with Maven
 
 In this blog post, we will walk through the steps to create a Jenkins pipeline that integrates **SonarQube** for code quality analysis, using **Maven** as the build tool. The pipeline will analyze the code on **SonarQube** and provide feedback on quality metrics like bugs, vulnerabilities, and code coverage.
