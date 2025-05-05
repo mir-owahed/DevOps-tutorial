@@ -301,7 +301,7 @@ Replace `my-project` with your actual SonarQube project key.
 
 - [SonarQube Documentation](https://docs.sonarsource.com/)
 - [Jenkins Plugin Site - SonarQube Scanner](https://plugins.jenkins.io/sonar/)
-```
+
 
 
 Here’s the **step-by-step blog post** in markdown format for integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
@@ -444,15 +444,5 @@ Feel free to extend this pipeline by adding stages for unit tests, building arti
 
 ---
 
-Feel free to explore, modify, and adapt this pipeline to suit your project needs. Happy coding! ✨
-
-```
-
----
-
-This markdown provides a clear and structured blog post that you can post on your GitHub profile or blog. You can now copy this directly into your profile or any markdown-supported platform.
-
-Let me know if you need any more tweaks!
-```
 
 
