@@ -304,4 +304,155 @@ Replace `my-project` with your actual SonarQube project key.
 ```
 
 ---
+Here’s the **step-by-step blog post** in markdown format for integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
+
+````markdown
+# Jenkins Pipeline for SonarQube Integration: Code Analysis with Maven
+
+In this blog post, we will walk through the steps to create a Jenkins pipeline that integrates **SonarQube** for code quality analysis, using **Maven** as the build tool. The pipeline will analyze the code on **SonarQube** and provide feedback on quality metrics like bugs, vulnerabilities, and code coverage.
+
+## Prerequisites
+
+Before starting, ensure the following:
+- **Jenkins** is installed and running.
+- **SonarQube** is installed and running on your system (`http://localhost:9000` or your configured server).
+- **SonarQube Scanner Plugin** is installed in Jenkins through the **Jenkins UI**.
+- A **SonarQube token** is generated for authentication.
+
+## Step 1: Set Up Jenkins with SonarQube Plugin
+
+### 1.1. Install the SonarQube Scanner Plugin
+
+- Navigate to **Manage Jenkins → Manage Plugins**.
+- Search for **SonarQube Scanner Plugin** and install it if not already installed.
+
+### 1.2. Configure SonarQube in Jenkins
+
+1. Go to **Manage Jenkins → Configure System**.
+2. Scroll down to the **SonarQube Servers** section.
+3. Click **Add SonarQube**.
+4. In the **Name** field, enter `SonarQube`.
+5. Set the **Server URL** to `http://localhost:9000` (or your SonarQube server).
+6. In the **Server Authentication Token** field, add your SonarQube token.
+7. Save the configuration.
+
+---
+
+## Step 2: Create the Pipeline in Jenkins
+
+### 2.1. Navigate to Jenkins Dashboard
+
+- Go to **Jenkins Dashboard** and click on **New Item**.
+- Select **Pipeline** and give it a name (e.g., `sonarqube-pipeline`).
+
+### 2.2. Set Up the Pipeline
+
+In the **Pipeline** section, paste the following code:
+
+```groovy
+pipeline {
+    agent { label 'linux' }
+
+    environment {
+        SONAR_URL = 'http://localhost:9000'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                    changelog: false, 
+                    poll: false, 
+                    url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('SonarQube Code Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                        mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=boardgame-app \
+                          -Dsonar.host.url=$SONAR_URL \
+                          -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
+            }
+        }
+    }
+}
+````
+
+### 2.3. Explanation of the Pipeline
+
+* **`agent { label 'linux' }`**: Specifies that the pipeline will run on a node labeled `linux`.
+* **`environment { SONAR_URL = 'http://localhost:9000' }`**: Sets the environment variable for SonarQube URL.
+* **`stages { ... }`**: Defines the stages in the pipeline.
+
+  * **Checkout Stage**: Fetches the latest code from your GitHub repository.
+  * **SonarQube Code Analysis Stage**: Runs the **SonarQube analysis** using Maven and the **SonarQube token** for authentication.
+
+---
+
+## Step 3: Configure Jenkins with SonarQube Token
+
+### 3.1. Generate a SonarQube Token
+
+1. Log in to your **SonarQube** instance.
+2. Go to **My Account → Security**.
+3. Generate a new token and copy it.
+
+### 3.2. Add the Token in Jenkins Credentials
+
+1. In **Jenkins**, go to **Manage Jenkins → Manage Credentials**.
+2. Select the appropriate **Jenkins store**.
+3. Click **Add Credentials** and choose **Secret text**.
+4. Paste your SonarQube token in the **Secret** field and give it an ID like `sonarqube-token`.
+
+---
+
+## Step 4: Run the Pipeline
+
+Once the pipeline is configured, you can trigger it manually or via a **GitHub webhook**.
+
+### 4.1. Trigger the Pipeline
+
+* Click on **Build Now** in Jenkins to start the pipeline.
+* It will:
+
+  * **Checkout** the code from the GitHub repository.
+  * **Run the SonarQube analysis** using Maven.
+
+### 4.2. View the Results
+
+* After the pipeline completes, you can view the SonarQube analysis results on your SonarQube dashboard.
+
+---
+
+## Conclusion
+
+In this tutorial, we created a simple Jenkins pipeline that integrates with **SonarQube** for code quality analysis using **Maven**. This setup ensures that every time you commit code, Jenkins runs a SonarQube scan and provides detailed analysis on the quality of the code.
+
+Feel free to extend this pipeline by adding stages for unit tests, building artifacts, or deploying the application.
+
+---
+
+### References:
+
+* [SonarQube Documentation](https://docs.sonarqube.org/latest/)
+* [Jenkins Pipeline Documentation](https://www.jenkins.io/doc/book/pipeline/)
+
+---
+
+Feel free to explore, modify, and adapt this pipeline to suit your project needs. Happy coding! ✨
+
+```
+
+---
+
+This markdown provides a clear and structured blog post that you can post on your GitHub profile or blog. You can now copy this directly into your profile or any markdown-supported platform.
+
+Let me know if you need any more tweaks!
+```
+
 
