@@ -303,7 +303,7 @@ Replace `my-project` with your actual SonarQube project key.
 - [Jenkins Plugin Site - SonarQube Scanner](https://plugins.jenkins.io/sonar/)
 ```
 
----
+
 Here’s the **step-by-step blog post** in markdown format for integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
 
 ````markdown
