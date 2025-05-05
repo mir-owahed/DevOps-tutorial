@@ -107,6 +107,41 @@ Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000
 ## ✅ You’re Ready to Use SonarQube in Your Pipeline!
 
 ### Example usage in a `Jenkinsfile`:
+pipeline directly on the Jenkins host (no Docker) using an agent label (e.g., linux) and sonarqube runs on the same host. 
+```
+pipeline {
+    agent { label 'linux' }
+
+    environment {
+        SONAR_URL = 'http://localhost:9000'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                    changelog: false, 
+                    poll: false, 
+                    url: 'https://github.com/mir-owahed/Boardgame.git'
+            }
+        }
+
+        stage('SonarQube Code Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                    sh '''
+                        mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=boardgame-app \
+                          -Dsonar.host.url=$SONAR_URL \
+                          -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
+            }
+        }
+    }
+}
+
+```
 ```
 pipeline {
     agent {
