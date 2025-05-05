@@ -1,6 +1,6 @@
 
 
-Here’s the **step-by-step blog post** in markdown format for integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
+Integrating SonarQube with Jenkins, assuming you've already installed the **SonarQube Scanner Plugin** through the Jenkins UI:
 
 
 # Jenkins Pipeline for SonarQube Integration: Code Analysis with Maven
