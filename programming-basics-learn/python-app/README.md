@@ -24,6 +24,9 @@ uv python install
 mkdir hello-world
 cd hello-world
 uv init
+uv add flask
+uv remove flask
+uv run main.py
 ```
 
 Creating a virtual environment
