@@ -25,6 +25,7 @@ mkdir hello-world
 cd hello-world
 uv init
 ```
+```
 Creating a virtual environment
 ```
 uv venv
@@ -54,6 +55,7 @@ uv lock
 uv sync
 uv run main.py
 
+```
 ```
 ubuntu@ip-10-0-0-122:/python-app$ 
    34  mkdir python-app
