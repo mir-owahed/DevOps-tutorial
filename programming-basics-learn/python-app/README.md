@@ -44,6 +44,15 @@ ls dist/
 uv lock
 uv sync
 ```
+```
+Clone a privare repo (ssh url) and run locally using uv
+```
+git clone git@github.com:mir-owahed/bg-remover.git
+cd bg-remover/
+code .
+uv lock
+uv sync
+uv run main.py
 
 ```
 ubuntu@ip-10-0-0-122:/python-app$ 
