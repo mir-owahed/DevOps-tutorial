@@ -25,7 +25,7 @@ mkdir hello-world
 cd hello-world
 uv init
 ```
-```
+
 Creating a virtual environment
 ```
 uv venv
@@ -45,7 +45,7 @@ ls dist/
 uv lock
 uv sync
 ```
-```
+
 Clone a privare repo (ssh url) and run locally using uv
 ```
 git clone git@github.com:mir-owahed/bg-remover.git
