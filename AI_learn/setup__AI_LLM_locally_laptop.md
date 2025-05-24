@@ -60,7 +60,10 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 
 ### ➤ Run Open WebUI Container
 ```bash
-sudo docker run -d --name open-webui --network host -e OLLAMA_BASE_URL=http://localhost:11434 ghcr.io/open-webui/open-webui:main
+sudo docker run -d --name open-webui --network=host -e OLLAMA_BASE_URL=http://127.0.0.1:11434 ghcr.io/open-webui/open-webui:main
+sudo docker run -d -p 3000:8080 --network=host -e OLLAMA_BASE_URL=http://localhost.1:11434 -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+sudo docker run -d --network=host -e OLLAMA_BASE_URL=http://127.0.0.1:11434 -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
 ```
 
 Visit in browser:
