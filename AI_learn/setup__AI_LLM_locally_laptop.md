@@ -1,19 +1,18 @@
 
-# 🧠 Host ALL Your AI Locally — Full Setup Guide
+# 🧠 Run AI LLM on locally on laptop.
 
 This guide walks you through how to run your own AI stack *completely locally*:
 - ✅ No internet required
 - 🔐 Fully private and secure
 - 🖥️ Works on Linux, macOS, or Windows (via WSL)
-- 🧩 Includes chat interface, image generation, and document/chat integrations
+
 
 ---
 
 ## 🛠️ Requirements
 - Any decent computer (GPU recommended)
 - OS: Linux, macOS, or Windows with WSL
-- Tools: `ollama`, `docker`, `automatic1111`, `pyenv`
-
+- Tools: `ollama`, `docker`
 ---
 
 ## 1️⃣ Install Ollama (AI Model Backend)
@@ -109,4 +108,3 @@ Summarize this document.
 
 ---
 
-Created based on NetworkChuck's “Host ALL Your AI Locally” tutorial.
