@@ -15,6 +15,14 @@ git config --global --get user.email
 ```
 ## Create Repository on GitHub
 ## Push your code-base into GitHub
+```
+git add .
+   44  git status
+   45  git commit -m "yt title generate"
+   46  git branch -M main
+   47  git remote add origin git@github.com:mir-owahed/yt-title-description-generate.git
+   48  git push -u origin main
+```
 ---
 # git-github-pull-request
 How to contribute open source / How To Pull Request
