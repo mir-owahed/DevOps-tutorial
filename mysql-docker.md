@@ -1,5 +1,7 @@
 
-...
+Here’s the corrected version in clean **Markdown** formatting:
+
+```yaml
 version: "3.9"
 
 services:
@@ -32,17 +34,25 @@ services:
 volumes:
   mysql_data:
 ```
-```
-Now it will only create the MySQL container with the **sakila** database initialized, but without auto-importing schema/data SQL files.
+
+---
+
+Now it will only create the **MySQL container** with the `sakila` database initialized, but **without auto-importing schema/data SQL files**.
 
 👉 Do you want me to also add a **persistent named volume** for phpMyAdmin sessions/configs, or just keep it stateless (default)?
 
+Run the stack:
+
+```bash
 docker compose up -d
+```
+
+---
 
 Perfect 🚀 glad you got logged in!
 
 Here’s how you can upload the **Sakila schema + data** using the **phpMyAdmin UI**:
-```
+
 ---
 
 ### ✅ Steps in phpMyAdmin
@@ -51,11 +61,17 @@ Here’s how you can upload the **Sakila schema + data** using the **phpMyAdmin 
 2. On the **left sidebar**, click on the database `sakila` (which you created via `docker-compose`).
 3. At the top, click the **Import** tab.
 4. Under **File to Import**:
-    - Click **Choose File**.
-    - Select your **`sakila-schema.sql`** file first.
-    - Leave other options as default (character set: `utf-8`, format: SQL).
+
+   * Click **Choose File**.
+   * Select your **`sakila-schema.sql`** file first.
+   * Leave other options as default (character set: `utf-8`, format: SQL).
 5. Scroll down and click **Go**.
-    - This will create all the tables, views, and relationships.
+
+   * This will create all the tables, views, and relationships.
 6. Repeat the same steps for **`sakila-data.sql`**.
-    - This will insert all the sample data (actors, films, rentals, etc.).
-```
+
+   * This will insert all the sample data (actors, films, rentals, etc.).
+
+---
+
+Do you also want me to show you how to **auto-import the Sakila schema/data** into MySQL during container startup (instead of doing it manually in phpMyAdmin)?
