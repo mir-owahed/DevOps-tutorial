@@ -33,6 +33,7 @@ services:
 volumes:
   mysql_data:
 ```
+```
 Now it will only create the MySQL container with the **sakila** database initialized, but without auto-importing schema/data SQL files.
 
 👉 Do you want me to also add a **persistent named volume** for phpMyAdmin sessions/configs, or just keep it stateless (default)?
