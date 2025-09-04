@@ -1,6 +1,5 @@
 
-### Here’s the rewritten docker-compose.yml without the auto-load schema and data moun
-...yaml
+...
 version: "3.9"
 
 services:
@@ -43,7 +42,7 @@ docker compose up -d
 Perfect 🚀 glad you got logged in!
 
 Here’s how you can upload the **Sakila schema + data** using the **phpMyAdmin UI**:
-
+```
 ---
 
 ### ✅ Steps in phpMyAdmin
