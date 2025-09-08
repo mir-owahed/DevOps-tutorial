@@ -10,3 +10,8 @@
       ]
     }
 ```
+[Reference]
+
+1. <https://github.com/modelcontextprotocol/servers>
+
+2. <https://modelcontextprotocol.io/docs/getting-started/intro>
