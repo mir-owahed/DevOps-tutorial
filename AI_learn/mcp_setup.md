@@ -15,3 +15,4 @@
 1. <https://github.com/modelcontextprotocol/servers>
 
 2. <https://modelcontextprotocol.io/docs/getting-started/intro>
+3. <https://www.mcpappstore.com/>
