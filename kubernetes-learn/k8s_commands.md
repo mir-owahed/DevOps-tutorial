@@ -87,11 +87,7 @@
  1557  kubectl get pods
  1558  kind get clusters
  1559  kubectl config get-clusters
- 1560  kind delete cluster kind-kind
- 1561  kind delete cluster kind
- 1562  kind
- 1563  kind delete kind
- 1564  kind delete cluster kind-kind
+
  1565  exit
  1566  kubectl get nodes
  1567  kubectl get pods
@@ -102,7 +98,7 @@
  1572  kubectl create pod -f pod.yml
  1573  kubectl create -f pod.yml
  1574  kubectl get pods
- 1575  kubectl get pods -o w
+
  1576  kubectl get pods
  1577*
  1578  kubectl get pods -o wide
@@ -126,7 +122,7 @@
  1596  kubectl get pods
  1597  kubectl get pods -o wide
  1598  kubectl exec -it nginx
- 1599  kubectl exec -it nginx -sh
+
  1600  kubectl exec -it nginx -- sh
  1601  kubectl run nginx --image=nginx --dry-run=client
  1602  kubectl run nginx --image=nginx --dry-run=client -o yaml
