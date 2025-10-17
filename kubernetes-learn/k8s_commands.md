@@ -17,7 +17,7 @@
  1487  kubectl config get-contexts kind-cka-cluster-1
  1488  kubectl config get-contexts kind-cka-cluster-2
  1489  kubectl config --help
- 1490  kubectl config get-context
+
  1491  kubectl config get-contexts
  1492  kubectl config --help
  1493  kubectl config set-context kind-cka-cluster-2
@@ -43,7 +43,7 @@
  1513  kubectl
  1514  kubectl cluster-info --help
  1515  kubectl cluster-info
- 1516  kubectl get-clusters
+
  1517  kubectl config get-clusters
  1518  kubectl config --help
  1519  kubectl config get-contexts
@@ -63,8 +63,7 @@
  1533  kubectl get nodes
  1534  kubectl run nginx --image=nginx
  1535  kubectl get pods
- 1536  kubectl explin pod
- 1537  kubectl explin pod nginx
+ 
  1538  kubectl explain pod
  1539  kubectl config view
  1540  kubectl config get-contexts
@@ -85,7 +84,7 @@
  1555  ls -la
  1556  cd
  1557  kubectl get pods
- 1558  kind get clusters
+
  1559  kubectl config get-clusters
 
  1565  exit
