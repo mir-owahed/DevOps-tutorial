@@ -28,6 +28,7 @@ kind: Pod
 metadata:
   name: nginx-pv-pod
 spec:
+  nodeName: node01
   containers:
     - name: nginx-container
       image: nginx:1.29.3
