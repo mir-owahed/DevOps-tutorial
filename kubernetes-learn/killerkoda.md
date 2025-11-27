@@ -54,3 +54,18 @@ controlplane:~$ history
    52  history
 controlplane:~$ 
 ```
+```
+node01:~$ history
+    1  exit
+    2  halt
+    3  ls
+    4  ls /mnt/data
+    5  sudo mkdir -p /mnt/data
+    6  sudo chmod 777 /mnt/data
+    7  sudo mkdir -p /mnt/data
+    8  sudo chmod 777 /mnt/data
+    9  ls /mnt/data/
+   10  ls
+   11  cat /mnt/data/
+   12  history
+```
