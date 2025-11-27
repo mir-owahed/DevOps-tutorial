@@ -1,3 +1,4 @@
+```
 controlplane:~$ history                      
     1  exit
     2  halt
@@ -52,3 +53,4 @@ controlplane:~$ history
    51  kubectl get pods
    52  history
 controlplane:~$ 
+```
