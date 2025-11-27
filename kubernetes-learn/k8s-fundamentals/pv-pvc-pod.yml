@@ -28,11 +28,9 @@ kind: Pod
 metadata:
   name: nginx-pv-pod
 spec:
-  nodeSelector:
-  kubernetes.io/hostname: cka-cluster-2-worker
   containers:
     - name: nginx-container
-      image: nginx
+      image: nginx:1.29.3
       ports:
         - name: http
           containerPort: 80
@@ -43,4 +41,4 @@ spec:
   volumes:
     - name: nginx-storage
       persistentVolumeClaim:
-        claimName: pvc-hostpath
+        claimName: pvc-hostpat
