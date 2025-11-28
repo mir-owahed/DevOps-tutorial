@@ -59,3 +59,10 @@ GENERIC_TIMEZONE=Europe/Berlin
 # The email address to use for the SSL certificate creation
 SSL_EMAIL=bachchu333@gmail.com
 ```
+update
+```
+40  sudo docker compose stop
+   41  docker compose pull
+   42  docker compose down
+   43  docker compose up -d
+```
