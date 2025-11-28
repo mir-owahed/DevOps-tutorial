@@ -39,3 +39,23 @@ setup n8n at DO
    36  sudo docker compose stop
    37  sudo docker compose up -
 ```
+env file
+```
+# Replace <directory-path> with the path where you created folders earlier
+DATA_FOLDER=/root/n8n-docker-caddy
+
+# The top level domain to serve from, this should be the same as the subdomain you created above
+DOMAIN_NAME=learn-with-mir.online
+# The subdomain to serve from
+SUBDOMAIN=ai
+
+# DOMAIN_NAME and SUBDOMAIN combined decide where n8n will be reachable from
+# above example would result in: https://n8n.example.com
+
+# Optional timezone to set which gets used by Cron-Node by default
+# If not set New York time will be used
+GENERIC_TIMEZONE=Europe/Berlin
+
+# The email address to use for the SSL certificate creation
+SSL_EMAIL=bachchu333@gmail.com
+```
