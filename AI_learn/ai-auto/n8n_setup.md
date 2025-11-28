@@ -66,3 +66,11 @@ update
    42  docker compose down
    43  docker compose up -d
 ```
+Caddyfile
+```
+ai.learn-with-mir.online {
+    reverse_proxy n8n:5678 {
+      flush_interval -1
+    }
+}
+```
