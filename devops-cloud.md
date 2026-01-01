@@ -274,7 +274,7 @@ Assuming you already know **Docker** and **Kubernetes**:
  
 ...............................................
 
-Below is a **careful, line-by-line–derived summary**, grouped into **meaningful conceptual blocks**, and **strictly based on the transcript** (no external additions or assumptions).
+DevOps and Cloud Roadmap
 
 ***
 
@@ -541,10 +541,4 @@ Below is a **careful, line-by-line–derived summary**, grouped into **meaningfu
 * Video ends with closing remarks
 
 ***
-
-If you want, I can next:
-
-* Convert this into a **beginner-friendly roadmap**
-* Turn it into a **study checklist**
-* Map this stack to **real DevOps projects**
-* Or align it with **DevOps interview preparation**
+<https://youtu.be/AtQryKJeHf8>
