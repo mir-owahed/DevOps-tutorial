@@ -1,6 +1,3 @@
-Great follow-up 👍
-Let’s go **step by step**, assuming you are a **beginner**, and answer one simple question:
-
 > **“How do I check which columns are indexed in my SQL database?”**
 
 I’ll show you **easy commands** for the **two most common databases**:
