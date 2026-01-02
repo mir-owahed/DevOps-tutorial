@@ -208,13 +208,3 @@ Look for:
 > - Whether queries are using them
 
 ***
-
-If you want next, I can:
-
-* Explain **why index is not used even when it exists**
-* Show **composite index checking**
-* Explain **case-sensitivity & indexes**
-* Show **index best practices for beginners**
-* Apply this to **your n8n + DB use case**
-
-Just tell me 😊
