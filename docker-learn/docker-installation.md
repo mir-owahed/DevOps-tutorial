@@ -34,6 +34,8 @@ sudo systemctl restart docker
 ```
 Let's do some 
 ```
+docker version
+docker --version
 docker help
 docker ps -a
 ```
