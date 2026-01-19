@@ -74,3 +74,12 @@ ai.learn-with-mir.online {
     }
 }
 ```
+n8n supabase integration
+```
+select project > Project Setting > Data API > Copy project url > paste it on Supabase Host.
+API Keys > Legacy anon, service_role API keys > Copy service_role secret > Paste it on Service Role Secret in n8n.
+```
+```
+copy SQL command > Supabase SQL Editor  and paste it.
+Go to Table editor > Click Documents table. > Enable RLS for security reason.
+```
