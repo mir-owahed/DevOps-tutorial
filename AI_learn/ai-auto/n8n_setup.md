@@ -83,3 +83,7 @@ API Keys > Legacy anon, service_role API keys > Copy service_role secret > Paste
 copy SQL command > Supabase SQL Editor  and paste it.
 Go to Table editor > Click Documents table. > Enable RLS for security reason.
 ```
+Add chat memory at n8n in postgres supabase
+```
+Click on connect > Transaction pooler > view parameter > Copy host and user and paste it n8n, password will be the password of the project creation.
+```
