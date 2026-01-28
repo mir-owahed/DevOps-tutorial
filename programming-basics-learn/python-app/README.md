@@ -86,4 +86,20 @@ ubuntu@ip-10-0-0-122:/python-app$
   100  python3 app.py
   101  /bin/python3 /home/mir/.vscode/extensions/ms-python.python-2025.2.0-linux-x64/python_files/printEnvVariablesToFile.py /home/mir/.vscode/extensions/ms-python.python-2025.2.0-linux-x64/python_files/deactivate/bash/envVars.txt
 ```
+```
+git --version
+ 1994  git clone https://github.com/mir-owahed/python-flask-app.git
+ 1995  cd python-flask-app/
+ 1996  code .
+ 1997  python3 --version
+ 1998  python --version
+ 1999  python3 -m venv .venv
+ 2000  source .venv/bin/activate
+ 2001  pip3 --version
+ 2002  python -m pip install --upgrade pip
+ 2003  pip3 --version
+ 2004  pip install "fastapi[standard]"
+ 2005  fastapi dev main.py
+ 2006  history
+```
 
