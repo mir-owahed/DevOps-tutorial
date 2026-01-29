@@ -77,6 +77,7 @@ ubuntu@ip-10-0-0-122:/python-app$
 ## Write API using fastapi
 ## FastAPI project setup using 'uv'
 ```
+```
 mkdir fastapi-project
 cd fastapi-project/
 code .
@@ -100,6 +101,7 @@ http://localhost:8000/redoc
 ```
 ```
 curl http://localhost:8000/
+```
 
 ```
 Ref: <https://fastapi.tiangolo.com/tutorial/first-steps/>
