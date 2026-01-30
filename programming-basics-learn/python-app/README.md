@@ -135,4 +135,25 @@ git --version
  2005  fastapi dev main.py
  2006  history
 ```
+How to run python app
+```
+```
+ git clone https://github.com/iam-veeramalla/hello-world-mlops.git
+ 2000  cd hello-world-mlops/
+ 2001  code .
+python3 -m venv .venv
+ 2001  source .venv/bin/activate
+ 2002  which python
+ 2003  python3 --version
+ 2004  pip install -r requirements.txt 
+ 2005  python3 train.py
+ 2006  ls artifacts/
+ 2007  python3 run_model.py --input "[5, 10, 3, 2]"
+ 2008  python3 run_model.py --input "[1, 1, 1, 1]"
+ python3 app.py
+ curl -X POST "http://127.0.0.1:5001/predict" -H "Content-Type: application/json" -d '{"f
+eatures":[5.1,3.5,1.4,0.2]}'
+ 2009  history
+ ```
+```
 
