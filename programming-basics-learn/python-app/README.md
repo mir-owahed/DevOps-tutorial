@@ -137,7 +137,6 @@ git --version
 ```
 How to run python app
 ```
-```
  git clone https://github.com/iam-veeramalla/hello-world-mlops.git
  2000  cd hello-world-mlops/
  2001  code .
