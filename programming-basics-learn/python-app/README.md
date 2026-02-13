@@ -1,6 +1,7 @@
 # how to install python on ubuntu
 ```
-sudo apt install python3 python3-pip build-essential python3-dev 
+sudo apt install python3 python3-pip build-essential python3-dev
+python -m pip install --upgrade pip 
 python3 -V
 pip3 -V
 
