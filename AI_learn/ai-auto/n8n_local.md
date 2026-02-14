@@ -19,3 +19,11 @@ ports:
 
 # Ollama Base URL : http://ollama:11434
 ```
+Commands
+```
+docker compose --profile cpu up -d
+docker compose --profile cpu down
+docker ps
+docker ps -a
+
+```
