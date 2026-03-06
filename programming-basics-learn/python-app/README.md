@@ -155,4 +155,21 @@ python3 -m venv .venv
 eatures":[5.1,3.5,1.4,0.2]}'
  2009  history
  ```
-
+### How to install Jupyter Notebook on WSL2
+```
+mkdir jupyter-test
+cd jupyter-test/
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install jupyter
+jupyter notebook
+```
+### How to install Jupyter Notebook on VS Code WSL2
+```
+mkdir jupyter-test
+cd jupyter-test/
+code .
+python3 -m venv .venv
+source .venv/bin/activate
+ADD   extension of jupyter and python
+```
