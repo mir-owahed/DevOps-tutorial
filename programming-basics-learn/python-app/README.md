@@ -172,4 +172,7 @@ code .
 python3 -m venv .venv
 source .venv/bin/activate
 ADD   extension of jupyter and python
+ctrl + shift+p open walkthrough > get started with jupyter noterbook
+create new jupyter notebook
+select kernel and choose current virtual env
 ```
