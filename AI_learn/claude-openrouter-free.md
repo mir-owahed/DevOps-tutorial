@@ -10,6 +10,18 @@ Claude Code using a project-level settings file at .claude/settings.json in your
   }
 }
 ```
+or
+```
+ "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_AUTH_TOKEN": "YOUR OPEN ROUTER API KEY",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "openrouter/free",
+    "ANTHROPIC_SMALL_FAST_MODEL": "openrouter/free",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "openrouter/free"
+```
 Use CLI commands in wsl/linux
 ```
 export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
