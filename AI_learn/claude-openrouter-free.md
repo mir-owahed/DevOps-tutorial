@@ -59,3 +59,7 @@ Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
  2006  ollama run llama3.2:1b
  2007  ollama ls
 ```
+```
+{"name": "ANTHROPIC_BASE_URL", "value": "http://localhost:1234"},
+      {"name": "ANTHROPIC_API_KEY", "value": "lmstudio"}
+```
