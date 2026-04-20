@@ -40,3 +40,22 @@ claude
 /logout
 ```
 Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
+```
+ curl -fsSL https://ollama.com/install.sh | sh
+ sudo apt-get install zstd
+ curl -fsSL https://ollama.com/install.sh | sh
+ ollama ls
+ ollama ps
+ ollama stop
+ 1997  curl -fsSL https://ollama.com/install.sh | sh
+ 1998  ollama pull gemma4:e2b
+ 1999  ollama
+ 2000  ollama pull gemma4:e2b
+ 2001  ollama ps
+ 2002  ollama run gemma4:e2b
+ 2003  ollama ps
+ 2004  ollama
+ 2005  ollama pull llama3.2:1b
+ 2006  ollama run llama3.2:1b
+ 2007  ollama ls
+```
