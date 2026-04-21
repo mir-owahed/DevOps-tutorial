@@ -64,12 +64,12 @@ Claude Code with local model Gemma4
 ```
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://localhost:1234",    
+    "ANTHROPIC_BASE_URL": "http://localhost:11434",    
     "model": "gemma4:e2b"
   }
 }
 ```
-at claude code ext > setting> setting.json
+Open VS Code, open claude code ext > setting> setting.json
 ```
 {"name": "ANTHROPIC_BASE_URL", "value": "http://localhost:1234"},
       {"name": "ANTHROPIC_API_KEY", "value": "lmstudio"}
