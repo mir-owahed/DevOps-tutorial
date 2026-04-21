@@ -59,6 +59,17 @@ Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
  2006  ollama run llama3.2:1b
  2007  ollama ls
 ```
+Claude Code with local model Gemma4
+.claude/settings.json in your project root
+```
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:1234",    
+    "model": "gemma4:e2b"
+  }
+}
+```
+at claude code ext > setting> setting.json
 ```
 {"name": "ANTHROPIC_BASE_URL", "value": "http://localhost:1234"},
       {"name": "ANTHROPIC_API_KEY", "value": "lmstudio"}
