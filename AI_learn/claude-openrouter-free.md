@@ -40,6 +40,7 @@ claude
 /logout
 ```
 Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
+<https://ollama.com/blog/claude>
 ```
  curl -fsSL https://ollama.com/install.sh | sh
  sudo apt-get install zstd
