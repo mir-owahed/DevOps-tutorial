@@ -40,7 +40,6 @@ claude
 /logout
 ```
 Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
-<https://ollama.com/blog/claude>
 ```
  curl -fsSL https://ollama.com/install.sh | sh
  sudo apt-get install zstd
@@ -75,3 +74,4 @@ Open VS Code, open claude code ext > setting> setting.json
 {"name": "ANTHROPIC_BASE_URL", "value": "http://localhost:1234"},
       {"name": "ANTHROPIC_API_KEY", "value": "lmstudio"}
 ```
+Ref: <https://ollama.com/blog/claude>
