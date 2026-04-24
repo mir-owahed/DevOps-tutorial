@@ -1,6 +1,9 @@
 
 Claude Code using a project-level settings file at .claude/settings.json in your project root:
 ```
+open ~/.claude/settings.local.json
+```
+```
 {
   "env": {
     "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
