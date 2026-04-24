@@ -70,6 +70,24 @@ Launch Claude Code with Ollama
 ```
 ollama launch claude --model qwen3.5:4b
 ```
+Claude Code UNlimited access with GEMMA4
+```
+1. download ollama in wsl
+curl -fsSL https://ollama.com/install.sh | sh
+2. 2. ollama pull gemma4:e4b
+ollama run gemma4:e4b
+or 
+ollama
+[choose gemma4]
+3. Here are the commands shown in the image:
+
+```bash
+echo "FROM gemma4:e4b" > Modelfile
+echo "PARAMETER num_ctx 64000" >> Modelfile
+ollama create gemma4-64k -f Modelfile
+```
+4. ollama launch claude --model gemma4-64k
+```
 Claude Code with local model Gemma4
 .claude/settings.json in your project root
 ```
