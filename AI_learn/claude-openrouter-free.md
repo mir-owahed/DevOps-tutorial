@@ -1,7 +1,7 @@
 
 Claude Code using a project-level settings file at .claude/settings.json in your project root:
 ```
-open ~/.claude/settings.local.json
+mkdir -p .claude && touch .claude/settings.local.json
 ```
 ```
 {
