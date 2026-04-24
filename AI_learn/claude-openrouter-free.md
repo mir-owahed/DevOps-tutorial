@@ -81,11 +81,11 @@ ollama
 [choose gemma4]
 3. Here are the commands shown in the image:
 
-```bash
+
 echo "FROM gemma4:e4b" > Modelfile
 echo "PARAMETER num_ctx 64000" >> Modelfile
 ollama create gemma4-64k -f Modelfile
-```
+
 4. ollama launch claude --model gemma4-64k
 ```
 Claude Code with local model Gemma4
