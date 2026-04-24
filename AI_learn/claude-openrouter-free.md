@@ -66,6 +66,10 @@ Ref: <https://openrouter.ai/docs/guides/coding-agents/claude-code-integration>
  2006  ollama run llama3.2:1b
  2007  ollama ls
 ```
+Launch Claude Code with Ollama
+```
+ollama launch claude --model qwen3.5:4b
+```
 Claude Code with local model Gemma4
 .claude/settings.json in your project root
 ```
