@@ -129,9 +129,8 @@ LM Studio shows:
 
 ### Example Models Mentioned
 
-* Jamba
-* Neotron
-* Gemma
+* Gemma4
+* Nemotron
 * Qwen. 
 
 ### Steps
